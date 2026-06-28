@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  marketing-website:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: firewall-mon-marketing
+    ports:
+      - "${PORT:-8080}:80"
+    restart: unless-stopped
