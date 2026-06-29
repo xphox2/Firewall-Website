@@ -3,6 +3,19 @@
 All notable changes to the Firewall-Mon marketing website are documented here.
 This file follows [Keep a Changelog](https://keepachangelog.com/) conventions; versions are newest-first.
 
+## [0.1.3] - 2026-06-28
+
+### Fixed
+- Eliminated a horizontal scrollbar / page overflow. The off-canvas nav drawer
+  (`position: fixed`, parked off-screen right via `translateX(100%)`) extended the
+  document's scrollable width; since it's `fixed`, `body { overflow-x }` couldn't
+  clip it. Added `overflow-x: clip` to `html` (root) to clip it.
+- Switched `body`'s `overflow-x: hidden` → `overflow-x: clip`. `hidden` was
+  silently breaking the `position: sticky` header (it turns body into a scroll
+  container); `clip` prevents overflow without that side effect, so the sticky
+  header now actually sticks on scroll. Verified with Playwright: no horizontal
+  scrollbar, sticky header pinned at top:0 on scroll, drawer opens in-viewport.
+
 ## [0.1.2] - 2026-06-28
 
 ### Fixed

@@ -47,10 +47,17 @@ html {
     font-family: var(--font-sans);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
+    /* Clip the off-canvas nav drawer (position:fixed, translated off-screen right)
+       so it can't create a horizontal scrollbar. `clip` (not `hidden`) clips the
+       overflow WITHOUT creating a scroll container, so the sticky header keeps
+       working. body alone can't clip a fixed element — only the root can. */
+    overflow-x: clip;
 }
 
 body {
-    overflow-x: hidden;
+    /* `clip` (not `hidden`) prevents horizontal overflow without creating a
+       scroll container — `hidden` here was breaking the sticky header. */
+    overflow-x: clip;
     position: relative;
 }
 
