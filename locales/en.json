@@ -1,0 +1,240 @@
+{
+  "nav": {
+    "why": "Why Us",
+    "demo": "Live Demo",
+    "config_drift": "Config Drift",
+    "architecture": "Architecture",
+    "features": "Features",
+    "security": "Security",
+    "github": "Star on GitHub",
+    "install": "Install Now",
+    "github_docs": "GitHub"
+  },
+  "hero": {
+    "title": "One pane of glass for your <span class=\"accent-text\">firewall fleet.</span>",
+    "subtitle": "SNMP, sFlow, syslog, traps, and config drift monitoring across FortiGate, Palo Alto, SonicWall, pfSense, OPNsense, and Firewalla. Self-hosted. One container. 30 seconds to first poll.",
+    "copy_btn": "Copy",
+    "copied_btn": "Copied!",
+    "read_docs": "Read the docs →",
+    "stat_audit_label": "Open Audit Findings",
+    "stat_vendors_label": "Vendors Supported",
+    "stat_license_label": "Open Source License",
+    "badge_prefix": "Latest Release:"
+  },
+  "why": {
+    "tag": "Grounded in Operations",
+    "title": "Built firewall-first.",
+    "intro": "General network monitoring tools give you a wall of generic OID graphs. Firewall-Mon is built specifically for firewalls.",
+    "card1_title": "Deep Vendor Intelligence",
+    "card1_desc": "Native profiles for six firewall families read CPU, sessions, VPN tunnels, HA states, and SPU/ASIC metrics out-of-the-box. Zero MIB wrestling.",
+    "card2_title": "Config Drift with Risk Tags",
+    "card2_desc": "Config changes are normalized to a vendor-neutral object model. Every change is classified by risk—highlighting security breaches before your audit.",
+    "card3_title": "NAT/CGNAT Traversal Probes",
+    "card3_desc": "Remote site probes push metrics over outbound HTTPS. No inbound ports need to be exposed, keeping your branches completely locked down."
+  },
+  "demo": {
+    "tag": "Interactive Preview",
+    "title": "The Live Operations Dashboard",
+    "intro": "Experience the interface network security engineers use to monitor a distributed firewall fleet in real-time.",
+    "fleet_title": "FIREWALL FLEET",
+    "online_badge": "6 ONLINE",
+    "poll_interval": "Poll interval: <strong>30s</strong>",
+    "last_poll": "Last poll:",
+    "just_now": "Just now",
+    "ago": "ago",
+    "cpu_load": "CPU LOAD",
+    "active_sessions": "ACTIVE SESSIONS",
+    "vpn_tunnels": "VPN TUNNELS",
+    "ha_cluster": "HA CLUSTER",
+    "cpu_trend_normal": "↓ Normal load",
+    "cpu_trend_high": "↑ High CPU warning",
+    "vpn_trend_up": "All tunnels UP",
+    "vpn_trend_none": "No tunnels defined",
+    "vpn_trend_alert": "Tunnel degradation Alert",
+    "ha_trend_standalone": "HA not configured",
+    "ha_trend_synced": "Synced (Peer OK)",
+    "throughput_title": "Real-time Interface Bandwidth",
+    "inbound": "Inbound",
+    "outbound": "Outbound",
+    "four_hours_ago": "4 hours ago",
+    "three_hours_ago": "3 hours ago",
+    "two_hours_ago": "2 hours ago",
+    "one_hour_ago": "1 hour ago",
+    "now": "Now",
+    "trap_console": "SNMP TRAP / SYSLOG INGEST",
+    "process_label": "Process:",
+    "triage_btn": "Run Spike Triage",
+    "triage_analyzing": "Analyzing flows...",
+    "triage_completed": "Triage Completed",
+    "initiating_poller_cycle": "Initiating global poller cycle for device fleet.",
+    "poller_cycle_complete_msg": "Poller cycle complete for device fleet."
+  },
+  "drift": {
+    "tag": "Risk Classification",
+    "title": "Risk-Classified Config Drift",
+    "intro": "Every config modification is normalized to a vendor-neutral model. Our security classification system parses each diff and flags security vulnerabilities.",
+    "detected_changes": "DETECTED CHANGES",
+    "change": "CHANGE",
+    "vulnerability_tagged": "Vulnerability Tagged:",
+    "security_impact": "Security Impact:",
+    "configuration_event": "Configuration Event:",
+    "hours_ago": "hours ago",
+    "mins_ago": "mins ago",
+    "day_ago": "day ago",
+    "critical_tab_desc": "Allow-Internal-Admin rule opened to ANY",
+    "medium_tab_desc": "IPsec VPN Proposal DH Group weakened",
+    "info_tab_desc": "Interface description modified"
+  },
+  "sflow": {
+    "tag": "High-Performance Traffic Monitoring",
+    "title": "sFlow v5 Flow Analyzer",
+    "intro": "Triage bandwidth spikes instantly with raw conversation-level details, utilizing our PostgreSQL <code class=\"mono-code\">pgx COPY</code> pipeline which writes 10× faster than normal ORM row inserts.",
+    "live_stream": "Live Traffic Stream (sFlow)",
+    "run_triage": "Run Spike Triage",
+    "src_addr": "Source Address",
+    "dst_addr": "Destination Address",
+    "port": "Port",
+    "protocol": "Protocol",
+    "flow_rate": "Flow Rate",
+    "packets": "Packets",
+    "analysis_completed": "SPIKE TRIAGE ANALYSIS COMPLETED:",
+    "alert_text": "Anomalous traffic detected on Port 4444 from host <code class=\"mono-code\">10.200.5.88</code> to external IP <code class=\"mono-code\">185.112.145.4</code> (Known Metasploit port). Rule matching: <span class=\"tag-alert-rule\">Suspicious_Shell_Outbound</span>."
+  },
+  "probe": {
+    "tag": "Idempotent Ingestion Topology",
+    "title": "Distributed Probe-Relay",
+    "intro": "Deploy local collectors at remote sites to sync telemetry behind CGNAT over outbound HTTPS, maintaining data parity on shaky uplinks.",
+    "safeguards_title": "Telemetry Resiliency Safeguards",
+    "sg1_title": "X-Probe-Batch-ID Idempotency",
+    "sg1_desc": "Every packet batch is stamped with a unique, UUID-based Header. Retries on packet drops are validated at rest, preventing duplicated log analysis or traffic spikes.",
+    "sg2_title": "Schema Version Handshake",
+    "sg2_desc": "If a remote probe and the central collector undergo a schema mismatch, `fwmon-api` flags HTTP 426 Upgrade Required. The probe's internal disk queue holds, locking your logs until safe migration completes.",
+    "sg3_title": "SHA-256 Secrets Encryption",
+    "sg3_desc": "Probe authentication keys and device passwords are hashed at rest using AES-256-GCM. Decryption verification is performed on start; pollers fail-fast immediately on key modification."
+  },
+  "features": {
+    "tag": "Capabilities",
+    "title": "Production-grade monitoring.",
+    "intro": "Every feature is built for speed, compliance posture, and vendor neutrality.",
+    "card1_title": "Multi-Vendor SNMP",
+    "card1_desc": "Six vendors. Native OID profiles. Zero MIB wrestling.",
+    "card2_title": "Risk-Classified Config Diffs",
+    "card2_desc": "Surface a rule opened to ANY before it ships.",
+    "card3_title": "sFlow v5 Ingest",
+    "card3_desc": "Top talkers, destinations, and ports — without PCAP.",
+    "card4_title": "Probe-Relay Architecture",
+    "card4_desc": "Branch firewalls behind CGNAT, polled through one outbound HTTPS.",
+    "card5_title": "Single-Container Deploy",
+    "card5_desc": "One `docker compose up -d`. PostgreSQL 16 bundled.",
+    "card6_title": "Audit-Grade Security",
+    "card6_desc": "AES-256-GCM, key rotation, fail-fast keys. 0 of 170 findings open."
+  },
+  "reports": {
+    "tag": "Operations Reports",
+    "title": "Email reports, redesigned.",
+    "intro": "Newly styled daily digests featuring Plus Jakarta Sans and modern dark gradients—crafted to be entirely compatible with Gmail and Outlook."
+  },
+  "security": {
+    "tag": "Audit-Ready Security",
+    "title": "170 Findings. Zero Open.",
+    "intro": "We subjected Firewall-Mon to a comprehensive 170-finding security audit. Every single finding has been fully addressed, patched, and verified under our 98-test static security suite.",
+    "item1_title": "AES-256-GCM Secret Encryption",
+    "item1_desc": "SNMP communities, SSH credentials, and Slack webhook tokens are locked using AES-GCM encryption key hashes.",
+    "item2_title": "M8 Fail-Fast Decryption Validation",
+    "item2_desc": "Pollers and receivers crash immediately on initialization if database encryption credentials fail to decrypt secrets. Prevents stale polling states.",
+    "item3_title": "Append-Only Auditor Trail",
+    "item3_desc": "All administrative actions, login events, and config backups generate immutable logs written directly to standard output."
+  },
+  "quickstart": {
+    "tag": "Quick Start",
+    "title": "30 seconds to first poll.",
+    "intro": "Deploy the application locally or in production with a single command.",
+    "tab_docker": "Docker Compose",
+    "tab_systemd": "Systemd / Native",
+    "tab_relay": "Remote Probe Relay",
+    "docker_desc": "Clone the repository, configure the environment, and build the container locally (pre-built image coming soon):",
+    "docker_next": "Clone and deploy:",
+    "systemd_desc": "Run Firewall-Mon natively as a systemd daemon. Compile the single binary using Go 1.22+:",
+    "relay_desc": "Run the lightweight Firewall-Collector on remote servers behind branch firewalls to relay SNMP data to the main server. The image is hosted on Docker Hub:"
+  },
+  "footer": {
+    "brand_desc": "Vendor-agnostic firewall monitoring system built for speed, security audits, and complex topology traversal.",
+    "labs_created": "Firewall-Mon is a <a href=\"https://www.technicallabs.org\" target=\"_blank\" style=\"color: var(--accent); text-decoration: underline;\">TechnicalLabs</a> project created by Xphox of <a href=\"https://www.xphox.net\" target=\"_blank\" style=\"color: var(--accent); text-decoration: underline;\">Xphox Networks</a>.",
+    "open_source": "Open Source",
+    "license": "MIT License",
+    "documentation": "Documentation",
+    "ref_docs": "Reference Docs",
+    "arch_spec": "Architecture Spec",
+    "changelog": "Changelog",
+    "copyright": "&copy; 2026 Firewall-Mon. A <a href=\"https://www.technicallabs.org\" target=\"_blank\" style=\"color: var(--text-secondary); text-decoration: underline;\">TechnicalLabs</a> project created by Xphox of <a href=\"https://www.xphox.net\" target=\"_blank\" style=\"color: var(--text-secondary); text-decoration: underline;\">Xphox Networks</a>. Licensed under the MIT License.",
+    "meta": "v0.10.498 (2026-06-27)"
+  },
+  "devices": {
+    "hq-fortigate": {
+      "vendor": "Fortinet SNMP Profile (FortiOS v7.2.4)",
+      "ha": "Active-Passive",
+      "haTrend": "Synced (Peer OK)",
+      "logs": [
+        "Poller cycle complete for device HQ-FortiGate-01. All OIDs matching vendor profile.",
+        "FortiOS: HA status verified healthy. Active node in primary unit.",
+        "sFlow interface raw batch pushed to PostgreSQL flow_samples (Pgx batch INSERT: OK)",
+        "FortiOS: SSH Login attempted from 10.100.12.80 - authentication failed."
+      ]
+    },
+    "branch-opnsense": {
+      "vendor": "OPNsense SNMP Profile (AMD64)",
+      "ha": "CARP Backup",
+      "haTrend": "Peer Active (10.200.2.1)",
+      "logs": [
+        "Poller cycle complete for device Branch-OPNsense-02.",
+        "CPU core temperatures retrieved: Core0: 42°C, Core1: 45°C.",
+        "Ingesting flow batch via X-Probe-Batch-ID: e82f1b40",
+        "OPNsense carp: link state changed on interface wan: BACKUP"
+      ]
+    },
+    "colo-paloalto": {
+      "vendor": "Palo Alto Networks SNMP Profile (PAN-OS 10.2)",
+      "ha": "Active-Active",
+      "haTrend": "Sessions synced. 0 packet drops",
+      "logs": [
+        "Poller cycle complete for device Colo-PaloAlto-01.",
+        "Session limit: 500,000. Current usage: 22%. Performance threshold normal.",
+        "PAN-OS: Tunnel 'vpn-branch-32' state changed to DOWN. Triggering AlertManager route.",
+        "Static security invariants: 0 anomalies detected in rulebase."
+      ]
+    },
+    "edge-sonicwall": {
+      "vendor": "SonicWall SNMP Profile (SonicOS v7.0)",
+      "ha": "Standalone",
+      "haTrend": "HA not configured",
+      "logs": [
+        "Poller cycle complete for device Edge-SonicWall-03.",
+        "SonicOS CPU usage spike detected: 82%. Hardware SPU ASIC load normal.",
+        "SonicOS: Tunnel 'HQ-Core-IPsec' state changed to REKEYING.",
+        "SonicOS: Core VPN gateway failed to negotiate IKE Phase 2. Relink scheduled."
+      ]
+    },
+    "home-pfsense": {
+      "vendor": "pfSense SNMP Profile (pfSense Plus v23.05)",
+      "ha": "Standalone",
+      "haTrend": "HA not configured",
+      "logs": [
+        "Poller cycle complete for device Home-pfSense-01.",
+        "Interface wan speed verified: 1000 Mbps full-duplex.",
+        "Cron task: package update manager returned exit status 0.",
+        "flow_samples rollup task running: aggregated 5-min flows."
+      ]
+    },
+    "lab-firewalla": {
+      "vendor": "Firewalla SNMP Profile (Linux Kernel 5.15)",
+      "ha": "Standalone",
+      "haTrend": "HA not configured",
+      "logs": [
+        "Poller cycle complete for device Lab-Firewalla-01.",
+        "Remote probe relay ping complete: handshake schema version v0.10.498 verified.",
+        "CPU memory footprint: 1.2GB/4GB (30% consumed).",
+        "Flow database vacuum complete. Cleaned 0 rows."
+      ]
+    }
+  }
+}

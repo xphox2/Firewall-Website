@@ -500,24 +500,53 @@
             
             <nav class="main-nav">
                 <ul class="nav-links">
-                    <li><a href="index.html#why">Why Us</a></li>
-                    <li><a href="index.html#demo">Live Demo</a></li>
-                    <li><a href="index.html#config-diff">Config Drift</a></li>
-                    <li><a href="index.html#probe-relay">Architecture</a></li>
-                    <li><a href="index.html#features">Features</a></li>
-                    <li><a href="index.html#security">Security</a></li>
+                    <li><a href="index.html#why" data-i18n="nav.why">Why Us</a></li>
+                    <li><a href="index.html#demo" data-i18n="nav.demo">Live Demo</a></li>
+                    <li><a href="index.html#config-diff" data-i18n="nav.config_drift">Config Drift</a></li>
+                    <li><a href="index.html#probe-relay" data-i18n="nav.architecture">Architecture</a></li>
+                    <li><a href="index.html#features" data-i18n="nav.features">Features</a></li>
+                    <li><a href="index.html#security" data-i18n="nav.security">Security</a></li>
                 </ul>
+                
+                <div class="header-actions">
+                    <a href="https://github.com/xphox2/Firewall-Monitoring" target="_blank" class="github-stars-btn">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+                        </svg>
+                        <span data-i18n="nav.github_docs">GitHub</span>
+                    </a>
+                    
+                    <a href="index.html#quickstart" class="btn btn-primary btn-sm" data-i18n="nav.install">Install Now</a>
+                </div>
+
+                <div class="lang-picker-container" id="lang-picker-container">
+                    <button class="lang-picker-btn" id="lang-picker-btn" aria-label="Change Language">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="globe-icon"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                        <span id="active-lang-text">EN</span>
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="chevron-icon"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                    <div class="lang-dropdown" id="lang-dropdown">
+                        <button class="lang-option active" data-lang="en">English</button>
+                        <button class="lang-option" data-lang="de">Deutsch</button>
+                        <button class="lang-option" data-lang="es">Español</button>
+                        <button class="lang-option" data-lang="fr">Français</button>
+                        <button class="lang-option" data-lang="it">Italiano</button>
+                        <button class="lang-option" data-lang="pt">Português</button>
+                        <button class="lang-option" data-lang="ru">Русский</button>
+                        <button class="lang-option" data-lang="ja">日本語</button>
+                        <button class="lang-option" data-lang="ko">한국어</button>
+                        <button class="lang-option" data-lang="zh">中文</button>
+                    </div>
+                </div>
             </nav>
-            
-            <div class="header-actions">
-                <a href="https://github.com/xphox2/Firewall-Monitoring" target="_blank" class="github-stars-btn">
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
-                    </svg>
-                    <span>GitHub</span>
-                </a>
-                <a href="index.html#quickstart" class="btn btn-primary btn-sm">Install Now</a>
-            </div>
+
+            <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Toggle Navigation">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12" class="line-mid"></line>
+                    <line x1="3" y1="6" x2="21" y2="6" class="line-top"></line>
+                    <line x1="3" y1="18" x2="21" y2="18" class="line-bot"></line>
+                </svg>
+            </button>
         </div>
     </header>
 
@@ -1013,26 +1042,26 @@ sudo tcpdump -i any port 6343 -nn</code></pre>
                     </svg>
                     <span>Firewall-Mon</span>
                 </a>
-                <p>Vendor-agnostic firewall monitoring system built for speed, security audits, and complex topology traversal.</p>
-                <p style="margin-top: 12px; font-size: 0.82rem; color: var(--text-muted); line-height: 1.4;">Firewall-Mon is a <a href="https://www.technicallabs.org" target="_blank" style="color: var(--accent); text-decoration: underline;">TechnicalLabs</a> project created by Xphox of <a href="https://www.xphox.net" target="_blank" style="color: var(--accent); text-decoration: underline;">Xphox Networks</a>.</p>
+                <p data-i18n="footer.brand_desc">Vendor-agnostic firewall monitoring system built for speed, security audits, and complex topology traversal.</p>
+                <p style="margin-top: 12px; font-size: 0.82rem; color: var(--text-muted); line-height: 1.4;" data-i18n="footer.labs_created" data-i18n-html="true">Firewall-Mon is a <a href="https://www.technicallabs.org" target="_blank" style="color: var(--accent); text-decoration: underline;">TechnicalLabs</a> project created by Xphox of <a href="https://www.xphox.net" target="_blank" style="color: var(--accent); text-decoration: underline;">Xphox Networks</a>.</p>
             </div>
             
             <div class="footer-links-grid">
                 <div class="footer-links-col">
-                    <h4>Open Source</h4>
+                    <h4 data-i18n="footer.open_source">Open Source</h4>
                     <ul>
                         <li><a href="https://github.com/xphox2/Firewall-Monitoring" target="_blank">Firewall-Mon</a></li>
                         <li><a href="https://github.com/xphox2/Firewall-Collector" target="_blank">Firewall-Collector</a></li>
-                        <li><a href="https://github.com/xphox2/Firewall-Monitoring/blob/main/LICENSE" target="_blank">MIT License</a></li>
+                        <li><a href="https://github.com/xphox2/Firewall-Monitoring/blob/main/LICENSE" target="_blank" data-i18n="footer.license">MIT License</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-links-col">
-                    <h4>Documentation</h4>
+                    <h4 data-i18n="footer.documentation">Documentation</h4>
                     <ul>
-                        <li><a href="docs.html?section=intro">Reference Docs</a></li>
-                        <li><a href="docs.html?section=architecture">Architecture Spec</a></li>
-                        <li><a href="docs.html?section=changelog">Changelog</a></li>
+                        <li><a href="docs.html?section=intro" data-i18n="footer.ref_docs">Reference Docs</a></li>
+                        <li><a href="docs.html?section=architecture" data-i18n="footer.arch_spec">Architecture Spec</a></li>
+                        <li><a href="docs.html?section=changelog" data-i18n="footer.changelog">Changelog</a></li>
                     </ul>
                 </div>
             </div>
@@ -1040,11 +1069,15 @@ sudo tcpdump -i any port 6343 -nn</code></pre>
         
         <div class="footer-bottom">
             <div class="footer-bottom-container">
-                <p>&copy; 2026 Firewall-Mon. A TechnicalLabs project created by Xphox of Xphox Networks. Licensed under the MIT License.</p>
-                <div class="footer-meta" id="footer-release-meta">v0.10.498 (2026-06-27)</div>
+                <p data-i18n="footer.copyright" data-i18n-html="true">&copy; 2026 Firewall-Mon. A <a href="https://www.technicallabs.org" target="_blank" style="color: var(--text-secondary); text-decoration: underline;">TechnicalLabs</a> project created by Xphox of <a href="https://www.xphox.net" target="_blank" style="color: var(--text-secondary); text-decoration: underline;">Xphox Networks</a>. Licensed under the MIT License.</p>
+                <div class="footer-meta" data-i18n="footer.meta" id="footer-release-meta">v0.10.498 (2026-06-27)</div>
             </div>
         </div>
     </footer>
+
+    <!-- Scripts -->
+    <script src="js/i18n.js"></script>
+    <script src="js/main.js"></script>
 
     <!-- Document Section Routing Script -->
     <script>

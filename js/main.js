@@ -21,7 +21,10 @@ document.addEventListener("DOMContentLoaded", () => {
     // 6. Security Audit Dots Generator
     generateAuditDots();
 
-    // 7. Dynamic GitHub Release Poller
+    // 7. Mobile Navigation Toggle
+    setupMobileNav();
+
+    // 8. Dynamic GitHub Release Poller
     setupGitHubReleasePoller();
 });
 
@@ -36,8 +39,8 @@ function setupClipboards() {
     if (btnCopy && cliCmd) {
         btnCopy.addEventListener("click", () => {
             navigator.clipboard.writeText(cliCmd.textContent.trim()).then(() => {
-                const originalText = btnCopy.querySelector(".copy-text").textContent;
-                btnCopy.querySelector(".copy-text").textContent = "Copied!";
+                const originalText = window.t ? window.t("hero.copy_btn") : btnCopy.querySelector(".copy-text").textContent;
+                btnCopy.querySelector(".copy-text").textContent = window.t ? window.t("hero.copied_btn") : "Copied!";
                 btnCopy.style.borderColor = "var(--success)";
                 btnCopy.style.color = "var(--success)";
                 
@@ -212,7 +215,8 @@ function setupDashboardSimulator() {
     setInterval(() => {
         pollCounter++;
         if (lastPollEl) {
-            lastPollEl.textContent = `${pollCounter}s ago`;
+            const agoStr = window.t ? window.t("demo.ago") : "ago";
+            lastPollEl.textContent = `${pollCounter}s ${agoStr}`;
         }
         
         // Randomly fluctuate active metric values slightly to make it feel alive
@@ -226,10 +230,10 @@ function setupDashboardSimulator() {
             
             if (cpuTrendEl) {
                 if (newCpu > 70) {
-                    cpuTrendEl.textContent = "↑ High CPU warning";
+                    cpuTrendEl.textContent = window.t ? window.t("demo.cpu_trend_high") : "↑ High CPU warning";
                     cpuTrendEl.className = "metric-trend text-danger";
                 } else {
-                    cpuTrendEl.textContent = "↓ Normal load";
+                    cpuTrendEl.textContent = window.t ? window.t("demo.cpu_trend_normal") : "↓ Normal load";
                     cpuTrendEl.className = "metric-trend text-success";
                 }
             }
@@ -245,10 +249,20 @@ function setupDashboardSimulator() {
         
         if (pollCounter >= 30) {
             pollCounter = 0;
-            if (lastPollEl) lastPollEl.textContent = "Just now";
-            addNewLogLine("[INFO] Initiating global poller cycle for device fleet.");
+            if (lastPollEl) lastPollEl.textContent = window.t ? window.t("demo.just_now") : "Just now";
+            const initMsg = window.t ? window.t("demo.initiating_poller_cycle") : "Initiating global poller cycle for device fleet.";
+            addNewLogLine("[INFO] " + initMsg);
         }
     }, 1000);
+
+    // Listen for language changes to update simulator strings
+    window.addEventListener('languageChanged', () => {
+        updateSimulatorUI(devices[activeDeviceKey]);
+        const intervalEl = document.querySelector('.poll-interval');
+        if (intervalEl) {
+            intervalEl.innerHTML = window.t ? window.t("demo.poll_interval") : "Poll interval: <strong>30s</strong>";
+        }
+    });
 
     // Switch active device
     deviceItems.forEach(item => {
@@ -270,16 +284,16 @@ function setupDashboardSimulator() {
         
         // Update labels
         if (activeNameEl) activeNameEl.textContent = devData.name;
-        if (activeVendorEl) activeVendorEl.textContent = devData.vendor;
+        if (activeVendorEl) activeVendorEl.textContent = window.t ? window.t(`devices.${activeDeviceKey}.vendor`) : devData.vendor;
         if (cpuValEl) cpuValEl.textContent = devData.cpu;
         
         // CPU trend
         if (cpuTrendEl) {
             if (devData.cpu > 70) {
-                cpuTrendEl.textContent = "↑ High CPU warning";
+                cpuTrendEl.textContent = window.t ? window.t("demo.cpu_trend_high") : "↑ High CPU warning";
                 cpuTrendEl.className = "metric-trend text-danger";
             } else {
-                cpuTrendEl.textContent = "↓ Normal load";
+                cpuTrendEl.textContent = window.t ? window.t("demo.cpu_trend_normal") : "↓ Normal load";
                 cpuTrendEl.className = "metric-trend text-success";
             }
         }
@@ -291,20 +305,20 @@ function setupDashboardSimulator() {
         if (vpnValEl) vpnValEl.textContent = devData.vpn;
         if (vpnTrendEl) {
             if (devData.vpn.includes("12 / 12") || devData.vpn.includes("2 / 2")) {
-                vpnTrendEl.textContent = "All tunnels UP";
+                vpnTrendEl.textContent = window.t ? window.t("demo.vpn_trend_up") : "All tunnels UP";
                 vpnTrendEl.className = "metric-trend text-success";
             } else if (devData.vpn.includes("0 / 0")) {
-                vpnTrendEl.textContent = "No tunnels defined";
+                vpnTrendEl.textContent = window.t ? window.t("demo.vpn_trend_none") : "No tunnels defined";
                 vpnTrendEl.className = "metric-trend text-muted";
             } else {
-                vpnTrendEl.textContent = "Tunnel degradation Alert";
+                vpnTrendEl.textContent = window.t ? window.t("demo.vpn_trend_alert") : "Tunnel degradation Alert";
                 vpnTrendEl.className = "metric-trend text-warning";
             }
         }
         
         // HA
         if (haValEl) {
-            haValEl.textContent = devData.ha;
+            haValEl.textContent = window.t ? window.t(`devices.${activeDeviceKey}.ha`) : devData.ha;
             if (devData.ha.includes("Active-Passive") || devData.ha.includes("Active-Active")) {
                 haValEl.className = "metric-value text-success";
             } else if (devData.ha.includes("CARP Backup") || devData.ha.includes("CARP Master")) {
@@ -314,7 +328,7 @@ function setupDashboardSimulator() {
             }
         }
         if (haTrendEl) {
-            haTrendEl.textContent = devData.haTrend;
+            haTrendEl.textContent = window.t ? window.t(`devices.${activeDeviceKey}.haTrend`) : devData.haTrend;
             if (devData.ha.includes("Standalone")) {
                 haTrendEl.className = "metric-trend text-muted";
             } else {
@@ -325,14 +339,15 @@ function setupDashboardSimulator() {
         // Populate fresh logs
         if (consoleBodyEl) {
             consoleBodyEl.innerHTML = "";
-            devData.logs.forEach(log => {
+            const localizedLogs = window.t ? window.t(`devices.${activeDeviceKey}.logs`) : devData.logs;
+            localizedLogs.forEach(log => {
                 const logLine = document.createElement("div");
                 logLine.className = "console-line";
                 
                 const timeStamp = getFormattedTime();
-                const isTrap = log.includes("[TRAP]");
-                const isWarn = log.includes("[WARN]");
-                const isDanger = log.includes("[DANGER]");
+                const isTrap = log.includes("[TRAP]") || log.includes("TRAP");
+                const isWarn = log.includes("[WARN]") || log.includes("WARN");
+                const isDanger = log.includes("[DANGER]") || log.includes("DANGER");
                 
                 let tag = '<span class="line-tag info">[INFO]</span>';
                 if (isTrap) tag = '<span class="line-tag success">[TRAP]</span>';
@@ -390,8 +405,9 @@ function setupDashboardSimulator() {
         let msg = customMsg;
         
         if (!msg && dev) {
-            const index = Math.floor(Math.random() * dev.logs.length);
-            msg = dev.logs[index];
+            const localizedLogs = window.t ? window.t(`devices.${activeDeviceKey}.logs`) : dev.logs;
+            const index = Math.floor(Math.random() * localizedLogs.length);
+            msg = localizedLogs[index];
         }
         
         if (!msg) return;
@@ -400,9 +416,9 @@ function setupDashboardSimulator() {
         logLine.className = "console-line";
         
         const timeStamp = getFormattedTime();
-        const isTrap = msg.includes("[TRAP]");
-        const isWarn = msg.includes("[WARN]");
-        const isDanger = msg.includes("[DANGER]");
+        const isTrap = msg.includes("[TRAP]") || msg.includes("TRAP");
+        const isWarn = msg.includes("[WARN]") || msg.includes("WARN");
+        const isDanger = msg.includes("[DANGER]") || msg.includes("DANGER");
         
         let tag = '<span class="line-tag info">[INFO]</span>';
         if (isTrap) tag = '<span class="line-tag success">[TRAP]</span>';
@@ -469,7 +485,7 @@ function setupFlowTriage() {
     
     if (triageBtn && alertBox) {
         triageBtn.addEventListener("click", () => {
-            triageBtn.textContent = "Analyzing flows...";
+            triageBtn.textContent = window.t ? window.t("demo.triage_analyzing") : "Analyzing flows...";
             triageBtn.disabled = true;
             
             setTimeout(() => {
@@ -482,7 +498,7 @@ function setupFlowTriage() {
                 // Show alert
                 alertBox.classList.remove("hidden");
                 
-                triageBtn.textContent = "Triage Completed";
+                triageBtn.textContent = window.t ? window.t("demo.triage_completed") : "Triage Completed";
                 triageBtn.style.backgroundColor = "var(--success)";
                 triageBtn.style.color = "var(--bg)";
                 triageBtn.style.borderColor = "var(--success)";
@@ -510,6 +526,41 @@ function generateAuditDots() {
         setTimeout(() => {
             dot.classList.add("verified");
         }, Math.floor(Math.random() * 800) + 100);
+    }
+}
+
+/**
+ * Mobile navigation toggle
+ */
+function setupMobileNav() {
+    const navToggle = document.getElementById("mobile-nav-toggle");
+    const siteHeader = document.querySelector(".site-header");
+    
+    if (navToggle && siteHeader) {
+        navToggle.addEventListener("click", (e) => {
+            e.stopPropagation();
+            siteHeader.classList.toggle("nav-open");
+            document.body.classList.toggle("nav-open");
+            const isOpen = siteHeader.classList.contains("nav-open");
+            navToggle.setAttribute("aria-expanded", isOpen);
+        });
+
+        // Close menu when clicking nav links
+        document.querySelectorAll(".main-nav .nav-links a").forEach(link => {
+            link.addEventListener("click", () => {
+                siteHeader.classList.remove("nav-open");
+                document.body.classList.remove("nav-open");
+            });
+        });
+
+        // Close menu when clicking outside header-container
+        document.addEventListener("click", (e) => {
+            const headerContainer = document.querySelector(".header-container");
+            if (headerContainer && !headerContainer.contains(e.target)) {
+                siteHeader.classList.remove("nav-open");
+                document.body.classList.remove("nav-open");
+            }
+        });
     }
 }
 

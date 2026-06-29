@@ -1,0 +1,240 @@
+{
+  "nav": {
+    "why": "Por qué nosotros",
+    "demo": "Demo en vivo",
+    "config_drift": "Deriva de Config",
+    "architecture": "Arquitectura",
+    "features": "Características",
+    "security": "Seguridad",
+    "github": "Estrella en GitHub",
+    "install": "Instalar ahora",
+    "github_docs": "GitHub"
+  },
+  "hero": {
+    "title": "Un panel de control para tu <span class=\"accent-text\">flota de firewalls.</span>",
+    "subtitle": "Monitoreo de SNMP, sFlow, syslog, traps y deriva de configuración en FortiGate, Palo Alto, SonicWall, pfSense, OPNsense y Firewalla. Auto-hospedado. Un contenedor. 30 segundos para la primera consulta.",
+    "copy_btn": "Copiar",
+    "copied_btn": "¡Copiado!",
+    "read_docs": "Leer la doc →",
+    "stat_audit_label": "Hallazgos de auditoría abiertos",
+    "stat_vendors_label": "Proveedores compatibles",
+    "stat_license_label": "Licencia de código abierto",
+    "badge_prefix": "Último lanzamiento:"
+  },
+  "why": {
+    "tag": "Basado en Operaciones",
+    "title": "Diseñado para firewalls.",
+    "intro": "Las herramientas de monitoreo de red generales muestran un muro de gráficos OID genéricos. Firewall-Mon está diseñado específicamente para firewalls.",
+    "card1_title": "Inteligencia de proveedor profunda",
+    "card1_desc": "Los perfiles nativos para seis familias de firewalls leen CPU, sesiones, túneles VPN, estados HA y métricas SPU/ASIC de inmediato. Sin lidiar con MIBs.",
+    "card2_title": "Deriva de Configuración con Etiquetas de Riesgo",
+    "card2_desc": "Los cambios de configuración se normalizan a un modelo de objetos neutral con respecto al proveedor. Cada cambio se clasifica por riesgo, destacando brechas de seguridad antes de su auditoría.",
+    "card3_title": "Sondeos de Transición NAT/CGNAT",
+    "card3_desc": "Las sondas de sitios remotos envían métricas a través de HTTPS saliente. No es necesario exponer puertos entrantes, manteniendo sus sucursales completamente bloqueadas."
+  },
+  "demo": {
+    "tag": "Vista previa interactiva",
+    "title": "El panel de operaciones en vivo",
+    "intro": "Experimente la interfaz que los ingenieros de seguridad de red utilizan para monitorear una flota distribuida de firewalls en tiempo real.",
+    "fleet_title": "FLOTA DE FIREWALLS",
+    "online_badge": "6 EN LÍNEA",
+    "poll_interval": "Intervalo de sondeo: <strong>30s</strong>",
+    "last_poll": "Último sondeo:",
+    "just_now": "Ahora mismo",
+    "ago": "atrás",
+    "cpu_load": "CARGA DE CPU",
+    "active_sessions": "SESIONES ACTIVAS",
+    "vpn_tunnels": "TÚNELES VPN",
+    "ha_cluster": "CLÚSTER HA",
+    "cpu_trend_normal": "↓ Carga normal",
+    "cpu_trend_high": "↑ Advertencia de CPU alta",
+    "vpn_trend_up": "Todos los túneles activos",
+    "vpn_trend_none": "Sin túneles definidos",
+    "vpn_trend_alert": "Alerta de degradación de túnel",
+    "ha_trend_standalone": "HA no configurado",
+    "ha_trend_synced": "Sincronizado (Peer OK)",
+    "throughput_title": "Ancho de banda de interfaz en tiempo real",
+    "inbound": "Entrante",
+    "outbound": "Saliente",
+    "four_hours_ago": "Hace 4 horas",
+    "three_hours_ago": "Hace 3 horas",
+    "two_hours_ago": "Hace 2 horas",
+    "one_hour_ago": "Hace 1 hora",
+    "now": "Ahora",
+    "trap_console": "RECEPCIÓN DE TRAPS SNMP / SYSLOG",
+    "process_label": "Proceso:",
+    "triage_btn": "Ejecutar triaje de pico",
+    "triage_analyzing": "Analizando flujos...",
+    "triage_completed": "Triaje completado",
+    "initiating_poller_cycle": "Iniciando ciclo de sondeo global para la flota de dispositivos.",
+    "poller_cycle_complete_msg": "Ciclo de sondeo completado para la flota de dispositivos."
+  },
+  "drift": {
+    "tag": "Clasificación de riesgo",
+    "title": "Deriva de configuración clasificada por riesgo",
+    "intro": "Cada modificación de configuración se normaliza a un modelo neutral con respecto al proveedor. Nuestro sistema de clasificación de seguridad analiza cada diff y marca las vulnerabilidades de seguridad.",
+    "detected_changes": "CAMBIOS DETECTADOS",
+    "change": "CAMBIO",
+    "vulnerability_tagged": "Vulnerabilidad etiquetada:",
+    "security_impact": "Impacto de seguridad:",
+    "configuration_event": "Evento de configuración:",
+    "hours_ago": "horas atrás",
+    "mins_ago": "minutos atrás",
+    "day_ago": "día atrás",
+    "critical_tab_desc": "Regla Allow-Internal-Admin abierta a cualquiera (ANY)",
+    "medium_tab_desc": "Propuesta IPsec VPN DH Group debilitada",
+    "info_tab_desc": "Descripción de interfaz modificada"
+  },
+  "sflow": {
+    "tag": "Monitoreo de tráfico de alto rendimiento",
+    "title": "Analizador de flujo sFlow v5",
+    "intro": "Clasifique picos de ancho de banda instantáneamente con detalles a nivel de conversación sin procesar, utilizando nuestra tubería pgx COPY de PostgreSQL que escribe 10 veces más rápido que las inserciones normales de ORM.",
+    "live_stream": "Flujo de tráfico en vivo (sFlow)",
+    "run_triage": "Ejecutar triaje de pico",
+    "src_addr": "Dirección de origen",
+    "dst_addr": "Dirección de destino",
+    "port": "Puerto",
+    "protocol": "Protocolo",
+    "flow_rate": "Tasa de flujo",
+    "packets": "Paquetes",
+    "analysis_completed": "ANÁLISIS DE TRIAJE DE PICO COMPLETADO:",
+    "alert_text": "Tráfico anómalo detectado en el puerto 4444 desde el host <code class=\"mono-code\">10.200.5.88</code> a la IP externa <code class=\"mono-code\">185.112.145.4</code> (puerto conocido de Metasploit). Regla coincidente: <span class=\"tag-alert-rule\">Suspicious_Shell_Outbound</span>."
+  },
+  "probe": {
+    "tag": "Topología de ingesta idempotente",
+    "title": "Probe-Relay Distribuido",
+    "intro": "Despliegue recolectores locales en sitios remotos para sincronizar la telemetría detrás de CGNAT a través de HTTPS saliente, manteniendo la paridad de datos en enlaces inestables.",
+    "safeguards_title": "Salvaguardas de resiliencia de telemetría",
+    "sg1_title": "Idempotencia de X-Probe-Batch-ID",
+    "sg1_desc": "Cada lote de paquetes está sellado con un encabezado único basado en UUID. Las reintentos en caídas de paquetes se validan en reposo, evitando análisis de logs duplicados o picos de tráfico ficticios.",
+    "sg2_title": "Apretón de manos de versión de esquema",
+    "sg2_desc": "Si un sensor remoto y el recolector central sufren una discrepancia de esquema, `fwmon-api` marca HTTP 426 Upgrade Required. La cola de disco interno de la sonda se retiene, bloqueando sus logs hasta que se complete la migración segura.",
+    "sg3_title": "Cifrado de secretos SHA-256",
+    "sg3_desc": "Las claves de autenticación de las sondas y las contraseñas de los dispositivos se cifran en reposo utilizando AES-256-GCM. La verificación del descifrado se realiza al iniciar; los recolectores fallan de inmediato si se modifica la clave."
+  },
+  "features": {
+    "tag": "Capacidades",
+    "title": "Monitoreo de nivel de producción.",
+    "intro": "Cada característica está construida para velocidad, postura de cumplimiento y neutralidad de proveedor.",
+    "card1_title": "SNMP multiproveedor",
+    "card1_desc": "Seis proveedores. Perfiles OID nativos. Cero lucha con MIB.",
+    "card2_title": "Diffs de configuración clasificados por riesgo",
+    "card2_desc": "Exponga una regla abierta a ANY antes de que se envíe.",
+    "card3_title": "Ingesta de sFlow v5",
+    "card3_desc": "Principales conversadores, destinos y puertos — sin PCAP.",
+    "card4_title": "Arquitectura Probe-Relay",
+    "card4_desc": "Firewalls de sucursales detrás de CGNAT, sondeados a través de un HTTPS saliente.",
+    "card5_title": "Despliegue en un solo contenedor",
+    "card5_desc": "Un solo `docker compose up -d`. PostgreSQL 16 incluido.",
+    "card6_title": "Seguridad de nivel de auditoría",
+    "card6_desc": "AES-256-GCM, rotación de claves, claves de fallo rápido. 0 de 170 hallazgos abiertos."
+  },
+  "reports": {
+    "tag": "Informes de Operaciones",
+    "title": "Informes por correo electrónico, rediseñados.",
+    "intro": "Resúmenes diarios con nuevo estilo que incluyen Plus Jakarta Sans y gradientes oscuros modernos—diseñados para ser completamente compatibles con Gmail y Outlook."
+  },
+  "security": {
+    "tag": "Seguridad lista para auditoría",
+    "title": "170 hallazgos. Cero abiertos.",
+    "intro": "Sometimos a Firewall-Mon a una auditoría de seguridad exhaustiva de 170 hallazgos. Cada uno de ellos ha sido abordado, corregido y verificado bajo nuestra suite de seguridad estática de 98 pruebas.",
+    "item1_title": "Cifrado de secretos AES-256-GCM",
+    "item1_desc": "Las comunidades SNMP, las credenciales SSH y los tokens de webhook de Slack están bloqueados mediante hashes de clave de cifrado AES-GCM.",
+    "item2_title": "Validación de descifrado de fallo rápido M8",
+    "item2_desc": "Los recolectores y receptores fallan inmediatamente durante el inicio si las credenciales de cifrado de la base de datos no logran descifrar los secretos. Evita estados de sondeo obsoletos.",
+    "item3_title": "Registro de auditoría de solo adición",
+    "item3_desc": "Todas las acciones administrativas, eventos de inicio de sesión y copias de seguridad de configuración generan registros inmutables escritos directamente en la salida estándar."
+  },
+  "quickstart": {
+    "tag": "Inicio rápido",
+    "title": "30 segundos para la primera consulta.",
+    "intro": "Despliegue la aplicación localmente o en producción con un solo comando.",
+    "tab_docker": "Docker Compose",
+    "tab_systemd": "Systemd / Nativo",
+    "tab_relay": "Relay Probe Remoto",
+    "docker_desc": "Clone el repositorio, configure el entorno y construya el contenedor localmente (imagen precompilada disponible pronto):",
+    "docker_next": "Clonar y desplegar:",
+    "systemd_desc": "Ejecute Firewall-Mon de forma nativa como un demonio systemd. Compile el binario único usando Go 1.22+:",
+    "relay_desc": "Ejecute el recolector ligero Firewall-Collector en servidores remotos detrás de firewalls de sucursales para retransmitir datos SNMP al servidor principal. La imagen está alojada en Docker Hub:"
+  },
+  "footer": {
+    "brand_desc": "Sistema de monitoreo de firewalls neutral con respecto al proveedor creado para velocidad, auditorías de seguridad y cruce de topologías complejas.",
+    "labs_created": "Firewall-Mon es un proyecto de <a href=\"https://www.technicallabs.org\" target=\"_blank\" style=\"color: var(--accent); text-decoration: underline;\">TechnicalLabs</a> creado por Xphox de <a href=\"https://www.xphox.net\" target=\"_blank\" style=\"color: var(--accent); text-decoration: underline;\">Xphox Networks</a>.",
+    "open_source": "Código Abierto",
+    "license": "Licencia MIT",
+    "documentation": "Documentación",
+    "ref_docs": "Docs de referencia",
+    "arch_spec": "Espec de arquitectura",
+    "changelog": "Registro de cambios",
+    "copyright": "&copy; 2026 Firewall-Mon. Un proyecto de <a href=\"https://www.technicallabs.org\" target=\"_blank\" style=\"color: var(--text-secondary); text-decoration: underline;\">TechnicalLabs</a> creado por Xphox de <a href=\"https://www.xphox.net\" target=\"_blank\" style=\"color: var(--text-secondary); text-decoration: underline;\">Xphox Networks</a>. Licenciado bajo la Licencia MIT.",
+    "meta": "v0.10.498 (27-06-2026)"
+  },
+  "devices": {
+    "hq-fortigate": {
+      "vendor": "Perfil SNMP de Fortinet (FortiOS v7.2.4)",
+      "ha": "Activo-Pasivo",
+      "haTrend": "Sincronizado (Peer OK)",
+      "logs": [
+        "Ciclo de sondeo completado para el dispositivo HQ-FortiGate-01. Todos los OIDs coinciden con el perfil del proveedor.",
+        "FortiOS: Estado de HA verificado como saludable. Nodo activo en la unidad primaria.",
+        "Lote de interfaz sFlow sin procesar enviado a PostgreSQL flow_samples (Pgx batch INSERT: OK)",
+        "FortiOS: Intento de inicio de sesión SSH desde 10.100.12.80 - autenticación fallida."
+      ]
+    },
+    "branch-opnsense": {
+      "vendor": "Perfil SNMP de OPNsense (AMD64)",
+      "ha": "Respaldo CARP",
+      "haTrend": "Peer activo (10.200.2.1)",
+      "logs": [
+        "Ciclo de sondeo completado para el dispositivo Branch-OPNsense-02.",
+        "Temperaturas del núcleo de CPU recuperadas: Core0: 42°C, Core1: 45°C.",
+        "Ingiriendo lote de flujo a través de X-Probe-Batch-ID: e82f1b40",
+        "OPNsense carp: estado del enlace cambiado en interfaz wan: BACKUP"
+      ]
+    },
+    "colo-paloalto": {
+      "vendor": "Perfil SNMP de Palo Alto Networks (PAN-OS 10.2)",
+      "ha": "Activo-Activo",
+      "haTrend": "Sesiones sincronizadas. 0 caídas de paquetes",
+      "logs": [
+        "Ciclo de sondeo completado para el dispositivo Colo-PaloAlto-01.",
+        "Límite de sesiones: 500,000. Uso actual: 22%. Umbral de rendimiento normal.",
+        "PAN-OS: Estado del túnel 'vpn-branch-32' cambiado a DOWN. Disparando ruta de AlertManager.",
+        "Invariantes de seguridad estática: 0 anomalías detectadas en la base de reglas."
+      ]
+    },
+    "edge-sonicwall": {
+      "vendor": "Perfil SNMP de SonicWall (SonicOS v7.0)",
+      "ha": "Independiente",
+      "haTrend": "HA no configurado",
+      "logs": [
+        "Ciclo de sondeo completado para el dispositivo Edge-SonicWall-03.",
+        "Pico de uso de CPU de SonicOS detectado: 82%. Carga de hardware SPU ASIC normal.",
+        "SonicOS: Estado del túnel 'HQ-Core-IPsec' cambiado a REKEYING.",
+        "SonicOS: La puerta de enlace VPN central no pudo negociar la Fase 2 de IKE. Reinicio programado."
+      ]
+    },
+    "home-pfsense": {
+      "vendor": "Perfil SNMP de pfSense (pfSense Plus v23.05)",
+      "ha": "Independiente",
+      "haTrend": "HA no configurado",
+      "logs": [
+        "Ciclo de sondeo completado para el dispositivo Home-pfSense-01.",
+        "Velocidad de la interfaz wan verificada: 1000 Mbps full-duplex.",
+        "Tarea programada: el administrador de actualización de paquetes devolvió el estado de salida 0.",
+        "Tarea de rollup flow_samples en ejecución: flujos agregados de 5 minutos."
+      ]
+    },
+    "lab-firewalla": {
+      "vendor": "Perfil SNMP de Firewalla (Linux Kernel 5.15)",
+      "ha": "Independiente",
+      "haTrend": "HA no configurado",
+      "logs": [
+        "Ciclo de sondeo completado para el dispositivo Lab-Firewalla-01.",
+        "Ping de retransmisión de sonda remota completado: versión de esquema de enlace v0.10.498 verificada.",
+        "Huella de memoria de CPU: 1.2GB/4GB (30% consumido).",
+        "Limpieza de base de datos de flujos completada. Limpiadas 0 filas."
+      ]
+    }
+  }
+}

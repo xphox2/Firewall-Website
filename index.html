@@ -45,25 +45,54 @@
             
             <nav class="main-nav">
                 <ul class="nav-links">
-                    <li><a href="#why">Why Us</a></li>
-                    <li><a href="#demo">Live Demo</a></li>
-                    <li><a href="#config-diff">Config Drift</a></li>
-                    <li><a href="#probe-relay">Architecture</a></li>
-                    <li><a href="#features">Features</a></li>
-                    <li><a href="#security">Security</a></li>
+                    <li><a href="#why" data-i18n="nav.why">Why Us</a></li>
+                    <li><a href="#demo" data-i18n="nav.demo">Live Demo</a></li>
+                    <li><a href="#config-diff" data-i18n="nav.config_drift">Config Drift</a></li>
+                    <li><a href="#probe-relay" data-i18n="nav.architecture">Architecture</a></li>
+                    <li><a href="#features" data-i18n="nav.features">Features</a></li>
+                    <li><a href="#security" data-i18n="nav.security">Security</a></li>
                 </ul>
+                
+                <div class="header-actions">
+                    <a href="https://github.com/xphox2/Firewall-Monitoring" target="_blank" class="github-stars-btn" id="github-stars-link">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+                        </svg>
+                        <span data-i18n="nav.github">Star on GitHub</span>
+                        <span class="stars-count" id="repo-stars">v0.10.498</span>
+                    </a>
+                    
+                    <a href="#quickstart" class="btn btn-primary btn-sm" data-i18n="nav.install">Install Now</a>
+                </div>
+
+                <div class="lang-picker-container" id="lang-picker-container">
+                    <button class="lang-picker-btn" id="lang-picker-btn" aria-label="Change Language">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="globe-icon"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                        <span id="active-lang-text">EN</span>
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="chevron-icon"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                    <div class="lang-dropdown" id="lang-dropdown">
+                        <button class="lang-option active" data-lang="en">English</button>
+                        <button class="lang-option" data-lang="de">Deutsch</button>
+                        <button class="lang-option" data-lang="es">Español</button>
+                        <button class="lang-option" data-lang="fr">Français</button>
+                        <button class="lang-option" data-lang="it">Italiano</button>
+                        <button class="lang-option" data-lang="pt">Português</button>
+                        <button class="lang-option" data-lang="ru">Русский</button>
+                        <button class="lang-option" data-lang="ja">日本語</button>
+                        <button class="lang-option" data-lang="ko">한국어</button>
+                        <button class="lang-option" data-lang="zh">中文</button>
+                    </div>
+                </div>
             </nav>
-            
-            <div class="header-actions">
-                <a href="https://github.com/xphox2/Firewall-Monitoring" target="_blank" class="github-stars-btn" id="github-stars-link">
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
-                    </svg>
-                    <span>Star on GitHub</span>
-                    <span class="stars-count" id="repo-stars">v0.10.498</span>
-                </a>
-                <a href="#quickstart" class="btn btn-primary btn-sm">Install Now</a>
-            </div>
+
+            <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Toggle Navigation">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12" class="line-mid"></line>
+                    <line x1="3" y1="6" x2="21" y2="6" class="line-top"></line>
+                    <line x1="3" y1="18" x2="21" y2="18" class="line-bot"></line>
+                </svg>
+            </button>
         </div>
     </header>
 
@@ -74,10 +103,10 @@
                 <div class="hero-text-content">
                     <div class="hero-badge">
                         <span class="pulse-dot"></span>
-                        <span>Latest Release: <span class="git-release-tag">v0.10.498</span></span>
+                        <span data-i18n="hero.badge_prefix">Latest Release:</span> <span class="git-release-tag">v0.10.498</span>
                     </div>
-                    <h1>One pane of glass for your <span class="accent-text">firewall fleet.</span></h1>
-                    <p class="hero-subtitle">
+                    <h1 data-i18n="hero.title" data-i18n-html="true">One pane of glass for your <span class="accent-text">firewall fleet.</span></h1>
+                    <p class="hero-subtitle" data-i18n="hero.subtitle">
                         SNMP, sFlow, syslog, traps, and config drift monitoring across FortiGate, Palo Alto, SonicWall, pfSense, OPNsense, and Firewalla. Self-hosted. One container. 30 seconds to first poll.
                     </p>
                     
@@ -86,26 +115,26 @@
                             <code class="cli-command" id="cli-cmd">git clone https://github.com/xphox2/Firewall-Monitoring.git</code>
                             <button class="btn-copy-cli" id="btn-copy" aria-label="Copy clone command">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="copy-icon"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-                                <span class="copy-text">Copy</span>
+                                <span class="copy-text" data-i18n="hero.copy_btn">Copy</span>
                             </button>
                         </div>
-                        <a href="https://github.com/xphox2/Firewall-Monitoring/tree/main/docs" target="_blank" class="btn btn-secondary">Read the docs →</a>
+                        <a href="https://github.com/xphox2/Firewall-Monitoring/tree/master/docs" target="_blank" class="btn btn-secondary" data-i18n="hero.read_docs">Read the docs →</a>
                     </div>
                     
                     <div class="trust-stats">
                         <div class="trust-stat">
                             <span class="stat-number">0 / 170</span>
-                            <span class="stat-label">Open Audit Findings</span>
+                            <span class="stat-label" data-i18n="hero.stat_audit_label">Open Audit Findings</span>
                         </div>
                         <div class="trust-divider"></div>
                         <div class="trust-stat">
                             <span class="stat-number">6</span>
-                            <span class="stat-label">Vendors Supported</span>
+                            <span class="stat-label" data-i18n="hero.stat_vendors_label">Vendors Supported</span>
                         </div>
                         <div class="trust-divider"></div>
                         <div class="trust-stat">
                             <span class="stat-number">MIT</span>
-                            <span class="stat-label">Open Source License</span>
+                            <span class="stat-label" data-i18n="hero.stat_license_label">Open Source License</span>
                         </div>
                     </div>
                 </div>
@@ -123,9 +152,9 @@
         <section class="why-section" id="why">
             <div class="section-container">
                 <div class="section-header">
-                    <span class="section-tag">Grounded in Operations</span>
-                    <h2>Built firewall-first.</h2>
-                    <p class="section-intro">General network monitoring tools give you a wall of generic OID graphs. Firewall-Mon is built specifically for firewalls.</p>
+                    <span class="section-tag" data-i18n="why.tag">Grounded in Operations</span>
+                    <h2 data-i18n="why.title">Built firewall-first.</h2>
+                    <p class="section-intro" data-i18n="why.intro">General network monitoring tools give you a wall of generic OID graphs. Firewall-Mon is built specifically for firewalls.</p>
                 </div>
                 
                 <div class="why-grid">
@@ -133,24 +162,24 @@
                         <div class="card-icon-wrapper">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
                         </div>
-                        <h3>Deep Vendor Intelligence</h3>
-                        <p>Native profiles for six firewall families read CPU, sessions, VPN tunnels, HA states, and SPU/ASIC metrics out-of-the-box. Zero MIB wrestling.</p>
+                        <h3 data-i18n="why.card1_title">Deep Vendor Intelligence</h3>
+                        <p data-i18n="why.card1_desc">Native profiles for six firewall families read CPU, sessions, VPN tunnels, HA states, and SPU/ASIC metrics out-of-the-box. Zero MIB wrestling.</p>
                     </div>
                     
                     <div class="why-card">
                         <div class="card-icon-wrapper">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path><path d="M22 12H2"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
                         </div>
-                        <h3>Config Drift with Risk Tags</h3>
-                        <p>Config changes are normalized to a vendor-neutral object model. Every change is classified by risk—highlighting security breaches before your audit.</p>
+                        <h3 data-i18n="why.card2_title">Config Drift with Risk Tags</h3>
+                        <p data-i18n="why.card2_desc">Config changes are normalized to a vendor-neutral object model. Every change is classified by risk—highlighting security breaches before your audit.</p>
                     </div>
                     
                     <div class="why-card">
                         <div class="card-icon-wrapper">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
                         </div>
-                        <h3>NAT/CGNAT Traversal Probes</h3>
-                        <p>Remote site probes push metrics over outbound HTTPS. No inbound ports need to be exposed, keeping your branches completely locked down.</p>
+                        <h3 data-i18n="why.card3_title">NAT/CGNAT Traversal Probes</h3>
+                        <p data-i18n="why.card3_desc">Remote site probes push metrics over outbound HTTPS. No inbound ports need to be exposed, keeping your branches completely locked down.</p>
                     </div>
                 </div>
             </div>
@@ -160,17 +189,17 @@
         <section class="demo-section" id="demo">
             <div class="section-container">
                 <div class="section-header">
-                    <span class="section-tag">Interactive Preview</span>
-                    <h2>The Live Operations Dashboard</h2>
-                    <p class="section-intro">Experience the interface network security engineers use to monitor a distributed firewall fleet in real-time.</p>
+                    <span class="section-tag" data-i18n="demo.tag">Interactive Preview</span>
+                    <h2 data-i18n="demo.title">The Live Operations Dashboard</h2>
+                    <p class="section-intro" data-i18n="demo.intro">Experience the interface network security engineers use to monitor a distributed firewall fleet in real-time.</p>
                 </div>
                 
                 <div class="dashboard-simulator" id="dashboard-sim">
                     <!-- Dashboard Sidebar -->
                     <div class="sim-sidebar">
                         <div class="sidebar-header">
-                            <h3>FIREWALL FLEET</h3>
-                            <span class="badge badge-success">6 ONLINE</span>
+                            <h3 data-i18n="demo.fleet_title">FIREWALL FLEET</h3>
+                            <span class="badge badge-success" data-i18n="demo.online_badge">6 ONLINE</span>
                         </div>
                         <ul class="device-list" id="sim-device-list">
                             <li class="device-item active" data-device="hq-fortigate">
@@ -223,11 +252,11 @@
                         <div class="sim-view-header">
                             <div class="device-title-wrapper">
                                 <h3 id="sim-active-name">HQ-FortiGate-01</h3>
-                                <div class="device-vendor-badge" id="sim-active-vendor">Fortinet SNMP Profile</div>
+                                <div class="device-vendor-badge" id="sim-active-vendor" data-i18n="devices.hq-fortigate.vendor">Fortinet SNMP Profile</div>
                             </div>
                             <div class="poller-meta">
-                                <span class="poll-interval">Poll interval: <strong>30s</strong></span>
-                                <span class="last-poll">Last poll: <strong id="sim-last-poll">Just now</strong></span>
+                                <span class="poll-interval" data-i18n="demo.poll_interval" data-i18n-html="true">Poll interval: <strong>30s</strong></span>
+                                <span class="last-poll"><span data-i18n="demo.last_poll">Last poll:</span> <strong id="sim-last-poll" data-i18n="demo.just_now">Just now</strong></span>
                             </div>
                         </div>
                         
@@ -235,16 +264,16 @@
                         <div class="sim-metrics-grid">
                             <div class="sim-metric-card">
                                 <div class="metric-header">
-                                    <span class="metric-label">CPU LOAD</span>
+                                    <span class="metric-label" data-i18n="demo.cpu_load">CPU LOAD</span>
                                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
                                 </div>
                                 <div class="metric-value"><span id="sim-cpu-val">24</span>%</div>
-                                <div class="metric-trend text-success" id="sim-cpu-trend">↓ Normal load</div>
+                                <div class="metric-trend text-success" id="sim-cpu-trend" data-i18n="demo.cpu_trend_normal">↓ Normal load</div>
                             </div>
                             
                             <div class="sim-metric-card">
                                 <div class="metric-header">
-                                    <span class="metric-label">ACTIVE SESSIONS</span>
+                                    <span class="metric-label" data-i18n="demo.active_sessions">ACTIVE SESSIONS</span>
                                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
                                 </div>
                                 <div class="metric-value" id="sim-sessions-val">41,208</div>
@@ -253,20 +282,20 @@
                             
                             <div class="sim-metric-card">
                                 <div class="metric-header">
-                                    <span class="metric-label">VPN TUNNELS</span>
+                                    <span class="metric-label" data-i18n="demo.vpn_tunnels">VPN TUNNELS</span>
                                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
                                 </div>
                                 <div class="metric-value" id="sim-vpn-val">12 / 12</div>
-                                <div class="metric-trend text-success" id="sim-vpn-trend">All tunnels UP</div>
+                                <div class="metric-trend text-success" id="sim-vpn-trend" data-i18n="demo.vpn_trend_up">All tunnels UP</div>
                             </div>
 
                             <div class="sim-metric-card">
                                 <div class="metric-header">
-                                    <span class="metric-label">HA CLUSTER</span>
+                                    <span class="metric-label" data-i18n="demo.ha_cluster">HA CLUSTER</span>
                                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"></rect><rect x="14" y="3" width="7" height="5"></rect><rect x="14" y="12" width="7" height="9"></rect><rect x="3" y="16" width="7" height="5"></rect></svg>
                                 </div>
-                                <div class="metric-value text-success" id="sim-ha-val">Active-Passive</div>
-                                <div class="metric-trend text-success" id="sim-ha-trend">Synced (Peer OK)</div>
+                                <div class="metric-value text-success" id="sim-ha-val" data-i18n="devices.hq-fortigate.ha">Active-Passive</div>
+                                <div class="metric-trend text-success" id="sim-ha-trend" data-i18n="devices.hq-fortigate.haTrend">Synced (Peer OK)</div>
                             </div>
                         </div>
                         
@@ -275,8 +304,8 @@
                             <!-- Real-time throughput graph -->
                             <div class="visual-panel">
                                 <div class="panel-header">
-                                    <h4>Real-time Interface Bandwidth</h4>
-                                    <span class="legend"><span class="lg-in"></span> Inbound <span class="lg-out"></span> Outbound</span>
+                                    <h4 data-i18n="demo.throughput_title">Real-time Interface Bandwidth</h4>
+                                    <span class="legend"><span class="lg-in"></span> <span data-i18n="demo.inbound">Inbound</span> <span class="lg-out"></span> <span data-i18n="demo.outbound">Outbound</span></span>
                                 </div>
                                 <div class="panel-chart-container">
                                     <div class="svg-chart-wrapper">
@@ -295,11 +324,11 @@
                                         </svg>
                                     </div>
                                     <div class="chart-labels">
-                                        <span>4 hours ago</span>
-                                        <span>3 hours ago</span>
-                                        <span>2 hours ago</span>
-                                        <span>1 hour ago</span>
-                                        <span>Now</span>
+                                        <span data-i18n="demo.four_hours_ago">4 hours ago</span>
+                                        <span data-i18n="demo.three_hours_ago">3 hours ago</span>
+                                        <span data-i18n="demo.two_hours_ago">2 hours ago</span>
+                                        <span data-i18n="demo.one_hour_ago">1 hour ago</span>
+                                        <span data-i18n="demo.now">Now</span>
                                     </div>
                                 </div>
                             </div>
@@ -310,9 +339,9 @@
                             <div class="console-header">
                                 <div class="console-title">
                                     <span class="pulse-dot"></span>
-                                    <span>SNMP TRAP / SYSLOG INGEST</span>
+                                    <span data-i18n="demo.trap_console">SNMP TRAP / SYSLOG INGEST</span>
                                 </div>
-                                <span class="console-meta">Process: <code class="mono-code">fwmon-trap-receiver</code></span>
+                                <span class="console-meta"><span data-i18n="demo.process_label">Process:</span> <code class="mono-code">fwmon-trap-receiver</code></span>
                             </div>
                             <div class="console-body" id="sim-console-body">
                                 <div class="console-line"><span class="line-time">[13:50:35]</span> <span class="line-tag info">[INFO]</span> <span class="line-content">Poller cycle complete for device HQ-FortiGate-01. All profiles loaded.</span></div>
@@ -329,9 +358,9 @@
         <section class="config-diff-section" id="config-diff">
             <div class="section-container">
                 <div class="section-header">
-                    <span class="section-tag">Risk Classification</span>
-                    <h2>Risk-Classified Config Drift</h2>
-                    <p class="section-intro">Every config modification is normalized to a vendor-neutral model. Our security classification system parses each diff and flags security vulnerabilities.</p>
+                    <span class="section-tag" data-i18n="drift.tag">Risk Classification</span>
+                    <h2 data-i18n="drift.title">Risk-Classified Config Drift</h2>
+                    <p class="section-intro" data-i18n="drift.intro">Every config modification is normalized to a vendor-neutral model. Our security classification system parses each diff and flags security vulnerabilities.</p>
                 </div>
                 
                 <div class="config-diff-widget">
@@ -458,9 +487,9 @@
         <section class="sflow-section" id="sflow">
             <div class="section-container">
                 <div class="section-header">
-                    <span class="section-tag">High-Performance Traffic Monitoring</span>
-                    <h2>sFlow v5 Flow Analyzer</h2>
-                    <p class="section-intro">Triage bandwidth spikes instantly with raw conversation-level details, utilizing our PostgreSQL <code class="mono-code">pgx COPY</code> pipeline which writes 10× faster than normal ORM row inserts.</p>
+                    <span class="section-tag" data-i18n="sflow.tag">High-Performance Traffic Monitoring</span>
+                    <h2 data-i18n="sflow.title">sFlow v5 Flow Analyzer</h2>
+                    <p class="section-intro" data-i18n="sflow.intro" data-i18n-html="true">Triage bandwidth spikes instantly with raw conversation-level details, utilizing our PostgreSQL <code class="mono-code">pgx COPY</code> pipeline which writes 10× faster than normal ORM row inserts.</p>
                 </div>
                 
                 <div class="sflow-widget">
@@ -541,9 +570,9 @@
         <section class="probe-relay-section" id="probe-relay">
             <div class="section-container">
                 <div class="section-header">
-                    <span class="section-tag">Idempotent Ingestion Topology</span>
-                    <h2>Distributed Probe-Relay</h2>
-                    <p class="section-intro">Deploy local collectors at remote sites to sync telemetry behind CGNAT over outbound HTTPS, maintaining data parity on shaky uplinks.</p>
+                    <span class="section-tag" data-i18n="probe.tag">Idempotent Ingestion Topology</span>
+                    <h2 data-i18n="probe.title">Distributed Probe-Relay</h2>
+                    <p class="section-intro" data-i18n="probe.intro">Deploy local collectors at remote sites to sync telemetry behind CGNAT over outbound HTTPS, maintaining data parity on shaky uplinks.</p>
                 </div>
                 
                 <div class="probe-layout-grid">
@@ -572,29 +601,29 @@
                     </div>
                     
                     <div class="probe-details-panel">
-                        <h3>Telemetry Resiliency Safeguards</h3>
+                        <h3 data-i18n="probe.safeguards_title">Telemetry Resiliency Safeguards</h3>
                         
                         <div class="safeguard-item">
                             <div class="sg-num">01</div>
                             <div class="sg-content">
-                                <h4>X-Probe-Batch-ID Idempotency</h4>
-                                <p>Every packet batch is stamped with a unique, UUID-based Header. Retries on packet drops are validated at rest, preventing duplicated log analysis or traffic spikes.</p>
+                                <h4 data-i18n="probe.sg1_title">X-Probe-Batch-ID Idempotency</h4>
+                                <p data-i18n="probe.sg1_desc">Every packet batch is stamped with a unique, UUID-based Header. Retries on packet drops are validated at rest, preventing duplicated log analysis or traffic spikes.</p>
                             </div>
                         </div>
 
                         <div class="safeguard-item">
                             <div class="sg-num">02</div>
                             <div class="sg-content">
-                                <h4>Schema Version Handshake</h4>
-                                <p>If a remote probe and the central collector undergo a schema mismatch, `fwmon-api` flags HTTP 426 Upgrade Required. The probe's internal disk queue holds, locking your logs until safe migration completes.</p>
+                                <h4 data-i18n="probe.sg2_title">Schema Version Handshake</h4>
+                                <p data-i18n="probe.sg2_desc">If a remote probe and the central collector undergo a schema mismatch, `fwmon-api` flags HTTP 426 Upgrade Required. The probe's internal disk queue holds, locking your logs until safe migration completes.</p>
                             </div>
                         </div>
 
                         <div class="safeguard-item">
                             <div class="sg-num">03</div>
                             <div class="sg-content">
-                                <h4>SHA-256 Secrets Encryption</h4>
-                                <p>Probe authentication keys and device passwords are hashed at rest using AES-256-GCM. Decryption verification is performed on start; pollers fail-fast immediately on key modification.</p>
+                                <h4 data-i18n="probe.sg3_title">SHA-256 Secrets Encryption</h4>
+                                <p data-i18n="probe.sg3_desc">Probe authentication keys and device passwords are hashed at rest using AES-256-GCM. Decryption verification is performed on start; pollers fail-fast immediately on key modification.</p>
                             </div>
                         </div>
                     </div>
@@ -606,9 +635,9 @@
         <section class="features-section" id="features">
             <div class="section-container">
                 <div class="section-header">
-                    <span class="section-tag">Capabilities</span>
-                    <h2>Production-grade monitoring.</h2>
-                    <p class="section-intro">Every feature is built for speed, compliance posture, and vendor neutrality.</p>
+                    <span class="section-tag" data-i18n="features.tag">Capabilities</span>
+                    <h2 data-i18n="features.title">Production-grade monitoring.</h2>
+                    <p class="section-intro" data-i18n="features.intro">Every feature is built for speed, compliance posture, and vendor neutrality.</p>
                 </div>
                 
                 <div class="features-grid">
@@ -617,10 +646,10 @@
                         <div class="feature-card-overlay"></div>
                         <div class="feature-card-content">
                             <div class="feature-card-header">
-                                <span class="feature-card-title">Multi-Vendor SNMP</span>
+                                <span class="feature-card-title" data-i18n="features.card1_title">Multi-Vendor SNMP</span>
                                 <span class="feature-card-pill">01</span>
                             </div>
-                            <p class="feature-card-tagline">Six vendors. Native OID profiles. Zero MIB wrestling.</p>
+                            <p class="feature-card-tagline" data-i18n="features.card1_desc">Six vendors. Native OID profiles. Zero MIB wrestling.</p>
                         </div>
                     </div>
                     
@@ -629,10 +658,10 @@
                         <div class="feature-card-overlay"></div>
                         <div class="feature-card-content">
                             <div class="feature-card-header">
-                                <span class="feature-card-title">Risk-Classified Config Diffs</span>
+                                <span class="feature-card-title" data-i18n="features.card2_title">Risk-Classified Config Diffs</span>
                                 <span class="feature-card-pill">02</span>
                             </div>
-                            <p class="feature-card-tagline">Surface a rule opened to ANY before it ships.</p>
+                            <p class="feature-card-tagline" data-i18n="features.card2_desc">Surface a rule opened to ANY before it ships.</p>
                         </div>
                     </div>
                     
@@ -641,10 +670,10 @@
                         <div class="feature-card-overlay"></div>
                         <div class="feature-card-content">
                             <div class="feature-card-header">
-                                <span class="feature-card-title">sFlow v5 Ingest</span>
+                                <span class="feature-card-title" data-i18n="features.card3_title">sFlow v5 Ingest</span>
                                 <span class="feature-card-pill">03</span>
                             </div>
-                            <p class="feature-card-tagline">Top talkers, destinations, and ports — without PCAP.</p>
+                            <p class="feature-card-tagline" data-i18n="features.card3_desc">Top talkers, destinations, and ports — without PCAP.</p>
                         </div>
                     </div>
                     
@@ -653,10 +682,10 @@
                         <div class="feature-card-overlay"></div>
                         <div class="feature-card-content">
                             <div class="feature-card-header">
-                                <span class="feature-card-title">Probe-Relay Architecture</span>
+                                <span class="feature-card-title" data-i18n="features.card4_title">Probe-Relay Architecture</span>
                                 <span class="feature-card-pill">04</span>
                             </div>
-                            <p class="feature-card-tagline">Branch firewalls behind CGNAT, polled through one outbound HTTPS.</p>
+                            <p class="feature-card-tagline" data-i18n="features.card4_desc">Branch firewalls behind CGNAT, polled through one outbound HTTPS.</p>
                         </div>
                     </div>
                     
@@ -665,10 +694,10 @@
                         <div class="feature-card-overlay"></div>
                         <div class="feature-card-content">
                             <div class="feature-card-header">
-                                <span class="feature-card-title">Single-Container Deploy</span>
+                                <span class="feature-card-title" data-i18n="features.card5_title">Single-Container Deploy</span>
                                 <span class="feature-card-pill">05</span>
                             </div>
-                            <p class="feature-card-tagline">One `docker compose up -d`. PostgreSQL 16 bundled.</p>
+                            <p class="feature-card-tagline" data-i18n="features.card5_desc">One `docker compose up -d`. PostgreSQL 16 bundled.</p>
                         </div>
                     </div>
                     
@@ -677,10 +706,10 @@
                         <div class="feature-card-overlay"></div>
                         <div class="feature-card-content">
                             <div class="feature-card-header">
-                                <span class="feature-card-title">Audit-Grade Security</span>
+                                <span class="feature-card-title" data-i18n="features.card6_title">Audit-Grade Security</span>
                                 <span class="feature-card-pill">06</span>
                             </div>
-                            <p class="feature-card-tagline">AES-256-GCM, key rotation, fail-fast keys. 0 of 170 findings open.</p>
+                            <p class="feature-card-tagline" data-i18n="features.card6_desc">AES-256-GCM, key rotation, fail-fast keys. 0 of 170 findings open.</p>
                         </div>
                     </div>
                 </div>
@@ -691,9 +720,9 @@
         <section class="email-section" id="email-report">
             <div class="section-container">
                 <div class="section-header">
-                    <span class="section-tag">Operations Reports</span>
-                    <h2>Email reports, redesigned.</h2>
-                    <p class="section-intro">Newly styled daily digests featuring Plus Jakarta Sans and modern dark gradients—crafted to be entirely compatible with Gmail and Outlook.</p>
+                    <span class="section-tag" data-i18n="reports.tag">Operations Reports</span>
+                    <h2 data-i18n="reports.title">Email reports, redesigned.</h2>
+                    <p class="section-intro" data-i18n="reports.intro">Newly styled daily digests featuring Plus Jakarta Sans and modern dark gradients—crafted to be entirely compatible with Gmail and Outlook.</p>
                 </div>
                 
                 <div class="email-mockup-wrapper">
@@ -759,32 +788,32 @@
             <div class="section-container">
                 <div class="security-grid">
                     <div class="security-text">
-                        <span class="section-tag">Audit-Ready Security</span>
-                        <h2>170 Findings. Zero Open.</h2>
-                        <p>We subjected Firewall-Mon to a comprehensive 170-finding security audit. Every single finding has been fully addressed, patched, and verified under our 98-test static security suite.</p>
+                        <span class="section-tag" data-i18n="security.tag">Audit-Ready Security</span>
+                        <h2 data-i18n="security.title">170 Findings. Zero Open.</h2>
+                        <p data-i18n="security.intro">We subjected Firewall-Mon to a comprehensive 170-finding security audit. Every single finding has been fully addressed, patched, and verified under our 98-test static security suite.</p>
                         
                         <div class="security-list">
                             <div class="sec-item">
                                 <svg class="sec-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
                                 <div>
-                                    <h4>AES-256-GCM Secret Encryption</h4>
-                                    <p>SNMP communities, SSH credentials, and Slack webhook tokens are locked using AES-GCM encryption key hashes.</p>
+                                    <h4 data-i18n="security.item1_title">AES-256-GCM Secret Encryption</h4>
+                                    <p data-i18n="security.item1_desc">SNMP communities, SSH credentials, and Slack webhook tokens are locked using AES-GCM encryption key hashes.</p>
                                 </div>
                             </div>
                             
                             <div class="sec-item">
                                 <svg class="sec-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
                                 <div>
-                                    <h4>M8 Fail-Fast Decryption Validation</h4>
-                                    <p>Pollers and receivers crash immediately on initialization if database encryption credentials fail to decrypt secrets. Prevents stale polling states.</p>
+                                    <h4 data-i18n="security.item2_title">M8 Fail-Fast Decryption Validation</h4>
+                                    <p data-i18n="security.item2_desc">Pollers and receivers crash immediately on initialization if database encryption credentials fail to decrypt secrets. Prevents stale polling states.</p>
                                 </div>
                             </div>
 
                             <div class="sec-item">
                                 <svg class="sec-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
                                 <div>
-                                    <h4>Append-Only Auditor Trail</h4>
-                                    <p>All administrative actions, login events, and config backups generate immutable logs written directly to standard output.</p>
+                                    <h4 data-i18n="security.item3_title">Append-Only Auditor Trail</h4>
+                                    <p data-i18n="security.item3_desc">All administrative actions, login events, and config backups generate immutable logs written directly to standard output.</p>
                                 </div>
                             </div>
                         </div>
@@ -813,22 +842,22 @@
         <section class="quickstart-section" id="quickstart">
             <div class="section-container">
                 <div class="section-header">
-                    <span class="section-tag">Quick Start</span>
-                    <h2>30 seconds to first poll.</h2>
-                    <p class="section-intro">Deploy the application locally or in production with a single command.</p>
+                    <span class="section-tag" data-i18n="quickstart.tag">Quick Start</span>
+                    <h2 data-i18n="quickstart.title">30 seconds to first poll.</h2>
+                    <p class="section-intro" data-i18n="quickstart.intro">Deploy the application locally or in production with a single command.</p>
                 </div>
                 
                 <div class="quickstart-box">
                     <div class="quickstart-nav">
-                        <button class="qs-tab active" data-qs="qs-docker">Docker Compose</button>
-                        <button class="qs-tab" data-qs="qs-systemd">Systemd / Native</button>
-                        <button class="qs-tab" data-qs="qs-relay">Remote Probe Relay</button>
+                        <button class="qs-tab active" data-qs="qs-docker" data-i18n="quickstart.tab_docker">Docker Compose</button>
+                        <button class="qs-tab" data-qs="qs-systemd" data-i18n="quickstart.tab_systemd">Systemd / Native</button>
+                        <button class="qs-tab" data-qs="qs-relay" data-i18n="quickstart.tab_relay">Remote Probe Relay</button>
                     </div>
                     
                     <div class="quickstart-content">
                         <!-- Docker content -->
                         <div class="qs-pane" id="qs-docker">
-                            <p>Clone the repository, configure the environment, and build the container locally (pre-built image coming soon):</p>
+                            <p data-i18n="quickstart.docker_desc">Clone the repository, configure the environment, and build the container locally (pre-built image coming soon):</p>
                             <div class="code-block-wrapper">
                                 <pre><code class="lang-yaml">version: '3.8'
 services:
@@ -856,14 +885,14 @@ volumes:
                                 </button>
                             </div>
                             <div class="qs-next-step">
-                                <span>Clone and deploy:</span>
+                                <span data-i18n="quickstart.docker_next">Clone and deploy:</span>
                                 <code class="mono-code">git clone https://github.com/xphox2/Firewall-Monitoring.git && cd Firewall-Monitoring && docker compose up -d</code>
                             </div>
                         </div>
                         
                         <!-- Systemd content -->
                         <div class="qs-pane hidden" id="qs-systemd">
-                            <p>Run Firewall-Mon natively as a systemd daemon. Compile the single binary using Go 1.22+:</p>
+                            <p data-i18n="quickstart.systemd_desc">Run Firewall-Mon natively as a systemd daemon. Compile the single binary using Go 1.22+:</p>
                             <div class="code-block-wrapper">
                                 <pre><code class="lang-bash"># Clone and build
 git clone https://github.com/xphox2/Firewall-Monitoring.git
@@ -885,7 +914,7 @@ sudo systemctl enable --now fwmon</code></pre>
 
                         <!-- Relay Probe content -->
                         <div class="qs-pane hidden" id="qs-relay">
-                            <p>Run the lightweight Firewall-Collector on remote servers behind branch firewalls to relay SNMP data to the main server. The image is hosted on Docker Hub: <a href="https://hub.docker.com/r/xphox/firewall-collector" target="_blank" style="color: var(--accent); text-decoration: underline;">xphox/firewall-collector</a>.</p>
+                            <p><span data-i18n="quickstart.relay_desc">Run the lightweight Firewall-Collector on remote servers behind branch firewalls to relay SNMP data to the main server. The image is hosted on Docker Hub:</span> <a href="https://hub.docker.com/r/xphox/firewall-collector" target="_blank" style="color: var(--accent); text-decoration: underline;">xphox/firewall-collector</a>.</p>
                             <div class="code-block-wrapper">
                                 <pre><code class="lang-bash"># Run remote collector container from Docker Hub
 docker run -d \
@@ -917,26 +946,26 @@ docker run -d \
                     </svg>
                     <span>Firewall-Mon</span>
                 </a>
-                <p>Vendor-agnostic firewall monitoring system built for speed, security audits, and complex topology traversal.</p>
-                <p style="margin-top: 12px; font-size: 0.82rem; color: var(--text-muted); line-height: 1.4;">Firewall-Mon is a <a href="https://www.technicallabs.org" target="_blank" style="color: var(--accent); text-decoration: underline;">TechnicalLabs</a> project created by Xphox of <a href="https://www.xphox.net" target="_blank" style="color: var(--accent); text-decoration: underline;">Xphox Networks</a>.</p>
+                <p data-i18n="footer.brand_desc">Vendor-agnostic firewall monitoring system built for speed, security audits, and complex topology traversal.</p>
+                <p style="margin-top: 12px; font-size: 0.82rem; color: var(--text-muted); line-height: 1.4;" data-i18n="footer.labs_created" data-i18n-html="true">Firewall-Mon is a <a href="https://www.technicallabs.org" target="_blank" style="color: var(--accent); text-decoration: underline;">TechnicalLabs</a> project created by Xphox of <a href="https://www.xphox.net" target="_blank" style="color: var(--accent); text-decoration: underline;">Xphox Networks</a>.</p>
             </div>
             
             <div class="footer-links-grid">
                 <div class="footer-links-col">
-                    <h4>Open Source</h4>
+                    <h4 data-i18n="footer.open_source">Open Source</h4>
                     <ul>
                         <li><a href="https://github.com/xphox2/Firewall-Monitoring" target="_blank">Firewall-Mon</a></li>
                         <li><a href="https://github.com/xphox2/Firewall-Collector" target="_blank">Firewall-Collector</a></li>
-                        <li><a href="https://github.com/xphox2/Firewall-Monitoring/blob/main/LICENSE" target="_blank">MIT License</a></li>
+                        <li><a href="https://github.com/xphox2/Firewall-Monitoring/blob/main/LICENSE" target="_blank" data-i18n="footer.license">MIT License</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-links-col">
-                    <h4>Documentation</h4>
+                    <h4 data-i18n="footer.documentation">Documentation</h4>
                     <ul>
-                        <li><a href="docs.html?section=intro">Reference Docs</a></li>
-                        <li><a href="docs.html?section=architecture">Architecture Spec</a></li>
-                        <li><a href="docs.html?section=changelog">Changelog</a></li>
+                        <li><a href="docs.html?section=intro" data-i18n="footer.ref_docs">Reference Docs</a></li>
+                        <li><a href="docs.html?section=architecture" data-i18n="footer.arch_spec">Architecture Spec</a></li>
+                        <li><a href="docs.html?section=changelog" data-i18n="footer.changelog">Changelog</a></li>
                     </ul>
                 </div>
             </div>
@@ -944,13 +973,14 @@ docker run -d \
         
         <div class="footer-bottom">
             <div class="footer-bottom-container">
-                <p>&copy; 2026 Firewall-Mon. A <a href="https://www.technicallabs.org" target="_blank" style="color: var(--text-secondary); text-decoration: underline;">TechnicalLabs</a> project created by Xphox of <a href="https://www.xphox.net" target="_blank" style="color: var(--text-secondary); text-decoration: underline;">Xphox Networks</a>. Licensed under the MIT License.</p>
-                <div class="footer-meta" id="footer-release-meta">v0.10.498 (2026-06-27)</div>
+                <p data-i18n="footer.copyright" data-i18n-html="true">&copy; 2026 Firewall-Mon. A <a href="https://www.technicallabs.org" target="_blank" style="color: var(--text-secondary); text-decoration: underline;">TechnicalLabs</a> project created by Xphox of <a href="https://www.xphox.net" target="_blank" style="color: var(--text-secondary); text-decoration: underline;">Xphox Networks</a>. Licensed under the MIT License.</p>
+                <div class="footer-meta" data-i18n="footer.meta" id="footer-release-meta">v0.10.498 (2026-06-27)</div>
             </div>
         </div>
     </footer>
 
     <!-- Scripts -->
+    <script src="js/i18n.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>

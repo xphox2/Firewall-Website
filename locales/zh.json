@@ -1,0 +1,240 @@
+{
+  "nav": {
+    "why": "为什么选择我们",
+    "demo": "在线演示",
+    "config_drift": "配置漂移",
+    "architecture": "架构设计",
+    "features": "功能特性",
+    "security": "安全合规",
+    "github": "在 GitHub 上点赞",
+    "install": "立即安装",
+    "github_docs": "GitHub"
+  },
+  "hero": {
+    "title": "防火墙群的<span class=\"accent-text\">单一管理视图。</span>",
+    "subtitle": "支持 FortiGate, Palo Alto, SonicWall, pfSense, OPNsense 和 Firewalla 的 SNMP、sFlow、syslog、Trap 及配置漂移监控。自托管，单容器部署，启动到首次轮询仅需 30 秒。",
+    "copy_btn": "复制",
+    "copied_btn": "已复制！",
+    "read_docs": "阅读文档 →",
+    "stat_audit_label": "未解决的安全审计项",
+    "stat_vendors_label": "支持的硬件品牌",
+    "stat_license_label": "开源许可协议",
+    "badge_prefix": "最新发布:"
+  },
+  "why": {
+    "tag": "深耕网络安全运维",
+    "title": "专为防火墙量身定制。",
+    "intro": "通用网络监控工具只会提供一堆普通的 OID 图表。Firewall-Mon 则是专门针对防火墙运维场景构建的。",
+    "card1_title": "深度的厂商协议智能",
+    "card1_desc": "为 6 大防火墙家族提供原生配置模板，开箱即用地读取 CPU、并发会话、VPN 隧道、高可用（HA）状态和 SPU/ASIC 硬件加速指标。无需复杂的 MIB 手工解析。",
+    "card2_title": "带风险标记的配置漂移",
+    "card2_desc": "配置修改会被规范化为厂商无关的统一对象模型。每一次更改都会进行安全风险分类，在正式审计前提前暴露违规项。",
+    "card3_title": "NAT/CGNAT 穿越主动探测",
+    "card3_desc": "远程站点探测器通过主动出站 HTTPS 回传指标，无需在分支机构暴露任何入站端口，实现绝对的安全隔离。"
+  },
+  "demo": {
+    "tag": "交互式功能预览",
+    "title": "实时网络运维控制台",
+    "intro": "体验网络安全工程师用于实时监控分布式防火墙集群的专业界面。",
+    "fleet_title": "防火墙集群",
+    "online_badge": "6台 在线",
+    "poll_interval": "轮询间隔: <strong>30秒</strong>",
+    "last_poll": "最后轮询:",
+    "just_now": "刚刚",
+    "ago": "前",
+    "cpu_load": "CPU负载",
+    "active_sessions": "活动会话数",
+    "vpn_tunnels": "VPN隧道",
+    "ha_cluster": "HA集群",
+    "cpu_trend_normal": "↓ 负载正常",
+    "cpu_trend_high": "↑ CPU过载警告",
+    "vpn_trend_up": "所有隧道均已建立",
+    "vpn_trend_none": "未配置隧道",
+    "vpn_trend_alert": "隧道连接降级警告",
+    "ha_trend_standalone": "未配置高可用",
+    "ha_trend_synced": "已同步 (对端正常)",
+    "throughput_title": "实时网络接口带宽",
+    "inbound": "入站",
+    "outbound": "出站",
+    "four_hours_ago": "4小时前",
+    "three_hours_ago": "3小时前",
+    "two_hours_ago": "2小时前",
+    "one_hour_ago": "1小时前",
+    "now": "现在",
+    "trap_console": "SNMP TRAP / SYSLOG 实时流",
+    "process_label": "运行进程:",
+    "triage_btn": "执行异常流量排查",
+    "triage_analyzing": "分析网络流量中...",
+    "triage_completed": "排查分析完成",
+    "initiating_poller_cycle": "正在为防火墙集群初始化全局轮询周期。",
+    "poller_cycle_complete_msg": "防火墙集群全局轮询周期已完成。"
+  },
+  "drift": {
+    "tag": "安全风险分类",
+    "title": "带风险评级的配置漂移",
+    "intro": "所有配置修改均会被规范化为厂商无关的统一模型。我们的安全风险引擎将解析每一次 diff 差分并标记安全漏洞。",
+    "detected_changes": "检测到的配置变更",
+    "change": "变更",
+    "vulnerability_tagged": "检测到的漏洞:",
+    "security_impact": "安全影响评级:",
+    "configuration_event": "配置事件详情:",
+    "hours_ago": "小时前",
+    "mins_ago": "分钟前",
+    "day_ago": "天前",
+    "critical_tab_desc": "Allow-Internal-Admin 策略的源地址被修改为了 ANY",
+    "medium_tab_desc": "IPsec VPN 提议中的 DH 密钥交换组被降级",
+    "info_tab_desc": "网络接口的描述文字被修改"
+  },
+  "sflow": {
+    "tag": "高性能流量监控",
+    "title": "sFlow v5 流量分析器",
+    "intro": "利用我们的 PostgreSQL <code class=\"mono-code\">pgx COPY</code> 高速写入管道（比普通 ORM 单行插入快 10 倍以上），直接通过会话级会话详情对瞬时流量峰值进行秒级诊断。",
+    "live_stream": "sFlow 实时流量流",
+    "run_triage": "执行异常流量排查",
+    "src_addr": "源地址",
+    "dst_addr": "目的地址",
+    "port": "端口",
+    "protocol": "协议",
+    "flow_rate": "流量速率",
+    "packets": "包速率",
+    "analysis_completed": "流量突发排查分析已完成:",
+    "alert_text": "在端口 4444 上检测到异常流量，源主机为 <code class=\"mono-code\">10.200.5.88</code>，目的外部 IP 为 <code class=\"mono-code\">185.112.145.4</code>（已知 Metasploit 溢出回连端口）。匹配规则: <span class=\"tag-alert-rule\">Suspicious_Shell_Outbound</span>。"
+  },
+  "probe": {
+    "tag": "幂等式日志采集拓扑",
+    "title": "分布式主动探测中继",
+    "intro": "在远程站点部署轻量级采集器，在 CGNAT 私网环境下通过出站 HTTPS 链路单向同步指标，确保弱网下的最终数据一致性。",
+    "safeguards_title": "遥测数据高可用保障",
+    "sg1_title": "X-Probe-Batch-ID 幂等性校验",
+    "sg1_desc": "每个数据包批次均标记有唯一的、基于 UUID 的头部。即使发生断网重试，服务端接收时也会在入库前校验，避免日志分析重复或产生虚拟的流量峰值。",
+    "sg2_title": "数据架构版本协商握手",
+    "sg2_desc": "如果远程探测端与中心采集端的表结构发生版本冲突，`fwmon-api` 将主动抛出 HTTP 426 Upgrade Required。此时探测器本地磁盘队列将挂起，锁死日志，直至安全迁移完成。",
+    "sg3_title": "SHA-256 机密信息加密",
+    "sg3_desc": "探测器的认证密钥及网络设备的访问凭证在库中以 AES-256-GCM 强加密形式存储。启动时执行解密校验；一旦检测到密钥篡改，轮询器将立即主动崩溃（Fail-Fast）。"
+  },
+  "features": {
+    "tag": "产品特性",
+    "title": "企业级防火墙监控性能。",
+    "intro": "每一项功能都围绕超高性能、高标准合规态势和厂商中立的原则构建。",
+    "card1_title": "多厂商 SNMP 轮询",
+    "card1_desc": "原生兼容 6 大知名品牌。直接加载专属 OID 配置文件。无需手动硬核撸 MIB 树。",
+    "card2_title": "风险分类配置变更 Diff",
+    "card2_desc": "在安全策略变更下发前，自动报警任何暴露给 ANY 源地址的危险规则。",
+    "card3_title": "sFlow v5 高速接收",
+    "card3_desc": "获取 Top 会话排行、目的 IP 和目的端口 — 无需繁重的 PCAP 抓包。",
+    "card4_title": "探测器-中继架构",
+    "card4_desc": "穿透 CGNAT 局域网限制，仅通过单一出站 HTTPS 隧道实现远程探测。",
+    "card5_title": "单容器一键部署",
+    "card5_desc": "只需一行 `docker compose up -d`，集成 PostgreSQL 16 数据库。",
+    "card6_title": "审计级高安全标准",
+    "card6_desc": "AES-256-GCM 加密、秘钥轮转、崩溃保护。170 个安全检查项全部完美修复。"
+  },
+  "reports": {
+    "tag": "每日运维报告",
+    "title": "全新设计的邮件通知报告。",
+    "intro": "每日摘要邮件换用全新 Plus Jakarta Sans 字体并配以现代暗色渐变背景—深度优化以保证在 Gmail 和 Outlook 客户端中的完美排版。"
+  },
+  "security": {
+    "tag": "审计级安全合规",
+    "title": "170 项漏洞检查。全部清零。",
+    "intro": "我们对 Firewall-Mon 进行了极其苛刻的 170 项全方位安全合规审计。每一个潜在的脆弱点均已得到修复，并在我们拥有 98 项用例的静态安全检查中全部通过。",
+    "item1_title": "AES-256-GCM 敏感机密加密",
+    "item1_desc": "SNMP 共同体名称、SSH 访问凭据以及 Slack Webhook 令牌均使用 AES-GCM 强加密算法进行锁存。",
+    "item2_title": "M8 崩溃保护解密校验",
+    "item2_desc": "如果数据库加密密钥验证失败，采集引擎及接收端将在初始化阶段立即退出，防止出现死锁或空轮询异常。",
+    "item3_title": "不可篡改的只增审计日志",
+    "item3_desc": "所有管理员操作日志、登录事件以及配置备份流水均会直接以只增形式写入标准输出，防范历史修改。"
+  },
+  "quickstart": {
+    "tag": "快速开始",
+    "title": "30 秒即可开启监控。",
+    "intro": "只需运行一行命令，即可在本地开发环境或生产服务器中快速部署。",
+    "tab_docker": "Docker Compose",
+    "tab_systemd": "Systemd / 原生部署",
+    "tab_relay": "分布式探测器中继",
+    "docker_desc": "克隆代码仓库，配置环境变量，并在本地构建容器（预构建镜像即将发布到 Docker Hub）：",
+    "docker_next": "克隆并部署:",
+    "systemd_desc": "使用 systemd 在服务器上以原生守护进程方式运行 Firewall-Mon。使用 Go 1.22+ 编译单文件二进制包：",
+    "relay_desc": "在远程站点或分支机构的防火墙后侧部署轻量级 Firewall-Collector 以转发 SNMP 指标。镜像托管于 Docker Hub："
+  },
+  "footer": {
+    "brand_desc": "厂商中立的防火墙性能及配置安全监控系统，专为性能、合规审计和复杂拓扑环境设计。",
+    "labs_created": "Firewall-Mon 是由 Xphox Networks 的 Xphox 开发的 <a href=\"https://www.technicallabs.org\" target=\"_blank\" style=\"color: var(--accent); text-decoration: underline;\">TechnicalLabs</a> 开源项目。",
+    "open_source": "开源项目",
+    "license": "MIT 许可证",
+    "documentation": "产品文档",
+    "ref_docs": "参考手册",
+    "arch_spec": "架构设计白皮书",
+    "changelog": "版本变更记录",
+    "copyright": "&copy; 2026 Firewall-Mon. 由 Xphox Networks 的 Xphox 开发的 <a href=\"https://www.technicallabs.org\" target=\"_blank\" style=\"color: var(--text-secondary); text-decoration: underline;\">TechnicalLabs</a> 开源项目。采用 MIT 许可证授权。",
+    "meta": "v0.10.498 (2026-06-27)"
+  },
+  "devices": {
+    "hq-fortigate": {
+      "vendor": "Fortinet SNMP 配置文件 (FortiOS v7.2.4)",
+      "ha": "主-备 (Active-Passive)",
+      "haTrend": "已同步 (对端正常)",
+      "logs": [
+        "设备 HQ-FortiGate-01 的轮询就绪。所有 OID 属性均匹配厂商配置文件。",
+        "FortiOS: 验证 HA 集群状态为健康。当前节点为主节点。",
+        "sFlow 接口原始数据流成功推送至 PostgreSQL flow_samples (Pgx batch INSERT: 成功)",
+        "FortiOS: 检测到来自 10.100.12.80 的 SSH 登录尝试 - 密码校验失败。"
+      ]
+    },
+    "branch-opnsense": {
+      "vendor": "OPNsense SNMP 配置文件 (AMD64)",
+      "ha": "CARP 冗余备份",
+      "haTrend": "对端主节点处于活动状态 (10.200.2.1)",
+      "logs": [
+        "设备 Branch-OPNsense-02 的轮询周期已结束。",
+        "读取 CPU 核心温度成功: Core0: 42°C, Core1: 45°C。",
+        "正在通过 X-Probe-Batch-ID: e82f1b40 批接收遥测指标数据。",
+        "OPNsense carp: wan 物理接口链路状态发生变更: BACKUP"
+      ]
+    },
+    "colo-paloalto": {
+      "vendor": "Palo Alto Networks SNMP 配置文件 (PAN-OS 10.2)",
+      "ha": "双活 (Active-Active)",
+      "haTrend": "会话已完全同步。0 丢包",
+      "logs": [
+        "设备 Colo-PaloAlto-01 的轮询就绪。",
+        "并发会话限制: 500,000。当前会话占用率: 22%。性能负载在安全水位以下。",
+        "PAN-OS: IPsec 隧道 'vpn-branch-32' 连接断开。正在向 AlertManager 触发告警路由。",
+        "静态安全性恒定校验: 规则集中检测到 0 处异常。"
+      ]
+    },
+    "edge-sonicwall": {
+      "vendor": "SonicWall SNMP 配置文件 (SonicOS v7.0)",
+      "ha": "单机运行 (Standalone)",
+      "haTrend": "未配置高可用",
+      "logs": [
+        "设备 Edge-SonicWall-03 的轮询就绪。",
+        "检测到 SonicOS 的 CPU 使用率产生突发峰值: 82%。ASIC 硬件芯片负载正常。",
+        "SonicOS: 隧道 'HQ-Core-IPsec' 状态变更为: 正在重新协商密钥 (REKEYING)。",
+        "SonicOS: VPN 主网关协商 IKE 阶段 2 失败。重试已加入计划任务调度。"
+      ]
+    },
+    "home-pfsense": {
+      "vendor": "pfSense SNMP 配置文件 (pfSense Plus v23.05)",
+      "ha": "单机运行 (Standalone)",
+      "haTrend": "未配置高可用",
+      "logs": [
+        "设备 Home-pfSense-01 的轮询就绪。",
+        "wan 接口握手协商速率已校验: 1000 Mbps 全双工。",
+        "Cron 定时任务: 软件包升级检测管理器以状态码 0 正常退出。",
+        "flow_samples 周期合并汇总任务执行中: 已归档 5 分钟的聚合流量。"
+      ]
+    },
+    "lab-firewalla": {
+      "vendor": "Firewalla SNMP 配置文件 (Linux 内核 5.15)",
+      "ha": "单机运行 (Standalone)",
+      "haTrend": "未配置高可用",
+      "logs": [
+        "设备 Lab-Firewalla-01 的轮询就绪。",
+        "远程中继探测器 Ping 回应正常: 验证数据架构版本 v0.10.498 匹配成功。",
+        "CPU 内存占用率: 1.2GB/4GB (占用 30%)。",
+        "流量快照数据库整理 (Vacuum) 结束。共清理 0 行脏数据。"
+      ]
+    }
+  }
+}

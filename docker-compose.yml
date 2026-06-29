@@ -1,11 +1,78 @@
-version: '3.8'
+# =============================================================================
+# Firewall-Mon Marketing Website — Docker Compose
+# =============================================================================
+# Two services:
+#   * website      — production stack, immutable nginx image (default)
+#   * website-dev  — development stack with bind-mounted source for live edits
+#                    (started via `make dev-up` / `--profile dev`)
+#
+# Environment variables (override via shell or a local `.env` file):
+#   PORT      — host port published for the production service  (default: 8080)
+#   DEV_PORT  — host port published for the dev service          (default: 3000)
+#
+# Notes:
+#   * The `version` key is intentionally omitted — it is deprecated in
+#     Compose v2 and ignored by `docker compose`.
+#   * The image is built from the sibling `Dockerfile` (nginx:alpine).
+# =============================================================================
+
+name: firewall-mon-website
 
 services:
-  marketing-website:
+  website:
+    image: firewall-mon/website:latest
     build:
       context: .
       dockerfile: Dockerfile
     container_name: firewall-mon-marketing
+    restart: unless-stopped
     ports:
       - "${PORT:-8080}:80"
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://127.0.0.1:80/"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 5s
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+    labels:
+      org.opencontainers.image.title: "Firewall-Mon Website"
+      org.opencontainers.image.description: "Marketing website for Firewall-Mon, served by nginx."
+      org.opencontainers.image.source: "https://github.com/xphox2/Firewall-Monitoring"
+      com.firewall-mon.component: "marketing-website"
+
+  website-dev:
+    image: firewall-mon/website:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: firewall-mon-website-dev
+    profiles: ["dev"]
     restart: unless-stopped
+    ports:
+      - "${DEV_PORT:-3000}:80"
+    volumes:
+      # Bind-mount the source for live edits — nginx serves the in-container
+      # `/usr/share/nginx/html` so we replace that path with the host source.
+      - ./:/usr/share/nginx/html:ro
+      # Don't let the host's .dockerignore'd files leak into the container.
+      - /dev/null:/usr/share/nginx/html/Dockerfile:ro
+      - /dev/null:/usr/share/nginx/html/docker-compose.yml:ro
+      - /dev/null:/usr/share/nginx/html/.dockerignore:ro
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://127.0.0.1:80/"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 5s
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+    labels:
+      com.firewall-mon.component: "marketing-website-dev"

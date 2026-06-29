@@ -1,0 +1,240 @@
+{
+  "nav": {
+    "why": "選ばれる理由",
+    "demo": "ライブデモ",
+    "config_drift": "構成ドリフト",
+    "architecture": "アーキテクチャ",
+    "features": "機能",
+    "security": "セキュリティ",
+    "github": "GitHubでスター",
+    "install": "今すぐインストール",
+    "github_docs": "GitHub"
+  },
+  "hero": {
+    "title": "ファイアウォール群を<span class=\"accent-text\">一元管理。</span>",
+    "subtitle": "FortiGate, Palo Alto, SonicWall, pfSense, OPNsense, Firewallaに対応した、SNMP, sFlow, syslog, トラップおよび構成ドリフトの監視システム。セルフホスト対応、単一コンテナで動作、起動から最初のポーリングまでわずか30秒。",
+    "copy_btn": "コピー",
+    "copied_btn": "コピーしました！",
+    "read_docs": "ドキュメントを読む →",
+    "stat_audit_label": "未解決の監査指摘事項",
+    "stat_vendors_label": "対応ベンダー数",
+    "stat_license_label": "オープンソースライセンス",
+    "badge_prefix": "最新リリース:"
+  },
+  "why": {
+    "tag": "運用現場の実績",
+    "title": "ファイアウォール専用設計。",
+    "intro": "一般的なネットワーク監視ツールは凡庸なOIDグラフを並べるだけです。Firewall-Monはファイアウォールに特化して構築されています。",
+    "card1_title": "ディープベンダーインテリジェンス",
+    "card1_desc": "6つの主要ファイアウォール製品に対応するネイティブプロファイルにより、CPU、セッション、VPNトンネル、HA状態、SPU/ASICメトリクスを即座に取得。複雑なMIB設定は不要です。",
+    "card2_title": "リスクタグ付き構成ドリフト",
+    "card2_desc": "構成の変更はベンダーに依存しない標準オブジェクトモデルに正規化されます。すべての変更がリスク分類され、監査前にセキュリティ侵害を浮き彫りにします。",
+    "card3_title": "NAT/CGNAT トラバーサルプローブ",
+    "card3_desc": "拠点側のプローブは、アウトバウンドHTTPSを介してメトリクスを送信します。インバウンドポートの開放が不要なため、拠点を完全に保護します。"
+  },
+  "demo": {
+    "tag": "インタラクティブプレビュー",
+    "title": "ライブ運用ダッシュボード",
+    "intro": "ネットワークセキュリティエンジニアが分散されたファイアウォール群をリアルタイムで監視するために使用するインターフェースを体験してください。",
+    "fleet_title": "ファイアウォール群",
+    "online_badge": "6台 オンライン",
+    "poll_interval": "ポーリング間隔: <strong>30秒</strong>",
+    "last_poll": "最終ポーリング:",
+    "just_now": "たった今",
+    "ago": "前",
+    "cpu_load": "CPU負荷",
+    "active_sessions": "アクティブセッション",
+    "vpn_tunnels": "VPNトンネル",
+    "ha_cluster": "HAクラスター",
+    "cpu_trend_normal": "↓ 通常の負荷",
+    "cpu_trend_high": "↑ 高CPU警告",
+    "vpn_trend_up": "すべてのトンネルがUP",
+    "vpn_trend_none": "トンネル未定義",
+    "vpn_trend_alert": "トンネル品質低下警告",
+    "ha_trend_standalone": "HA未構成",
+    "ha_trend_synced": "同期済み (ピア正常)",
+    "throughput_title": "リアルタイム インターフェース帯域幅",
+    "inbound": "受信",
+    "outbound": "送信",
+    "four_hours_ago": "4時間前",
+    "three_hours_ago": "3時間前",
+    "two_hours_ago": "2時間前",
+    "one_hour_ago": "1時間前",
+    "now": "現在",
+    "trap_console": "SNMPトラップ / SYSLOG インジェスト",
+    "process_label": "プロセス:",
+    "triage_btn": "スパイク判定を実行",
+    "triage_analyzing": "フロー分析中...",
+    "triage_completed": "判定完了",
+    "initiating_poller_cycle": "ファイアウォール群に対するグローバルポーラーサイクルを開始しています。",
+    "poller_cycle_complete_msg": "ファイアウォール群に対するポーラーサイクルが完了しました。"
+  },
+  "drift": {
+    "tag": "リスク分類",
+    "title": "リスク分類された構成ドリフト",
+    "intro": "すべての構成変更はベンダーに依存しないモデルに正規化されます。セキュリティ分類システムが差分を解析し、脆弱性にフラグを立てます。",
+    "detected_changes": "検出された変更",
+    "change": "変更",
+    "vulnerability_tagged": "脆弱性タグ:",
+    "security_impact": "セキュリティへの影響:",
+    "configuration_event": "構成イベント:",
+    "hours_ago": "時間前",
+    "mins_ago": "分前",
+    "day_ago": "日前",
+    "critical_tab_desc": "Allow-Internal-AdminルールがANYに開放されました",
+    "medium_tab_desc": "IPsec VPNプロポーザルのDHグループが脆弱化しました",
+    "info_tab_desc": "インターフェース説明が変更されました"
+  },
+  "sflow": {
+    "tag": "高性能トラフィック監視",
+    "title": "sFlow v5 フローアナライザー",
+    "intro": "PostgreSQLの <code class=\"mono-code\">pgx COPY</code> パイプライン（通常のORM行挿入の10倍高速）を利用し、生データレベル of 会話詳細から帯域幅スパイクを即座に判定します。",
+    "live_stream": "ライブトラフィックストリーム (sFlow)",
+    "run_triage": "スパイク判定を実行",
+    "src_addr": "送信元アドレス",
+    "dst_addr": "送信先アドレス",
+    "port": "ポート",
+    "protocol": "プロトコル",
+    "flow_rate": "流量",
+    "packets": "パケット数",
+    "analysis_completed": "スパイク判定分析完了:",
+    "alert_text": "ホスト <code class=\"mono-code\">10.200.5.88</code> から外部IP <code class=\"mono-code\">185.112.145.4</code> へのポート 4444 上の異常トラフィックを検出しました (既知のMetasploitポート)。マッチングルール: <span class=\"tag-alert-rule\">Suspicious_Shell_Outbound</span>。"
+  },
+  "probe": {
+    "tag": "べき等性インジェストトポロジー",
+    "title": "分散プローブ・リレー",
+    "intro": "拠点側にローカルコレクターをデプロイし、アウトバウンドHTTPSを介してCGNAT背後からテレメトリを同期。不安定なアップリンクでもデータの完全性を維持します。",
+    "safeguards_title": "テレメトリ回復性セーフガード",
+    "sg1_title": "X-Probe-Batch-ID べき等性",
+    "sg1_desc": "すべてのパケットバッチには一意のUUIDベースのヘッダーが刻印されます。パケットドロップ時の再試行はDB保存時に検証され、重複したログ分析やトラフィックの二重カウントを防ぎます。",
+    "sg2_title": "スキーマバージョンのハンドシェイク",
+    "sg2_desc": "リモートプローブと中央コレクターのスキーマ不一致が発生した場合、`fwmon-api` は HTTP 426 Upgrade Required を返します。プローブの内蔵ディスクキューは保持され、安全な移行が完了するまでログをロックします。",
+    "sg3_title": "SHA-256 シークレット暗号化",
+    "sg3_desc": "プローブ認証キーとデバイスパスワードは、AES-256-GCMを使用して暗号化された状態で保存されます。起動時に復号検証が実行され、キー変更が検出されるとポーラーは即座に異常終了します。"
+  },
+  "features": {
+    "tag": "対応機能",
+    "title": "本番環境に対応する監視性能。",
+    "intro": "すべての機能は、速度、コンプライアンス維持、ベンダーニュートラルを目的として設計されています。",
+    "card1_title": "マルチベンダー対応 SNMP",
+    "card1_desc": "6つの主要ベンダーに対応。ネイティブOIDプロファイル。複雑なMIB設定に悩まされることはありません。",
+    "card2_title": "リスク分類された構成差分",
+    "card2_desc": "送信元「ANY」に開放された危険なルールを、デプロイ前に警告します。",
+    "card3_title": "sFlow v5 インジェスト",
+    "card3_desc": "PCAPデータなしで、主要な接続元、接続先、ポートをリアルタイム分析します。",
+    "card4_title": "プローブ・リレー アーキテクチャ",
+    "card4_desc": "CGNAT背後の拠点ファイアウォールを、アウトバウンドHTTPSのシングル接続でポーリングします。",
+    "card5_title": "シングルコンテナデプロイ",
+    "card5_desc": "単一の `docker compose up -d` コマンドで起動。PostgreSQL 16も同梱されています。",
+    "card6_title": "監査対応レベルのセキュリティ",
+    "card6_desc": "AES-256-GCM、自動キーローテーション、フェイルファストキーを採用。170項目の指摘はすべて対応済み。"
+  },
+  "reports": {
+    "tag": "運用レポート",
+    "title": "美しく再設計された電子メールレポート。",
+    "intro": "Plus Jakarta Sansフォントとモダンなダークグラデーションを採用した新しい日次概要レポート。GmailやOutlookとの完全な互換性を確保して作されています。"
+  },
+  "security": {
+    "tag": "監査対応済みのセキュリティ",
+    "title": "170の指摘事項。未解決ゼロ。",
+    "intro": "Firewall-Monは170項目に及ぶ包括的なセキュリティ監査を受けました。すべての指摘事項は完全に対処・修正され、98項目の静的セキュリティテストスイートで合格が実証されています。",
+    "item1_title": "AES-256-GCMによるシークレットの暗号化",
+    "item1_desc": "SNMPコミュニティ名、SSH認証情報、Slack Webhookトークンは、AES-GCM暗号化キーのハッシュを使用して保護されています。",
+    "item2_title": "M8フェイルファスト復号検証",
+    "item2_desc": "データベース暗号化キーでのシークレット復号に失敗した場合、ポーラーとレシーバーは初期化時に即座にクラッシュします。不正なポーリング状態を防ぎます。",
+    "item3_title": "追記専用の監査トレイル",
+    "item3_desc": "すべての管理者操作、ログインイベント、構成バックアップは、標準出力に直接書き出される不変ログを生成します。"
+  },
+  "quickstart": {
+    "tag": "クイックスタート",
+    "title": "最初のポーリングまでわずか30秒。",
+    "intro": "1つのコマンドを実行するだけで、ローカルまたは本番環境にアプリケーションをデプロイできます。",
+    "tab_docker": "Docker Compose",
+    "tab_systemd": "Systemd / ネイティブ",
+    "tab_relay": "リモートプローブリレー",
+    "docker_desc": "リポジトリをクローンし、環境変数を設定して、コンテナをローカルでビルドします (ビルド済みイメージは近日提供予定):",
+    "docker_next": "クローンしてデプロイ:",
+    "systemd_desc": "Firewall-Monをsystemdデーモンとしてネイティブに実行します。Go 1.22+を使用して単一バイナリをコンパイルします:",
+    "relay_desc": "リモートサーバー上の拠点ファイアウォール背後で軽量なFirewall-Collectorを実行し、SNMPデータをメインサーバーに転送します。イメージはDocker Hubにホストされています:"
+  },
+  "footer": {
+    "brand_desc": "速度、セキュリティ監査、および複雑なトポロジー通過のために構築された、ベンダー不問のファイアウォール監視システム。",
+    "labs_created": "Firewall-Monは、Xphox NetworksのXphoxによって作成された<a href=\"https://www.technicallabs.org\" target=\"_blank\" style=\"color: var(--accent); text-decoration: underline;\">TechnicalLabs</a>プロジェクトです。",
+    "open_source": "オープンソース",
+    "license": "MITライセンス",
+    "documentation": "ドキュメント",
+    "ref_docs": "リファレンスドキュメント",
+    "arch_spec": "アーキテクチャ仕様",
+    "changelog": "変更履歴",
+    "copyright": "&copy; 2026 Firewall-Mon. Xphox Networks of Xphoxによって作成された<a href=\"https://www.technicallabs.org\" target=\"_blank\" style=\"color: var(--text-secondary); text-decoration: underline;\">TechnicalLabs</a>プロジェクトです。MITライセンスのもとでライセンスされています。",
+    "meta": "v0.10.498 (2026-06-27)"
+  },
+  "devices": {
+    "hq-fortigate": {
+      "vendor": "Fortinet SNMPプロファイル (FortiOS v7.2.4)",
+      "ha": "アクティブ-パッシブ",
+      "haTrend": "同期済み (ピア正常)",
+      "logs": [
+        "デバイス HQ-FortiGate-01 のポーラーサイクルが完了しました。すべてのOIDがベンダープロファイルに一致しています。",
+        "FortiOS: HA状態が正常であることを検証しました。プライマリユニットのアクティブノードです。",
+        "sFlowインターフェースの生バッチがPostgreSQLのflow_samplesにプッシュされました (Pgxバッチ挿入: OK)",
+        "FortiOS: 10.100.12.80 からのSSHログイン試行 - 認証に失敗しました。"
+      ]
+    },
+    "branch-opnsense": {
+      "vendor": "OPNsense SNMPプロファイル (AMD64)",
+      "ha": "CARPバックアップ",
+      "haTrend": "ピアアクティブ (10.200.2.1)",
+      "logs": [
+        "デバイス Branch-OPNsense-02 のポーラーサイクルが完了しました。",
+        "取得されたCPUコア温度: コア0: 42°C, コア1: 45°C。",
+        "X-Probe-Batch-ID: e82f1b40 を介してフローバッチをインジェストしています。",
+        "OPNsense carp: インターフェース wan のリンク状態が変更されました: BACKUP"
+      ]
+    },
+    "colo-paloalto": {
+      "vendor": "Palo Alto Networks SNMPプロファイル (PAN-OS 10.2)",
+      "ha": "アクティブ-アクティブ",
+      "haTrend": "セッション同期済み。0パケットドロップ",
+      "logs": [
+        "デバイス Colo-PaloAlto-01 のポーラーサイクルが完了しました。",
+        "セッション制限: 500,000。現在の使用率: 22%。パフォーマンスしきい値は正常です。",
+        "PAN-OS: トンネル 'vpn-branch-32' の状態が DOWN に変更されました。AlertManagerルートを起動しています。",
+        "静的セキュリティ不変条件: ルールベースで0件の異常が検出されました。"
+      ]
+    },
+    "edge-sonicwall": {
+      "vendor": "SonicWall SNMPプロファイル (SonicOS v7.0)",
+      "ha": "スタンドアロン",
+      "haTrend": "HA未構成",
+      "logs": [
+        "デバイス Edge-SonicWall-03 のポーラーサイクルが完了しました。",
+        "SonicOSのCPU使用率スパイクを検出: 82%。ハードウェアSPU ASIC負荷は正常です。",
+        "SonicOS: トンネル 'HQ-Core-IPsec' の状態が REKEYING に変更されました。",
+        "SonicOS: コアVPNゲートウェイがIKEフェーズ2の交渉に失敗しました。再リンクがスケジュールされました。"
+      ]
+    },
+    "home-pfsense": {
+      "vendor": "pfSense SNMPプロファイル (pfSense Plus v23.05)",
+      "ha": "スタンドアロン",
+      "haTrend": "HA未構成",
+      "logs": [
+        "デバイス Home-pfSense-01 のポーラーサイクルが完了しました。",
+        "インターフェース wan の速度が検証されました: 1000 Mbps 全二重。",
+        "cronタスク: パッケージ更新マネージャーが終了ステータス0を返しました。",
+        "flow_samples ロールアップタスク実行中: 5分間のフローを集約しました。"
+      ]
+    },
+    "lab-firewalla": {
+      "vendor": "Firewalla SNMPプロファイル (Linuxカーネル 5.15)",
+      "ha": "スタンドアロン",
+      "haTrend": "HA未構成",
+      "logs": [
+        "デバイス Lab-Firewalla-01 のポーラーサイクルが完了しました。",
+        "リモートプローブリレーのping完了: ハンドシェイクスキーマバージョン v0.10.498 が検証されました。",
+        "CPUメモリ使用量: 1.2GB/4GB (30%消費)。",
+        "フローデータベースのVacuum処理が完了しました。削除された行: 0行。"
+      ]
+    }
+  }
+}

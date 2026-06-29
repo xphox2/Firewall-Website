@@ -1,0 +1,240 @@
+{
+  "nav": {
+    "why": "선택 이유",
+    "demo": "라이브 데모",
+    "config_drift": "구성 드리프트",
+    "architecture": "아키텍처",
+    "features": "주요 기능",
+    "security": "보안 및 합규",
+    "github": "GitHub 스타",
+    "install": "지금 설치",
+    "github_docs": "GitHub"
+  },
+  "hero": {
+    "title": "방화벽 플릿을 위한 <span class=\"accent-text\">단일 모니터링 뷰.</span>",
+    "subtitle": "FortiGate, Palo Alto, SonicWall, pfSense, OPNsense, Firewalla 방화벽의 SNMP, sFlow, syslog, trap 및 구성 드리프트를 모니터링합니다. 자가 호스팅. 단일 컨테이너. 첫 쿼리까지 단 30초.",
+    "copy_btn": "복사",
+    "copied_btn": "복사 완료!",
+    "read_docs": "문서 읽기 →",
+    "stat_audit_label": "해결되지 않은 감사 항목",
+    "stat_vendors_label": "지원 벤더 수",
+    "stat_license_label": "오픈 소스 라이선스",
+    "badge_prefix": "최신 릴리스:"
+  },
+  "why": {
+    "tag": "현업 지향 모니터링",
+    "title": "방화벽 전용 설계.",
+    "intro": "범용 네트워크 모니터링 도구는 단순히 일반 OID 그래프만 나열합니다. Firewall-Mon은 방화벽에 특화되도록 설계되었습니다.",
+    "card1_title": "심층적인 벤더 프로파일링",
+    "card1_desc": "6개 방화벽 제품군에 최적화된 네이티브 프로파일을 통해 CPU, 세션 수, VPN 터널 상태, HA 연동 및 SPU/ASIC 메트릭을 즉시 읽어옵니다. 번거로운 MIB 수동 설정이 필요 없습니다.",
+    "card2_title": "위험 태그가 지정된 구성 드리프트",
+    "card2_desc": "방화벽의 설정 변경 사항이 벤더 중립적인 공통 객체 모델로 정규화됩니다. 모든 변경 사항은 위험도별로 분류되어 감사 전에 사전에 위험 요소를 진단합니다.",
+    "card3_title": "NAT/CGNAT 트래버설 프로브",
+    "card3_desc": "지사에 설치된 로컬 수집기가 아웃바운드 HTTPS 링크를 통해 모니터링 데이터를 전송합니다. 인바운드 포트를 열 필요가 없어 안전하게 통신합니다."
+  },
+  "demo": {
+    "tag": "대화형 미리보기",
+    "title": "실시간 운영 대시보드",
+    "intro": "네트워크 보안 엔지니어들이 분산된 방화벽들을 실시간으로 모니터링할 때 사용하는 대시보드를 직접 경험해보세요.",
+    "fleet_title": "방화벽 목록",
+    "online_badge": "6대 온라인",
+    "poll_interval": "수집 주기: <strong>30초</strong>",
+    "last_poll": "마지막 수집:",
+    "just_now": "방금 전",
+    "ago": "전",
+    "cpu_load": "CPU 부하",
+    "active_sessions": "활성 세션",
+    "vpn_tunnels": "VPN 터널",
+    "ha_cluster": "HA 클러스터",
+    "cpu_trend_normal": "↓ 정상 부하",
+    "cpu_trend_high": "↑ CPU 부하 경고",
+    "vpn_trend_up": "모든 터널 정상 (UP)",
+    "vpn_trend_none": "설정된 터널 없음",
+    "vpn_trend_alert": "터널 연결성 경고",
+    "ha_trend_standalone": "HA 설정 없음",
+    "ha_trend_synced": "동기화 완료 (동작 정상)",
+    "throughput_title": "실시간 인터페이스 대역폭",
+    "inbound": "수신",
+    "outbound": "송신",
+    "four_hours_ago": "4시간 전",
+    "three_hours_ago": "3시간 전",
+    "two_hours_ago": "2시간 전",
+    "one_hour_ago": "1시간 전",
+    "now": "현재",
+    "trap_console": "SNMP TRAP / SYSLOG 실시간 분석",
+    "process_label": "실행 프로세스:",
+    "triage_btn": "트래픽 급증 진단 실행",
+    "triage_analyzing": "플로우 분석 중...",
+    "triage_completed": "진단 완료",
+    "initiating_poller_cycle": "방화벽 장비들에 대한 글로벌 수집 사이클을 시작합니다.",
+    "poller_cycle_complete_msg": "장비들에 대한 글로벌 수집 사이클이 성공적으로 완료되었습니다."
+  },
+  "drift": {
+    "tag": "위험도 분류",
+    "title": "위험도로 분류된 구성 드리프트",
+    "intro": "모든 구성 변경 사항은 벤더 중립적인 모델로 정규화됩니다. 당사의 보안 분류 시스템이 변경점(Diff)을 분석하고 취약점을 태깅합니다.",
+    "detected_changes": "감지된 구성 변경",
+    "change": "변경 사항",
+    "vulnerability_tagged": "탐지된 취약점:",
+    "security_impact": "보안 영향도:",
+    "configuration_event": "설정 변경 이벤트:",
+    "hours_ago": "시간 전",
+    "mins_ago": "분 전",
+    "day_ago": "일 전",
+    "critical_tab_desc": "Allow-Internal-Admin 규칙의 원본지가 ANY로 오픈되었습니다",
+    "medium_tab_desc": "IPsec VPN 제안서 내 DH 그룹 강도가 취약하게 설정되었습니다",
+    "info_tab_desc": "인터페이스의 설명(Description) 문구가 변경되었습니다"
+  },
+  "sflow": {
+    "tag": "고성능 트래픽 모니터링",
+    "title": "sFlow v5 플로우 분석기",
+    "intro": "일반 ORM보다 10배 빠른 PostgreSQL의 <code class=\"mono-code\">pgx COPY</code> 전송 파이프라인을 탑재하여, 대화형 트래픽 급증 원인을 패킷 상세 수준에서 실시간 진단합니다.",
+    "live_stream": "실시간 트래픽 스트림 (sFlow)",
+    "run_triage": "트래픽 급증 진단 실행",
+    "src_addr": "출발지 주소",
+    "dst_addr": "목적지 주소",
+    "port": "포트",
+    "protocol": "프로토콜",
+    "flow_rate": "전송률",
+    "packets": "패킷 수",
+    "analysis_completed": "트래픽 급증 진단 분석 완료:",
+    "alert_text": "호스트 <code class=\"mono-code\">10.200.5.88</code>에서 외부 IP <code class=\"mono-code\">185.112.145.4</code>로 향하는 포트 4444의 이상 트래픽이 감지되었습니다 (알려진 Metasploit 포트). 일치하는 규칙: <span class=\"tag-alert-rule\">Suspicious_Shell_Outbound</span>."
+  },
+  "probe": {
+    "tag": "멱등성 로그 수집 토폴로지",
+    "title": "분산형 프로브-릴레이",
+    "intro": "네트워크 지사에 로컬 수집기를 배포하여 CGNAT 대역 뒤에서도 아웃바운드 HTTPS 링크를 통해 중심지와 원활히 데이터를 동기화합니다.",
+    "safeguards_title": "원격 데이터 신뢰성 보장 기능",
+    "sg1_title": "X-Probe-Batch-ID 멱등성 보장",
+    "sg1_desc": "모든 로그 배치 패킷에 고유한 UUID 기반 헤더가 부여됩니다. 네트워크 유실로 인한 재전송 시에도 중복 분석을 완벽히 방지합니다.",
+    "sg2_title": "스키마 버전 상호 협상",
+    "sg2_desc": "로컬 프로브와 중앙 서버간의 스키마 버전이 다를 시, `fwmon-api`가 HTTP 426 Upgrade Required 상태를 반환합니다. 원격 프로브의 로컬 디스크 큐가 유지되며, 업데이트 완료 전까지 동기화를 홀드합니다.",
+    "sg3_title": "SHA-256 비밀 키 관리",
+    "sg3_desc": "프로브 인증 키 및 장비 패스워드는 AES-256-GCM 알고리즘으로 안전하게 저장됩니다. 부팅 시 복호화 테스트를 거치며, 임의 수정이 감지되면 즉시 동작을 정지합니다."
+  },
+  "features": {
+    "tag": "주요 기능",
+    "title": "운영 환경을 위해 설계된 모니터링.",
+    "intro": "모든 기능은 성능 향상, 보안 표준 준수, 그리고 벤더 독립성을 목표로 구축되었습니다.",
+    "card1_title": "다중 벤더 SNMP 연동",
+    "card1_desc": "6개 방화벽 벤더 제공. 전용 OID 프로파일 탑재. 더 이상 수동 MIB 관리에 매달리지 마세요.",
+    "card2_title": "위험 분류 기반 구성 변경 점검",
+    "card2_desc": "변경 사항 적용 전, 소스가 ANY로 설정된 위험한 보안 룰을 사전에 경고합니다.",
+    "card3_title": "sFlow v5 실시간 수집",
+    "card3_desc": "패킷을 통째로 덤프할 필요 없이 트래픽 상위 통신사, 목적지, 포트를 파악합니다.",
+    "card4_title": "프로브-릴레이 아키텍처",
+    "card4_desc": "CGNAT 뒤의 지사 방화벽을 단일 아웃바운드 HTTPS 연결을 통해 모니터링합니다.",
+    "card5_title": "단일 컨테이너 빌드",
+    "card5_desc": "한 줄의 `docker compose up -d`로 완성. PostgreSQL 16 기본 탑재.",
+    "card6_title": "감사 수준의 고안전성",
+    "card6_desc": "AES-256-GCM, 키 롤링, 동작 자가정지 기능 탑재. 170개 보안 검사항목 완벽 통과."
+  },
+  "reports": {
+    "tag": "일일 보고서",
+    "title": "완전히 새로워진 일일 이메일 보고서.",
+    "intro": "Plus Jakarta Sans 서체와 모던한 그라디언트를 사용한 일일 동향 보고서. Gmail 및 Outlook 환경과의 호환성을 극대화하여 구성했습니다."
+  },
+  "security": {
+    "tag": "감사 수준 보안",
+    "title": "170개 감사 항목 통과. 지적 항목 Zero.",
+    "intro": "Firewall-Mon은 170개 항목에 달하는 엄격한 모니터링 시스템 보안 감사를 거쳤습니다. 모든 조치 사항이 보완되었으며, 98개 정적 보안 스위트 검증을 통과했습니다.",
+    "item1_title": "AES-256-GCM 민감 데이터 암호화",
+    "item1_desc": "SNMP 커뮤니티 문자열, SSH 로그인 정보 및 Slack Webhook 토큰은 해시 및 AES-GCM 보안 키를 통해 안전하게 보관됩니다.",
+    "item2_title": "M8 복호화 테스트 자가진단",
+    "item2_desc": "데이터베이스 암호화 키를 통한 복호화 확인에 실패 시, 서비스 초기화 단계에서 즉시 기동을 중단하여 오동작을 미연에 방지합니다.",
+    "item3_title": "Immutable只增(추가 전용) 감사 로그",
+    "item3_desc": "모든 어드민 작업 및 로그인, 백업 이력은 기록을 변경할 수 없도록 즉시 표준 출력 감사 로그로 직접 기록됩니다."
+  },
+  "quickstart": {
+    "tag": "빠른 시작",
+    "title": "첫 수집까지 단 30초.",
+    "intro": "하나의 명령어로 개발 장비 또는 실제 서버 환경에 솔루션을 신속히 배포할 수 있습니다.",
+    "tab_docker": "Docker Compose",
+    "tab_systemd": "Systemd / 네이티브",
+    "tab_relay": "원격 프로브 릴레이",
+    "docker_desc": "저장소를 복사하고 환경 변수를 지정한 후 로컬에서 직접 빌드하십시오 (배포 버전 빌드 이미지 출시 예정):",
+    "docker_next": "복사 및 배포:",
+    "systemd_desc": "서버에 systemd 백그라운드 서비스로 직접 실행합니다. Go 1.22+ 버전을 활용하여 바이너리 파일을 빌드하십시오:",
+    "relay_desc": "지사 방화벽 뒤에서 SNMP 트래픽 데이터를 전달하기 위해 경량 Firewall-Collector를 구동합니다. 이미지는 Docker Hub에 호스트되어 있습니다:"
+  },
+  "footer": {
+    "brand_desc": "속도, 보안 가이드 준수 및 복잡한 네트워크 토폴로지 구성을 원활히 넘나들 수 있도록 최적화된 방화벽 전용 모니터링 시스템.",
+    "labs_created": "Firewall-Mon은 Xphox Networks의 Xphox가 개발한 <a href=\"https://www.technicallabs.org\" target=\"_blank\" style=\"color: var(--accent); text-decoration: underline;\">TechnicalLabs</a> 오픈소스 프로젝트입니다.",
+    "open_source": "오픈소스",
+    "license": "MIT 라이선스",
+    "documentation": "제품 설명서",
+    "ref_docs": "레퍼런스 문서",
+    "arch_spec": "아키텍처 가이드",
+    "changelog": "변경 이력",
+    "copyright": "&copy; 2026 Firewall-Mon. Xphox Networks의 Xphox가 개발한 <a href=\"https://www.technicallabs.org\" target=\"_blank\" style=\"color: var(--text-secondary); text-decoration: underline;\">TechnicalLabs</a> 프로젝트입니다. MIT 라이선스 규정을 따릅니다.",
+    "meta": "v0.10.498 (2026-06-27)"
+  },
+  "devices": {
+    "hq-fortigate": {
+      "vendor": "Fortinet SNMP 프로파일 (FortiOS v7.2.4)",
+      "ha": "액티브-패시브",
+      "haTrend": "동기화 완료 (동작 정상)",
+      "logs": [
+        "장치 HQ-FortiGate-01 수집 주기 정상 완료. 모든 OID 속성이 제조사 프로파일과 일치합니다.",
+        "FortiOS: HA 클러스터 정상 상태 확인. 현재 장비가 액티브 노드입니다.",
+        "sFlow 실시간 배치 데이터를 PostgreSQL flow_samples 테이블로 전송 성공 (Pgx batch INSERT: OK)",
+        "FortiOS: 10.100.12.80으로부터 SSH 로그인 실패 감지 - 비밀번호 오류."
+      ]
+    },
+    "branch-opnsense": {
+      "vendor": "OPNsense SNMP 프로파일 (AMD64)",
+      "ha": "CARP 백업 노드",
+      "haTrend": "상대 기기가 마스터로 동작 중 (10.200.2.1)",
+      "logs": [
+        "장치 Branch-OPNsense-02 수집 완료.",
+        "CPU 온도 정보 수신 완료: Core0: 42°C, Core1: 45°C.",
+        "배치 데이터를 X-Probe-Batch-ID: e82f1b40 헤더를 통해 수집하고 있습니다.",
+        "OPNsense carp: wan 물리 포트 링크 상태가 BACKUP으로 전환되었습니다."
+      ]
+    },
+    "colo-paloalto": {
+      "vendor": "Palo Alto Networks SNMP 프로파일 (PAN-OS 10.2)",
+      "ha": "액티브-액티브",
+      "haTrend": "세션 동기화 완료. 0 패킷 유실",
+      "logs": [
+        "장치 Colo-PaloAlto-01 수집 정상 완료.",
+        "최대 세션 크기: 500,000. 현재 세션 점유율: 22%. 성능 임계치는 정상 수준입니다.",
+        "PAN-OS: 'vpn-branch-32' 터널 연결 해제. AlertManager 알림 태스크를 기동합니다.",
+        "정적 보안 규정 자가점유: 설정된 보안 룰셋에서 이상 패턴 0개 탐지."
+      ]
+    },
+    "edge-sonicwall": {
+      "vendor": "SonicWall SNMP 프로파일 (SonicOS v7.0)",
+      "ha": "단일 모드 (Standalone)",
+      "haTrend": "HA 설정 없음",
+      "logs": [
+        "장치 Edge-SonicWall-03 수집 정상 완료.",
+        "SonicOS CPU 일시 급증 감지: 82%. ASIC 칩셋 옥텟 부하는 정상입니다.",
+        "SonicOS: 'HQ-Core-IPsec' 터널 상태 변경: IKE 보안 키 갱신 작업 중 (REKEYING).",
+        "SonicOS: 코어 VPN 게이트웨이의 IKE Phase 2 협상에 실패했습니다. 재연결 스케줄 구동."
+      ]
+    },
+    "home-pfsense": {
+      "vendor": "pfSense SNMP 프로파일 (pfSense Plus v23.05)",
+      "ha": "단일 모드 (Standalone)",
+      "haTrend": "HA 설정 없음",
+      "logs": [
+        "장치 Home-pfSense-01 수집 정상 완료.",
+        "wan 인터페이스 물리 링크 속도 체크: 1000 Mbps 전이중(Full Duplex).",
+        "Cron 작업: 패키지 업데이트 매니저가 정상 상태코드 0으로 작업을 마쳤습니다.",
+        "flow_samples 롤업 작업 완료: 5분간의 유동량 데이터 합산 완료."
+      ]
+    },
+    "lab-firewalla": {
+      "vendor": "Firewalla SNMP 프로파일 (Linux Kernel 5.15)",
+      "ha": "단일 모드 (Standalone)",
+      "haTrend": "HA 설정 없음",
+      "logs": [
+        "장치 Lab-Firewalla-01 수집 정상 완료.",
+        "원격 프로브 릴레이 핑 성공: 데이터 설계 정보 버전 v0.10.498 체크 완료.",
+        "CPU 메모리 부하량: 1.2GB/4GB (30% 점유).",
+        "플로우 데이터베이스 정리 (Vacuum) 프로세스 완료. 정리 행: 0개."
+      ]
+    }
+  }
+}
