@@ -1,0 +1,13 @@
+{
+  "name": "website-tests",
+  "version": "1.0.0",
+  "description": "Playwright tests for detecting CSS overlaps and layout issues",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.45.0"
+  }
+}
