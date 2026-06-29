@@ -3,6 +3,24 @@
 All notable changes to the Firewall-Mon marketing website are documented here.
 This file follows [Keep a Changelog](https://keepachangelog.com/) conventions; versions are newest-first.
 
+## [0.1.2] - 2026-06-28
+
+### Fixed
+- Header no longer breaks when switching to longer-text languages. Previously the
+  long French/German nav squeezed the logo until "Firewall-Mon" wrapped onto two
+  lines and the header grew to ~96px. Verified with Playwright across en/fr/de at
+  1280px and 1600px.
+- Replaced the fixed-width mobile breakpoint with a **language-aware collapse**:
+  the inline horizontal nav now switches to the hamburger drawer at ≤1080px for
+  English and ≤1500px for long-text languages (de, fr, es, pt, it, ru), so those
+  languages get the clean drawer instead of an overflowing/wrapping header. Logic
+  lives in `setupMobileNav()` (`js/main.js`), toggling `.site-header.nav-collapsed`
+  on load, resize, and `languageChanged`.
+- The drawer CSS is now keyed off the `.nav-collapsed` class (was a `@media`
+  query) so it can be driven by the language-aware logic above.
+- `.logo` is now `flex-shrink: 0` + `nowrap` so the brand never wraps regardless
+  of nav width.
+
 ## [0.1.1] - 2026-06-28
 
 ### Fixed

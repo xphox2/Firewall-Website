@@ -535,7 +535,30 @@ function generateAuditDots() {
 function setupMobileNav() {
     const navToggle = document.getElementById("mobile-nav-toggle");
     const siteHeader = document.querySelector(".site-header");
-    
+
+    // Languages whose labels are long enough that the horizontal nav needs more
+    // room — collapse them to the hamburger drawer at a wider viewport than English.
+    const WIDE_LANGS = ["de", "fr", "es", "pt", "it", "ru"];
+
+    // Decide whether to use the collapsed (drawer) nav based on viewport + language.
+    function applyNavMode() {
+        if (!siteHeader) return;
+        const lang = document.documentElement.lang || "en";
+        const breakpoint = WIDE_LANGS.includes(lang) ? 1500 : 1080;
+        const collapsed = window.innerWidth <= breakpoint;
+        siteHeader.classList.toggle("nav-collapsed", collapsed);
+        // Leaving collapsed mode must also close any open drawer.
+        if (!collapsed) {
+            siteHeader.classList.remove("nav-open");
+            document.body.classList.remove("nav-open");
+        }
+    }
+
+    // Re-evaluate on resize and whenever the language changes (i18n.js dispatches it).
+    window.addEventListener("resize", applyNavMode);
+    window.addEventListener("languageChanged", applyNavMode);
+    applyNavMode();
+
     if (navToggle && siteHeader) {
         navToggle.addEventListener("click", (e) => {
             e.stopPropagation();
