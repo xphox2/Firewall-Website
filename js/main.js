@@ -536,28 +536,52 @@ function setupMobileNav() {
     const navToggle = document.getElementById("mobile-nav-toggle");
     const siteHeader = document.querySelector(".site-header");
 
-    // Languages whose labels are long enough that the horizontal nav needs more
-    // room — collapse them to the hamburger drawer at a wider viewport than English.
-    const WIDE_LANGS = ["de", "fr", "es", "pt", "it", "ru"];
+    const headerContainer = document.querySelector(".header-container");
+    const logoEl = document.querySelector(".header-container .logo");
+    const navEl = document.querySelector(".main-nav");
 
-    // Decide whether to use the collapsed (drawer) nav based on viewport + language.
-    function applyNavMode() {
-        if (!siteHeader) return;
-        const lang = document.documentElement.lang || "en";
-        const breakpoint = WIDE_LANGS.includes(lang) ? 1500 : 1080;
-        const collapsed = window.innerWidth <= breakpoint;
-        siteHeader.classList.toggle("nav-collapsed", collapsed);
-        // Leaving collapsed mode must also close any open drawer.
-        if (!collapsed) {
+    // Keep the inline nav on one line in every language by auto-shrinking its
+    // font/spacing (--nav-scale) just enough to fit. Only collapse to the
+    // hamburger drawer when even the smallest scale can't fit (true small screens).
+    const MIN_SCALE = 0.74;  // don't shrink text below this (legibility floor)
+    const SMALL_SCREEN = 820; // below this, always use the drawer
+    const SLACK = 40;        // keep this much free space so the logo and nav never touch
+    const collapse = () => {
+        siteHeader.style.removeProperty("--nav-scale");
+        siteHeader.classList.add("nav-collapsed");
+    };
+
+    function fitNav() {
+        if (!siteHeader || !headerContainer || !logoEl || !navEl) return;
+        // Start from the expanded bar at full size.
+        siteHeader.classList.remove("nav-collapsed");
+        siteHeader.style.setProperty("--nav-scale", "1");
+
+        if (window.innerWidth <= SMALL_SCREEN) { collapse(); return; }
+
+        // Free space between the logo and the (right-aligned) nav. The header uses
+        // justify-content: space-between, so all slack sits in this gap; it hits 0
+        // and the nav overflows once the content is too wide. Shrink until the gap
+        // is at least SLACK so the logo and nav never touch.
+        const gap = () => navEl.getBoundingClientRect().left - logoEl.getBoundingClientRect().right;
+        let scale = 1;
+        while (gap() < SLACK && scale > MIN_SCALE + 0.001) {
+            scale = Math.max(MIN_SCALE, scale - 0.04);
+            siteHeader.style.setProperty("--nav-scale", scale.toFixed(2));
+        }
+        // Even at the minimum scale it won't fit with breathing room -> use the drawer.
+        if (gap() < SLACK) collapse();
+        else {
+            // Expanded mode: make sure no stale drawer state lingers.
             siteHeader.classList.remove("nav-open");
             document.body.classList.remove("nav-open");
         }
     }
 
-    // Re-evaluate on resize and whenever the language changes (i18n.js dispatches it).
-    window.addEventListener("resize", applyNavMode);
-    window.addEventListener("languageChanged", applyNavMode);
-    applyNavMode();
+    // Re-fit on resize and whenever the language changes (i18n.js dispatches it).
+    window.addEventListener("resize", fitNav);
+    window.addEventListener("languageChanged", fitNav);
+    fitNav();
 
     if (navToggle && siteHeader) {
         navToggle.addEventListener("click", (e) => {

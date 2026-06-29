@@ -146,6 +146,12 @@ ul {
     font-size: 0.85rem;
 }
 
+/* Header Install button scales with the nav so long languages fit on one line. */
+.main-nav .header-actions .btn-sm {
+    padding: 6px calc(12px * var(--nav-scale, 1));
+    font-size: calc(0.85rem * var(--nav-scale, 1));
+}
+
 .btn-block {
     display: flex;
     width: 100%;
@@ -212,10 +218,13 @@ ul {
 .main-nav {
     display: flex;
     align-items: center;
-    gap: 24px;
+    /* --nav-scale (set by fitNav() in main.js) shrinks the bar so long-language
+       labels stay on one line instead of wrapping or collapsing to a hamburger. */
+    gap: calc(24px * var(--nav-scale, 1));
     margin-left: auto;
     flex-wrap: nowrap;
     white-space: nowrap;
+    font-size: calc(0.95rem * var(--nav-scale, 1));
 }
 
 .logo {
@@ -236,19 +245,28 @@ ul {
 
 .main-nav .nav-links {
     display: flex;
-    gap: 22px;
+    gap: calc(22px * var(--nav-scale, 1));
     flex-wrap: nowrap;
 }
 
 .main-nav .nav-links a {
     color: var(--text-secondary);
     font-weight: 500;
-    font-size: 0.95rem;
+    font-size: 1em; /* inherits the scaled .main-nav font-size */
     white-space: nowrap;
 }
 
 .main-nav .nav-links a:hover {
     color: var(--accent);
+}
+
+/* The --nav-scale size changes (font-size/padding/gap) must apply instantly so
+   fitNav() can measure each step synchronously; keep only color/bg/border
+   transitions for hover (overrides the global `transition: all`). */
+.main-nav .nav-links a,
+.main-nav .header-actions .github-stars-btn,
+.main-nav .header-actions .btn {
+    transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
 }
 
 .header-actions {
@@ -261,12 +279,12 @@ ul {
     display: flex;
     align-items: center;
     gap: 8px;
-    padding: 6px 14px;
+    padding: 6px calc(14px * var(--nav-scale, 1));
     border-radius: var(--radius-sm);
     background-color: var(--bg-primary);
     border: var(--border);
     color: var(--text-secondary);
-    font-size: 0.85rem;
+    font-size: calc(0.85rem * var(--nav-scale, 1));
     font-weight: 500;
     white-space: nowrap;
 }

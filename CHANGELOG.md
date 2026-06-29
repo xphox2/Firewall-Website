@@ -3,6 +3,26 @@
 All notable changes to the Firewall-Mon marketing website are documented here.
 This file follows [Keep a Changelog](https://keepachangelog.com/) conventions; versions are newest-first.
 
+## [0.1.4] - 2026-06-28
+
+### Changed
+- Reworked how the header nav handles long-text languages. Instead of collapsing
+  French/German/etc. to the hamburger drawer on desktop, the inline bar now
+  **auto-shrinks to fit**: `fitNav()` (`js/main.js`) sets a `--nav-scale` custom
+  property that scales the nav's font-size/gaps/padding down (1.0 → 0.74) just
+  enough to keep everything on one tidy line, preserving a comfortable gap between
+  the logo and the menu. It only falls back to the hamburger drawer when even the
+  minimum scale can't fit (genuinely narrow screens, or the longest language —
+  Russian — below ~1400px).
+- Driven by a `--nav-scale` variable on `.main-nav` / `.nav-links` /
+  `.github-stars-btn` / header `.btn-sm` (`css/style.css`); scaled properties have
+  their CSS transition disabled so `fitNav()` can measure each step synchronously.
+
+### Verified (Playwright)
+- All 10 languages render as a single-row bar with a ≥40px logo gap, no horizontal
+  scrollbar, at 1366px+; at 1280px only Russian uses the drawer. Sticky header and
+  drawer open/close confirmed across widths 1366/1280/1024.
+
 ## [0.1.3] - 2026-06-28
 
 ### Fixed
