@@ -3,6 +3,20 @@
 All notable changes to the Firewall-Mon marketing website are documented here.
 This file follows [Keep a Changelog](https://keepachangelog.com/) conventions; versions are newest-first.
 
+## [0.1.1] - 2026-06-28
+
+### Fixed
+- Navigation no longer wraps to two lines (with large gaps) when switching to
+  languages with longer labels (French, German, etc.). Added `white-space: nowrap`
+  to nav links, the GitHub/Install buttons, and the language picker via `.main-nav`,
+  and tightened the desktop nav gaps.
+- Status badges (e.g. the demo "6 ONLINE" / "6 EN LIGNE") no longer break onto a
+  second line in longer languages — `.badge` is now `nowrap` + `flex-shrink: 0`,
+  with a gap added to `.sidebar-header` so the title and badge never collide.
+- Raised the mobile-nav (hamburger drawer) breakpoint `991px` → `1100px` so longer
+  translated menus collapse cleanly to the drawer on smaller laptops instead of
+  overflowing the horizontal header.
+
 ## [0.1.0] - 2026-06-28
 
 First tracked release. Captures the localization work merged from PR #1
