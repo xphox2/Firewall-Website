@@ -50,7 +50,7 @@
     "cpu_trend_high": "↑ Hohe CPU-Warnung",
     "vpn_trend_up": "Alle Tunnel UP",
     "vpn_trend_none": "Keine Tunnel konfiguriert",
-    "vpn_trend_alert": "Tunnel-Degradierung Alert",
+    "vpn_trend_alert": "Tunnel-Degradierung Warnung",
     "ha_trend_standalone": "HA nicht konfiguriert",
     "ha_trend_synced": "Synchronisiert (Peer OK)",
     "throughput_title": "Echtzeit-Schnittstellenbandbreite",

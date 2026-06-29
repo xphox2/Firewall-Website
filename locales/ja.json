@@ -159,14 +159,14 @@
   },
   "footer": {
     "brand_desc": "速度、セキュリティ監査、および複雑なトポロジー通過のために構築された、ベンダー不問のファイアウォール監視システム。",
-    "labs_created": "Firewall-Monは、Xphox NetworksのXphoxによって作成された<a href=\"https://www.technicallabs.org\" target=\"_blank\" style=\"color: var(--accent); text-decoration: underline;\">TechnicalLabs</a>プロジェクトです。",
+    "labs_created": "Firewall-Monは、<a href=\"https://www.xphox.net\" target=\"_blank\" style=\"color: var(--accent); text-decoration: underline;\">Xphox Networks</a>のXphoxによって作成された<a href=\"https://www.technicallabs.org\" target=\"_blank\" style=\"color: var(--accent); text-decoration: underline;\">TechnicalLabs</a>プロジェクトです。",
     "open_source": "オープンソース",
     "license": "MITライセンス",
     "documentation": "ドキュメント",
     "ref_docs": "リファレンスドキュメント",
     "arch_spec": "アーキテクチャ仕様",
     "changelog": "変更履歴",
-    "copyright": "&copy; 2026 Firewall-Mon. Xphox Networks of Xphoxによって作成された<a href=\"https://www.technicallabs.org\" target=\"_blank\" style=\"color: var(--text-secondary); text-decoration: underline;\">TechnicalLabs</a>プロジェクトです。MITライセンスのもとでライセンスされています。",
+    "copyright": "&copy; 2026 Firewall-Mon. <a href=\"https://www.xphox.net\" target=\"_blank\" style=\"color: var(--text-secondary); text-decoration: underline;\">Xphox Networks</a>のXphoxによって作成された<a href=\"https://www.technicallabs.org\" target=\"_blank\" style=\"color: var(--text-secondary); text-decoration: underline;\">TechnicalLabs</a>プロジェクトです。MITライセンスのもとでライセンスされています。",
     "meta": "v0.10.498 (2026-06-27)"
   },
   "devices": {

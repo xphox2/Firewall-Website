@@ -88,7 +88,7 @@
   "sflow": {
     "tag": "Surveillance du trafic haute performance",
     "title": "Analyseur de flux sFlow v5",
-    "intro": "Triez instantanément les pics de bande passante avec des détails bruts au niveau de la conversation, en utilisant notre pipeline pgx COPY PostgreSQL qui écrit 10 fois plus vite que les insertions de lignes ORM normales.",
+    "intro": "Triez instantanément les pics de bande passante avec des détails bruts au niveau de la conversation, en utilisant notre pipeline PostgreSQL <code class=\"mono-code\">pgx COPY</code> qui écrit 10 fois plus vite que les insertions de lignes ORM normales.",
     "live_stream": "Flux de trafic en direct (sFlow)",
     "run_triage": "Exécuter le tri des pics",
     "src_addr": "Adresse source",
