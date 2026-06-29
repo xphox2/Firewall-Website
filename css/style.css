@@ -734,6 +734,8 @@ section {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
     margin-bottom: 12px;
 }
 
@@ -746,26 +748,27 @@ section {
 }
 
 .legend {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
     font-size: 0.75rem;
     color: var(--text-muted);
 }
 
-.legend .lg-in,
-.legend .lg-out {
+.legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+}
+
+.legend-item .lg-in,
+.legend-item .lg-out {
     display: inline-block;
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    margin-right: 4px;
-    vertical-align: middle;
-}
-
-.legend span[data-i18n] {
-    vertical-align: middle;
-}
-
-.legend span[data-i18n="demo.inbound"] {
-    margin-right: 16px;
 }
 
 .lg-in { background-color: var(--accent); }
