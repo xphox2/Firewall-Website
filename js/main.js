@@ -355,14 +355,15 @@ function setupDashboardSimulator() {
         if (consoleBodyEl) {
             consoleBodyEl.innerHTML = "";
             const localizedLogs = window.t ? window.t(`devices.${activeDeviceKey}.logs`) : devData.logs;
-            localizedLogs.forEach(log => {
+            localizedLogs.forEach((log, index) => {
                 const logLine = document.createElement("div");
                 logLine.className = "console-line";
                 
                 const timeStamp = getFormattedTime();
-                const isTrap = log.includes("[TRAP]") || log.includes("TRAP");
-                const isWarn = log.includes("[WARN]") || log.includes("WARN");
-                const isDanger = log.includes("[DANGER]") || log.includes("DANGER");
+                const originalLog = devData.logs[index] || log;
+                const isTrap = originalLog.includes("[TRAP]") || originalLog.includes("TRAP");
+                const isWarn = originalLog.includes("[WARN]") || originalLog.includes("WARN");
+                const isDanger = originalLog.includes("[DANGER]") || originalLog.includes("DANGER");
                 
                 let tag = '<span class="line-tag info">[INFO]</span>';
                 if (isTrap) tag = '<span class="line-tag success">[TRAP]</span>';
@@ -418,11 +419,13 @@ function setupDashboardSimulator() {
         
         const dev = devices[activeDeviceKey];
         let msg = customMsg;
+        let originalMsg = customMsg;
         
         if (!msg && dev) {
             const localizedLogs = window.t ? window.t(`devices.${activeDeviceKey}.logs`) : dev.logs;
             const index = Math.floor(Math.random() * localizedLogs.length);
             msg = localizedLogs[index];
+            originalMsg = dev.logs[index];
         }
         
         if (!msg) return;
@@ -431,9 +434,10 @@ function setupDashboardSimulator() {
         logLine.className = "console-line";
         
         const timeStamp = getFormattedTime();
-        const isTrap = msg.includes("[TRAP]") || msg.includes("TRAP");
-        const isWarn = msg.includes("[WARN]") || msg.includes("WARN");
-        const isDanger = msg.includes("[DANGER]") || msg.includes("DANGER");
+        const checkMsg = originalMsg || msg;
+        const isTrap = checkMsg.includes("[TRAP]") || checkMsg.includes("TRAP");
+        const isWarn = checkMsg.includes("[WARN]") || checkMsg.includes("WARN");
+        const isDanger = checkMsg.includes("[DANGER]") || checkMsg.includes("DANGER");
         
         let tag = '<span class="line-tag info">[INFO]</span>';
         if (isTrap) tag = '<span class="line-tag success">[TRAP]</span>';
