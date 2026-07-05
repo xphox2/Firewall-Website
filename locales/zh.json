@@ -20,8 +20,7 @@
     "read_docs": "阅读文档 →",
     "stat_audit_label": "持续审计",
     "stat_vendors_label": "支持的厂商",
-    "stat_license_label": "开源许可协议",
-    "badge_prefix": "最新发布:"
+    "stat_license_label": "开源许可协议"
   },
   "why": {
     "tag": "深耕网络安全运维",
@@ -202,8 +201,7 @@
     "ref_docs": "参考文档",
     "arch_spec": "架构规范",
     "changelog": "版本变更记录",
-    "copyright": "&copy; 2026 Firewall-Mon. 由 <a href=\"https://www.xphox.net\" target=\"_blank\" style=\"color: var(--text-secondary); text-decoration: underline;\">Xphox Networks</a> 的 Xphox 创建的 <a href=\"https://www.technicallabs.org\" target=\"_blank\" style=\"color: var(--text-secondary); text-decoration: underline;\">TechnicalLabs</a> 项目。采用 MIT 许可证授权。",
-    "meta": "v0.11.31 (2026-07-05)"
+    "copyright": "&copy; 2026 Firewall-Mon. 由 <a href=\"https://www.xphox.net\" target=\"_blank\" style=\"color: var(--text-secondary); text-decoration: underline;\">Xphox Networks</a> 的 Xphox 创建的 <a href=\"https://www.technicallabs.org\" target=\"_blank\" style=\"color: var(--text-secondary); text-decoration: underline;\">TechnicalLabs</a> 项目。采用 MIT 许可证授权。"
   },
   "devices": {
     "hq-fortigate": {

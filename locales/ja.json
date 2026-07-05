@@ -20,8 +20,7 @@
     "read_docs": "ドキュメントを読む →",
     "stat_audit_label": "継続的に監査",
     "stat_vendors_label": "対応ベンダー数",
-    "stat_license_label": "オープンソースライセンス",
-    "badge_prefix": "最新リリース:"
+    "stat_license_label": "オープンソースライセンス"
   },
   "why": {
     "tag": "運用現場の実績",
@@ -202,8 +201,7 @@
     "ref_docs": "リファレンスドキュメント",
     "arch_spec": "アーキテクチャ仕様",
     "changelog": "変更履歴",
-    "copyright": "&copy; 2026 Firewall-Mon. <a href=\"https://www.xphox.net\" target=\"_blank\" style=\"color: var(--text-secondary); text-decoration: underline;\">Xphox Networks</a>のXphoxによって作成された<a href=\"https://www.technicallabs.org\" target=\"_blank\" style=\"color: var(--text-secondary); text-decoration: underline;\">TechnicalLabs</a>プロジェクトです。MITライセンスのもとでライセンスされています。",
-    "meta": "v0.11.31 (2026-07-05)"
+    "copyright": "&copy; 2026 Firewall-Mon. <a href=\"https://www.xphox.net\" target=\"_blank\" style=\"color: var(--text-secondary); text-decoration: underline;\">Xphox Networks</a>のXphoxによって作成された<a href=\"https://www.technicallabs.org\" target=\"_blank\" style=\"color: var(--text-secondary); text-decoration: underline;\">TechnicalLabs</a>プロジェクトです。MITライセンスのもとでライセンスされています。"
   },
   "devices": {
     "hq-fortigate": {

@@ -23,9 +23,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 7. Mobile Navigation Toggle
     setupMobileNav();
-
-    // 8. Dynamic GitHub Release Poller
-    setupGitHubReleasePoller();
 });
 
 /**
@@ -627,85 +624,4 @@ function setupMobileNav() {
             }
         });
     }
-}
-
-/**
- * Dynamic GitHub Release Poller with caching
- */
-function setupGitHubReleasePoller() {
-    const repo = "xphox2/Firewall-Monitoring";
-    const cacheKey = "fw_mon_github_release";
-    const cacheExpiryKey = "fw_mon_github_release_expiry";
-    const oneHour = 60 * 60 * 1000; // 1 hour cache validation in ms
-
-    // Selectors
-    const repoStarsEl = document.getElementById("repo-stars");
-    const releaseBadgeEls = document.querySelectorAll(".git-release-tag");
-    const footerMetaEls = document.querySelectorAll("#footer-release-meta");
-
-    // Function to update UI elements with release details
-    function updateUI(tagName, publishDate) {
-        if (repoStarsEl) {
-            repoStarsEl.textContent = tagName;
-        }
-        
-        releaseBadgeEls.forEach(el => {
-            el.textContent = tagName;
-        });
-
-        if (footerMetaEls.length > 0 && publishDate) {
-            try {
-                const dateObj = new Date(publishDate);
-                const formattedDate = dateObj.toISOString().split('T')[0];
-                footerMetaEls.forEach(el => {
-                    el.textContent = `${tagName} (${formattedDate})`;
-                });
-            } catch (e) {
-                console.error("Error formatting date:", e);
-                footerMetaEls.forEach(el => {
-                    el.textContent = `${tagName}`;
-                });
-            }
-        }
-    }
-
-    // Check localStorage cache first to avoid rate-limiting
-    const cachedData = localStorage.getItem(cacheKey);
-    const cachedExpiry = localStorage.getItem(cacheExpiryKey);
-    const now = Date.now();
-
-    if (cachedData && cachedExpiry && now < parseInt(cachedExpiry, 10)) {
-        try {
-            const release = JSON.parse(cachedData);
-            updateUI(release.tag_name, release.published_at);
-            return;
-        } catch (e) {
-            console.error("Error parsing cached release data:", e);
-        }
-    }
-
-    // Fetch from GitHub API
-    fetch(`https://api.github.com/repos/${repo}/releases/latest`)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`GitHub API returned status ${response.status}`);
-            }
-            return response.json();
-        })
-        .then(data => {
-            if (data && data.tag_name) {
-                // Save to cache
-                localStorage.setItem(cacheKey, JSON.stringify({
-                    tag_name: data.tag_name,
-                    published_at: data.published_at
-                }));
-                localStorage.setItem(cacheExpiryKey, (now + oneHour).toString());
-
-                // Update UI
-                updateUI(data.tag_name, data.published_at);
-            }
-        })
-        .catch(error => {
-            console.error("Failed to fetch latest release from GitHub:", error);
-        });
 }

@@ -20,8 +20,7 @@
     "read_docs": "Dokumentation lesen →",
     "stat_audit_label": "Kontinuierlich auditiert",
     "stat_vendors_label": "Unterstützte Hersteller",
-    "stat_license_label": "Open-Source-Lizenz",
-    "badge_prefix": "Neueste Version:"
+    "stat_license_label": "Open-Source-Lizenz"
   },
   "why": {
     "tag": "Aus der Praxis",
@@ -202,8 +201,7 @@
     "ref_docs": "Referenz-Docs",
     "arch_spec": "Architekturspezifikation",
     "changelog": "Changelog",
-    "copyright": "&copy; 2026 Firewall-Mon. Ein <a href=\"https://www.technicallabs.org\" target=\"_blank\" style=\"color: var(--text-secondary); text-decoration: underline;\">TechnicalLabs</a>-Projekt, das von Xphox von <a href=\"https://www.xphox.net\" target=\"_blank\" style=\"color: var(--text-secondary); text-decoration: underline;\">Xphox Networks</a> erstellt wurde. Lizenziert unter der MIT-Lizenz.",
-    "meta": "v0.11.31 (2026-07-05)"
+    "copyright": "&copy; 2026 Firewall-Mon. Ein <a href=\"https://www.technicallabs.org\" target=\"_blank\" style=\"color: var(--text-secondary); text-decoration: underline;\">TechnicalLabs</a>-Projekt, das von Xphox von <a href=\"https://www.xphox.net\" target=\"_blank\" style=\"color: var(--text-secondary); text-decoration: underline;\">Xphox Networks</a> erstellt wurde. Lizenziert unter der MIT-Lizenz."
   },
   "devices": {
     "hq-fortigate": {

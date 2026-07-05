@@ -20,8 +20,7 @@
     "read_docs": "Leer la doc →",
     "stat_audit_label": "Auditado continuamente",
     "stat_vendors_label": "Proveedores compatibles",
-    "stat_license_label": "Licencia de código abierto",
-    "badge_prefix": "Último lanzamiento:"
+    "stat_license_label": "Licencia de código abierto"
   },
   "why": {
     "tag": "Basado en Operaciones",
@@ -202,8 +201,7 @@
     "ref_docs": "Docs de referencia",
     "arch_spec": "Espec de arquitectura",
     "changelog": "Registro de cambios",
-    "copyright": "&copy; 2026 Firewall-Mon. Un proyecto de <a href=\"https://www.technicallabs.org\" target=\"_blank\" style=\"color: var(--text-secondary); text-decoration: underline;\">TechnicalLabs</a> creado por Xphox de <a href=\"https://www.xphox.net\" target=\"_blank\" style=\"color: var(--text-secondary); text-decoration: underline;\">Xphox Networks</a>. Licenciado bajo la Licencia MIT.",
-    "meta": "v0.11.31 (2026-07-05)"
+    "copyright": "&copy; 2026 Firewall-Mon. Un proyecto de <a href=\"https://www.technicallabs.org\" target=\"_blank\" style=\"color: var(--text-secondary); text-decoration: underline;\">TechnicalLabs</a> creado por Xphox de <a href=\"https://www.xphox.net\" target=\"_blank\" style=\"color: var(--text-secondary); text-decoration: underline;\">Xphox Networks</a>. Licenciado bajo la Licencia MIT."
   },
   "devices": {
     "hq-fortigate": {

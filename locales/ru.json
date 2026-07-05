@@ -20,8 +20,7 @@
     "read_docs": "Читать документацию →",
     "stat_audit_label": "Непрерывный аудит",
     "stat_vendors_label": "Поддерживаемые вендоры",
-    "stat_license_label": "Лицензия Open Source",
-    "badge_prefix": "Последний релиз:"
+    "stat_license_label": "Лицензия Open Source"
   },
   "why": {
     "tag": "Ориентировано на практику",
@@ -202,8 +201,7 @@
     "ref_docs": "Справочные материалы",
     "arch_spec": "Архитектурная спецификация",
     "changelog": "История изменений",
-    "copyright": "&copy; 2026 Firewall-Mon. Проект <a href=\"https://www.technicallabs.org\" target=\"_blank\" style=\"color: var(--text-secondary); text-decoration: underline;\">TechnicalLabs</a>, созданный Xphox из <a href=\"https://www.xphox.net\" target=\"_blank\" style=\"color: var(--text-secondary); text-decoration: underline;\">Xphox Networks</a>. Распространяется под лицензией MIT.",
-    "meta": "v0.11.31 (2026-07-05)"
+    "copyright": "&copy; 2026 Firewall-Mon. Проект <a href=\"https://www.technicallabs.org\" target=\"_blank\" style=\"color: var(--text-secondary); text-decoration: underline;\">TechnicalLabs</a>, созданный Xphox из <a href=\"https://www.xphox.net\" target=\"_blank\" style=\"color: var(--text-secondary); text-decoration: underline;\">Xphox Networks</a>. Распространяется под лицензией MIT."
   },
   "devices": {
     "hq-fortigate": {

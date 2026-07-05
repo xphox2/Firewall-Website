@@ -20,8 +20,7 @@
     "read_docs": "문서 읽기 →",
     "stat_audit_label": "지속적으로 감사됨",
     "stat_vendors_label": "지원 벤더 수",
-    "stat_license_label": "오픈 소스 라이선스",
-    "badge_prefix": "최신 릴리스:"
+    "stat_license_label": "오픈 소스 라이선스"
   },
   "why": {
     "tag": "현업 지향 모니터링",
@@ -202,8 +201,7 @@
     "ref_docs": "레퍼런스 문서",
     "arch_spec": "아키텍처 사양",
     "changelog": "변경 이력",
-    "copyright": "&copy; 2026 Firewall-Mon. <a href=\"https://www.xphox.net\" target=\"_blank\" style=\"color: var(--text-secondary); text-decoration: underline;\">Xphox Networks</a>의 Xphox가 개발한 <a href=\"https://www.technicallabs.org\" target=\"_blank\" style=\"color: var(--text-secondary); text-decoration: underline;\">TechnicalLabs</a> 프로젝트입니다. MIT 라이선스 규정을 따릅니다.",
-    "meta": "v0.11.31 (2026-07-05)"
+    "copyright": "&copy; 2026 Firewall-Mon. <a href=\"https://www.xphox.net\" target=\"_blank\" style=\"color: var(--text-secondary); text-decoration: underline;\">Xphox Networks</a>의 Xphox가 개발한 <a href=\"https://www.technicallabs.org\" target=\"_blank\" style=\"color: var(--text-secondary); text-decoration: underline;\">TechnicalLabs</a> 프로젝트입니다. MIT 라이선스 규정을 따릅니다."
   },
   "devices": {
     "hq-fortigate": {

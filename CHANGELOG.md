@@ -29,7 +29,7 @@ Major content refresh bringing the site up to date with the Firewall-Mon **v0.11
 - **Security** section reframed from a frozen "170 findings" to continuous-auditing language.
 - Quick start now uses the **published Docker Hub image** (`xphox/firewall-mon`) instead of a
   local build, and documents the NetFlow (2055/udp) and IPFIX (4739/udp) ports.
-- Version strings, hero badge, and footer meta updated to v0.11.31; hero subtitle broadened.
+- Removed the build-version display entirely (hero "Latest Release" badge, nav version pill, footer version line) and the dead GitHub release poller — a marketing site doesn't need to track the product version. Hero subtitle broadened.
 - Simulator VPN/HA status logic made robust (parses "up / total" instead of matching
   hardcoded strings; healthy Active-Standby pairs now read green).
 - All new/changed copy translated across the 10 locales (key parity preserved).
