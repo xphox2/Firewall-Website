@@ -23,9 +23,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 7. Mobile Navigation Toggle
     setupMobileNav();
-
-    // 8. Dynamic GitHub Release Poller
-    setupGitHubReleasePoller();
 });
 
 /**
@@ -146,7 +143,22 @@ function setupDashboardSimulator() {
                 "[INFO] Poller cycle complete for device Colo-PaloAlto-01.",
                 "[INFO] Session limit: 500,000. Current usage: 22%. Performance threshold normal.",
                 "[TRAP] PAN-OS: Tunnel 'vpn-branch-32' state changed to DOWN. Triggering AlertManager route.",
-                "[INFO] Static security invariants: 0 anomalies detected in rulebase."
+                "[INFO] NetFlow v9 template refreshed; App-ID field (IE 56701) decoded for 114,800 flows."
+            ]
+        },
+        "dc-ciscoasa": {
+            name: "DC-CiscoASA-01",
+            vendor: "Cisco ASA SNMP Profile (ASA 9.18)",
+            cpu: 33,
+            sessions: "72,540",
+            vpn: "24 / 24",
+            ha: "Active-Standby",
+            haTrend: "Failover healthy (peer standby)",
+            logs: [
+                "[INFO] Poller cycle complete for device DC-CiscoASA-01. Cisco enterprise MIBs matched.",
+                "[INFO] CISCO-FIREWALL-MIB: connection count 72,540 (cfwConnectionStatValue).",
+                "[TRAP] NSEL flow DENIED: 185.112.145.4 → 10.100.4.7:23 (firewall_event=denied).",
+                "[INFO] CISCO-MEMORY-POOL-MIB: pool 41% used. Failover pair synchronized."
             ]
         },
         "edge-sonicwall": {
@@ -189,7 +201,7 @@ function setupDashboardSimulator() {
             haTrend: "HA not configured",
             logs: [
                 "[INFO] Poller cycle complete for device Lab-Firewalla-01.",
-                "[INFO] Remote probe relay ping complete: handshake schema version v0.10.498 verified.",
+                "[INFO] Remote probe relay ping complete: handshake schema version v0.11.31 verified.",
                 "[INFO] CPU memory footprint: 1.2GB/4GB (30% consumed).",
                 "[INFO] Flow database vacuum complete. Cleaned 0 rows."
             ]
@@ -301,15 +313,18 @@ function setupDashboardSimulator() {
         // Sessions
         if (sessionsValEl) sessionsValEl.textContent = devData.sessions;
         
-        // VPN
+        // VPN — parse "up / total" so any healthy pair reads as UP (not just
+        // the two hardcoded strings the old logic checked for).
         if (vpnValEl) vpnValEl.textContent = devData.vpn;
         if (vpnTrendEl) {
-            if (devData.vpn.includes("12 / 12") || devData.vpn.includes("2 / 2")) {
-                vpnTrendEl.textContent = window.t ? window.t("demo.vpn_trend_up") : "All tunnels UP";
-                vpnTrendEl.className = "metric-trend text-success";
-            } else if (devData.vpn.includes("0 / 0")) {
+            const parts = String(devData.vpn).split("/").map(s => parseInt(s.trim(), 10));
+            const up = parts[0], total = parts[1];
+            if (Number.isFinite(total) && total === 0) {
                 vpnTrendEl.textContent = window.t ? window.t("demo.vpn_trend_none") : "No tunnels defined";
                 vpnTrendEl.className = "metric-trend text-muted";
+            } else if (Number.isFinite(up) && Number.isFinite(total) && up >= total) {
+                vpnTrendEl.textContent = window.t ? window.t("demo.vpn_trend_up") : "All tunnels UP";
+                vpnTrendEl.className = "metric-trend text-success";
             } else {
                 vpnTrendEl.textContent = window.t ? window.t("demo.vpn_trend_alert") : "Tunnel degradation Alert";
                 vpnTrendEl.className = "metric-trend text-warning";
@@ -319,7 +334,7 @@ function setupDashboardSimulator() {
         // HA
         if (haValEl) {
             haValEl.textContent = window.t ? window.t(`devices.${activeDeviceKey}.ha`) : devData.ha;
-            if (devData.ha.includes("Active-Passive") || devData.ha.includes("Active-Active")) {
+            if (devData.ha.includes("Active-Passive") || devData.ha.includes("Active-Active") || devData.ha.includes("Active-Standby")) {
                 haValEl.className = "metric-value text-success";
             } else if (devData.ha.includes("CARP Backup") || devData.ha.includes("CARP Master")) {
                 haValEl.className = "metric-value text-warning";
@@ -609,85 +624,4 @@ function setupMobileNav() {
             }
         });
     }
-}
-
-/**
- * Dynamic GitHub Release Poller with caching
- */
-function setupGitHubReleasePoller() {
-    const repo = "xphox2/Firewall-Monitoring";
-    const cacheKey = "fw_mon_github_release";
-    const cacheExpiryKey = "fw_mon_github_release_expiry";
-    const oneHour = 60 * 60 * 1000; // 1 hour cache validation in ms
-
-    // Selectors
-    const repoStarsEl = document.getElementById("repo-stars");
-    const releaseBadgeEls = document.querySelectorAll(".git-release-tag");
-    const footerMetaEls = document.querySelectorAll("#footer-release-meta");
-
-    // Function to update UI elements with release details
-    function updateUI(tagName, publishDate) {
-        if (repoStarsEl) {
-            repoStarsEl.textContent = tagName;
-        }
-        
-        releaseBadgeEls.forEach(el => {
-            el.textContent = tagName;
-        });
-
-        if (footerMetaEls.length > 0 && publishDate) {
-            try {
-                const dateObj = new Date(publishDate);
-                const formattedDate = dateObj.toISOString().split('T')[0];
-                footerMetaEls.forEach(el => {
-                    el.textContent = `${tagName} (${formattedDate})`;
-                });
-            } catch (e) {
-                console.error("Error formatting date:", e);
-                footerMetaEls.forEach(el => {
-                    el.textContent = `${tagName}`;
-                });
-            }
-        }
-    }
-
-    // Check localStorage cache first to avoid rate-limiting
-    const cachedData = localStorage.getItem(cacheKey);
-    const cachedExpiry = localStorage.getItem(cacheExpiryKey);
-    const now = Date.now();
-
-    if (cachedData && cachedExpiry && now < parseInt(cachedExpiry, 10)) {
-        try {
-            const release = JSON.parse(cachedData);
-            updateUI(release.tag_name, release.published_at);
-            return;
-        } catch (e) {
-            console.error("Error parsing cached release data:", e);
-        }
-    }
-
-    // Fetch from GitHub API
-    fetch(`https://api.github.com/repos/${repo}/releases/latest`)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`GitHub API returned status ${response.status}`);
-            }
-            return response.json();
-        })
-        .then(data => {
-            if (data && data.tag_name) {
-                // Save to cache
-                localStorage.setItem(cacheKey, JSON.stringify({
-                    tag_name: data.tag_name,
-                    published_at: data.published_at
-                }));
-                localStorage.setItem(cacheExpiryKey, (now + oneHour).toString());
-
-                // Update UI
-                updateUI(data.tag_name, data.published_at);
-            }
-        })
-        .catch(error => {
-            console.error("Failed to fetch latest release from GitHub:", error);
-        });
 }

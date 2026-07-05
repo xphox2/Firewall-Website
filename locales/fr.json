@@ -3,6 +3,8 @@
     "why": "Pourquoi nous",
     "demo": "Démo en direct",
     "config_drift": "Dérive de Config",
+    "access": "Accès",
+    "alerting": "Alertes",
     "architecture": "Architecture",
     "features": "Fonctionnalités",
     "security": "Sécurité",
@@ -12,21 +14,20 @@
   },
   "hero": {
     "title": "Un seul panneau de verre pour votre <span class=\"accent-text\">flotte de pare-feux.</span>",
-    "subtitle": "Surveillance SNMP, sFlow, syslog, traps et dérive de configuration pour FortiGate, Palo Alto, SonicWall, pfSense, OPNsense et Firewalla. Auto-hébergé. Un seul conteneur. 30 secondes pour le premier sondage.",
+    "subtitle": "Surveillance SNMP, sFlow, NetFlow/IPFIX, syslog, traps et dérive de configuration pour FortiGate, Palo Alto, Cisco ASA, SonicWall, pfSense, OPNsense, Firewalla — et tout appareil SNMP. Multi-utilisateur avec rôles et 2FA. Auto-hébergé. Un seul conteneur. 30 secondes pour le premier sondage.",
     "copy_btn": "Copier",
     "copied_btn": "Copié !",
     "read_docs": "Lire la doc →",
-    "stat_audit_label": "Résultats d'audit ouverts",
+    "stat_audit_label": "Audité en continu",
     "stat_vendors_label": "Fournisseurs pris en charge",
-    "stat_license_label": "Licence Open Source",
-    "badge_prefix": "Dernière version :"
+    "stat_license_label": "Licence Open Source"
   },
   "why": {
     "tag": "Basé sur les Opérations",
-    "title": "Conçu pour les pare-feux.",
+    "title": "Conçu pour les pare-feux avant tout.",
     "intro": "Les outils généraux de surveillance réseau affichent un mur de graphiques OID génériques. Firewall-Mon est conçu spécifiquement pour les pare-feux.",
     "card1_title": "Intelligence fournisseur approfondie",
-    "card1_desc": "Les profils natifs pour six familles de pare-feux lisent le CPU, les sessions, les tunnels VPN, les états HA et les métriques SPU/ASIC dès la sortie de la boîte. Zéro configuration MIB fastidieuse.",
+    "card1_desc": "Les profils natifs pour huit familles de pare-feux lisent le CPU, les sessions, les tunnels VPN, les états HA et les métriques SPU/ASIC dès la sortie de la boîte. Zéro configuration MIB fastidieuse.",
     "card2_title": "Dérive de configuration avec tags de risque",
     "card2_desc": "Les modifications de configuration sont normalisées dans un modèle d'objet neutre vis-à-vis du fournisseur. Chaque modification est classée par risque, mettant en évidence les failles de sécurité avant votre audit.",
     "card3_title": "Sondages de traversée NAT/CGNAT",
@@ -37,7 +38,7 @@
     "title": "Le tableau de bord des opérations en direct",
     "intro": "Découvrez l'interface que les ingénieurs en sécurité réseau utilisent pour surveiller en temps réel une flotte de pare-feux distribuée.",
     "fleet_title": "FLOTTE DE PARE-FEUX",
-    "online_badge": "6 EN LIGNE",
+    "online_badge": "7 EN LIGNE",
     "poll_interval": "Intervalle de sondage : <strong>30s</strong>",
     "last_poll": "Dernier sondage :",
     "just_now": "À l'instant",
@@ -87,9 +88,9 @@
   },
   "sflow": {
     "tag": "Surveillance du trafic haute performance",
-    "title": "Analyseur de flux sFlow v5",
-    "intro": "Triez instantanément les pics de bande passante avec des détails bruts au niveau de la conversation, en utilisant notre pipeline PostgreSQL <code class=\"mono-code\">pgx COPY</code> qui écrit 10 fois plus vite que les insertions de lignes ORM normales.",
-    "live_stream": "Flux de trafic en direct (sFlow)",
+    "title": "Analyse de flux multi-protocole",
+    "intro": "Ingérez <strong>sFlow v5, NetFlow v5/v9 et IPFIX</strong> côte à côte — avec répartition de version basée sur le contenu, décodage de gabarits par fournisseur et <strong>visibilité des flux refusés</strong> à partir des événements de pare-feu. Triez les pics avec des détails bruts au niveau de la conversation grâce à notre pipeline PostgreSQL <code class=\"mono-code\">pgx COPY</code>, qui écrit 10 fois plus vite que les insertions de lignes ORM normales.",
+    "live_stream": "Flux de trafic en direct (sFlow · NetFlow · IPFIX)",
     "run_triage": "Exécuter le tri des pics",
     "src_addr": "Adresse source",
     "dst_addr": "Adresse de destination",
@@ -97,8 +98,38 @@
     "protocol": "Protocole",
     "flow_rate": "Débit de flux",
     "packets": "Paquets",
+    "flow_source": "Source",
+    "denied_tag": "REFUSÉ",
     "analysis_completed": "ANALYSE DE TRI DES PICS TERMINÉE :",
-    "alert_text": "Trafic anormal détecté sur le port 4444 de l'hôte <code class=\"mono-code\">10.200.5.88</code> vers l'IP externe <code class=\"mono-code\">185.112.145.4</code> (port Metasploit connu). Règle correspondante : <span class=\"tag-alert-rule\">Suspicious_Shell_Outbound</span>."
+    "alert_text": "Trafic sortant anormal sur le port 4444 de l'hôte <code class=\"mono-code\">10.200.5.88</code> vers <code class=\"mono-code\">185.112.145.4</code> (port Metasploit connu). Un événement de flux refusé NetFlow (<code class=\"mono-code\">firewall_event=denied</code>) provenant de la même IP externe corrèle un sondage Telnet entrant. Règle correspondante : <span class=\"tag-alert-rule\">Suspicious_Shell_Outbound</span>."
+  },
+  "access": {
+    "tag": "Contrôle d'accès et identité",
+    "title": "Multi-utilisateur, avec de vrais rôles.",
+    "intro": "Firewall-Mon n'est plus un outil à administrateur unique. Donnez à votre équipe un accès délimité, protégez les connexions avec l'authentification à deux facteurs et automatisez avec des jetons API — le tout appliqué côté serveur.",
+    "card1_title": "Contrôle d'accès basé sur les rôles",
+    "card1_desc": "Trois rôles — <strong>admin</strong>, <strong>opérateur</strong> et <strong>observateur</strong> — appliqués sur chaque route, pas seulement masqués dans l'interface. Les opérateurs effectuent les changements quotidiens ; les observateurs ont un accès en lecture seule ; seuls les admins touchent aux utilisateurs, identifiants et paramètres.",
+    "card2_title": "Authentification à deux facteurs",
+    "card2_desc": "2FA TOTP optionnelle (RFC 6238) avec codes de récupération à usage unique et un assistant d'inscription guidé. Les secrets sont chiffrés au repos ; activer ou désactiver le 2FA révoque instantanément chaque session active.",
+    "card3_title": "Jetons API délimités",
+    "card3_desc": "Émettez des jetons en lecture ou lecture/écriture pour l'automatisation et les comptes de service. Les privilèges des jetons suivent le rôle actuel du propriétaire, et désactiver ou supprimer un compte révoque instantanément ses jetons."
+  },
+  "alerting": {
+    "tag": "Alertes d'entreprise et astreinte",
+    "title": "Des alertes qui se comportent comme un NOC.",
+    "intro": "Réduisez le bruit et acheminez le signal. Firewall-Mon regroupe les incidents, escalade à travers des étapes d'astreinte hiérarchisées et établit une référence pour chaque appareil par rapport à son propre historique.",
+    "sg1_title": "Regroupement d'incidents",
+    "sg1_desc": "Lorsqu'un appareil se déconnecte, ses alertes CPU, interface et VPN s'attachent à un seul incident et restent en sourdine — vous obtenez donc une seule histoire et un seul résumé de rétablissement, pas une tempête de bipeurs.",
+    "sg2_title": "Chaînes d'étapes d'escalade",
+    "sg2_desc": "Définissez des étapes hiérarchisées par politique — 5 min, 15 min, 60 min — chacune acheminée vers ses propres canaux et destinataires. Les alertes non acquittées gravissent la chaîne automatiquement.",
+    "sg3_title": "Seuils intelligents",
+    "sg3_desc": "L'hystérésis à bande morte empêche le battement déclenchement/rétablissement, et la référence adaptative par score z alerte lorsqu'une métrique s'écarte de la normale glissante sur 24 h de l'appareil — pas une estimation statique.",
+    "sg4_title": "Suppression de battement",
+    "sg4_desc": "Les alertes qui se déclenchent et se résolvent à répétition sont étiquetées et mises en sourdine automatiquement, puis reprennent d'elles-mêmes une fois le motif stabilisé — aucune mise en sourdine manuelle, aucun événement réel manqué.",
+    "integrations_title": "Acheminez-les partout",
+    "integrations_desc": "Livrez vers les canaux où votre équipe vit déjà. PagerDuty, Opsgenie et Teams sont à états — les événements de rétablissement résolvent l'incident qu'ils ont ouvert. Les webhooks sont signés HMAC.",
+    "chip_email": "E-mail",
+    "mttr_note": "Les rapports pour dirigeants suivent le <strong>MTTA / MTTR</strong> et vos alertes les plus bruyantes sur une fenêtre glissante de 30 jours."
   },
   "probe": {
     "tag": "Topologie d'ingestion idempotente",
@@ -117,17 +148,21 @@
     "title": "Supervision de classe production.",
     "intro": "Chaque fonctionnalité est conçue pour la vitesse, la conformité et la neutralité vis-à-vis des fournisseurs.",
     "card1_title": "SNMP Multi-Constructeur",
-    "card1_desc": "Six constructeurs. Profils OID natifs. Zéro combat avec les MIB.",
+    "card1_desc": "Huit constructeurs — de FortiGate à Cisco ASA jusqu'à tout appareil SNMP. Profils OID natifs.",
     "card2_title": "Diffs de configuration classés par risque",
     "card2_desc": "Détectez une règle ouverte à ANY avant qu'elle ne soit déployée.",
-    "card3_title": "Collecte sFlow v5",
-    "card3_desc": "Principaux émetteurs, destinations et ports — sans PCAP.",
+    "card3_title": "Flux multi-protocole",
+    "card3_desc": "sFlow, NetFlow v5/v9 et IPFIX — avec visibilité des flux refusés. Sans PCAP.",
     "card4_title": "Architecture Probe-Relay",
-    "card4_desc": "Firewalls distants derrière CGNAT, interrogés via un flux HTTPS sortant unique.",
+    "card4_desc": "Firewalls de succursale derrière CGNAT, interrogés via un flux HTTPS sortant unique.",
     "card5_title": "Déploiement mono-conteneur",
     "card5_desc": "Un simple `docker compose up -d`. PostgreSQL 16 intégré.",
     "card6_title": "Sécurité conforme aux audits",
-    "card6_desc": "AES-256-GCM, rotation des clés, clés à échec rapide. 0 sur 170 vulnérabilités ouvertes."
+    "card6_desc": "AES-256-GCM, clés à échec rapide, journal d'audit en ajout uniquement. Audité en continu, zéro ouverte.",
+    "card7_title": "Rôles et 2FA",
+    "card7_desc": "RBAC, double authentification TOTP avec codes de récupération et jetons API délimités.",
+    "card8_title": "Alertes d'entreprise",
+    "card8_desc": "Regroupement d'incidents, chaînes d'escalade, PagerDuty, Opsgenie et Teams."
   },
   "reports": {
     "tag": "Rapports Opérationnels",
@@ -136,10 +171,10 @@
   },
   "security": {
     "tag": "Sécurité prête pour l'audit",
-    "title": "170 Vulnérabilités. Zéro Ouverte.",
-    "intro": "Nous avons soumis Firewall-Mon à un audit de sécurité complet comprenant 170 vulnérabilités. Chaque vulnérabilité a été entièrement résolue, corrigée et vérifiée avec notre suite de sécurité statique de 98 tests.",
+    "title": "Audité en continu. Zéro ouverte.",
+    "intro": "Firewall-Mon a subi des audits d'ingénierie indépendants répétés — à commencer par une revue de mise en accès public de 170 constatations et se poursuivant par des passes continues de cohérence et de sécurité. Des centaines de constatations ont été trouvées, corrigées et vérifiées en CI. Chacune est close.",
     "item1_title": "Chiffrement des secrets en AES-256-GCM",
-    "item1_desc": "Les communautés SNMP, les identifiants SSH et les jetons de webhook Slack sont verrouillés à l'aide de hachages de clés de chiffrement AES-GCM.",
+    "item1_desc": "Les communautés SNMP, les identifiants SSH, les secrets TOTP et chaque clé de notification — Slack, PagerDuty, Opsgenie et webhooks — sont chiffrés au repos avec AES-256-GCM.",
     "item2_title": "Validation de déchiffrement à échec rapide M8",
     "item2_desc": "Les agents d'interrogation et les récepteurs s'arrêtent immédiatement à l'initialisation si les identifiants de chiffrement de la base de données ne parviennent pas à déchiffrer les secrets. Évite les états d'interrogation obsolètes.",
     "item3_title": "Journal d'audit en ajout uniquement",
@@ -152,7 +187,7 @@
     "tab_docker": "Docker Compose",
     "tab_systemd": "Systemd / Natif",
     "tab_relay": "Relais de sonde distant",
-    "docker_desc": "Clonez le dépôt, configurez l'environnement et compilez le conteneur localement (image pré-construite disponible bientôt) :",
+    "docker_desc": "Récupérez l'image publiée depuis Docker Hub et démarrez la pile complète — PostgreSQL 16 est intégré — avec une seule commande :",
     "docker_next": "Cloner et déployer :",
     "systemd_desc": "Exécutez Firewall-Mon nativement en tant que démon systemd. Compilez le binaire unique à l'aide de Go 1.22+ :",
     "relay_desc": "Exécutez le collecteur léger Firewall-Collector sur des serveurs distants derrière des pare-feux de succursale pour relayer les données SNMP vers le serveur principal. L'image est hébergée sur Docker Hub :"
@@ -166,8 +201,7 @@
     "ref_docs": "Docs de référence",
     "arch_spec": "Spécifications d'arch",
     "changelog": "Journal des modifications",
-    "copyright": "&copy; 2026 Firewall-Mon. Un projet de <a href=\"https://www.technicallabs.org\" target=\"_blank\" style=\"color: var(--text-secondary); text-decoration: underline;\">TechnicalLabs</a> créé par Xphox de <a href=\"https://www.xphox.net\" target=\"_blank\" style=\"color: var(--text-secondary); text-decoration: underline;\">Xphox Networks</a>. Sous licence MIT.",
-    "meta": "v0.10.498 (27-06-2026)"
+    "copyright": "&copy; 2026 Firewall-Mon. Un projet de <a href=\"https://www.technicallabs.org\" target=\"_blank\" style=\"color: var(--text-secondary); text-decoration: underline;\">TechnicalLabs</a> créé par Xphox de <a href=\"https://www.xphox.net\" target=\"_blank\" style=\"color: var(--text-secondary); text-decoration: underline;\">Xphox Networks</a>. Sous licence MIT."
   },
   "devices": {
     "hq-fortigate": {
@@ -200,7 +234,18 @@
         "Cycle de sondage complet pour l'appareil Colo-PaloAlto-01.",
         "Limite de session : 500 000. Utilisation actuelle : 22%. Seuil de performance normal.",
         "PAN-OS : L'état du tunnel 'vpn-branch-32' est passé à DOWN. Déclenchement de la route AlertManager.",
-        "Invariants de sécurité statiques : 0 anomalie détectée dans la base de règles."
+        "Gabarit NetFlow v9 rafraîchi ; champ App-ID (IE 56701) décodé pour 114 800 flux."
+      ]
+    },
+    "dc-ciscoasa": {
+      "vendor": "Profil SNMP Cisco ASA (ASA 9.18)",
+      "ha": "Actif-Veille",
+      "haTrend": "Basculement sain (pair en veille)",
+      "logs": [
+        "Cycle de sondage complet pour l'appareil DC-CiscoASA-01. MIB entreprise Cisco correspondantes.",
+        "CISCO-FIREWALL-MIB : nombre de connexions 72 540 (cfwConnectionStatValue).",
+        "Flux NSEL REFUSÉ : 185.112.145.4 → 10.100.4.7:23 (firewall_event=denied).",
+        "CISCO-MEMORY-POOL-MIB : pool utilisé à 41%. Paire de basculement synchronisée."
       ]
     },
     "edge-sonicwall": {
@@ -231,7 +276,7 @@
       "haTrend": "HA non configuré",
       "logs": [
         "Cycle de sondage complet pour l'appareil Lab-Firewalla-01.",
-        "Ping du relais de sonde distant terminé : version du schéma v0.10.498 vérifiée.",
+        "Ping du relais de sonde distant terminé : version du schéma de négociation v0.11.31 vérifiée.",
         "Empreinte mémoire CPU : 1.2 Go/4 Go (30% consommé).",
         "Nettoyage de la base de données de flux terminé. Nettoyé 0 lignes."
       ]

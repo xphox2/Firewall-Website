@@ -2,3 +2,6 @@
 .vscode/
 Thumbs.db
 *.log
+node_modules/
+test-results/
+tests/package-lock.json

@@ -3,6 +3,8 @@
     "why": "Por que nós",
     "demo": "Demo ao vivo",
     "config_drift": "Desvio de Configuração",
+    "access": "Acesso",
+    "alerting": "Alertas",
     "architecture": "Arquitetura",
     "features": "Recursos",
     "security": "Segurança",
@@ -12,32 +14,31 @@
   },
   "hero": {
     "title": "Uma única tela para sua <span class=\"accent-text\">frota de firewalls.</span>",
-    "subtitle": "Monitoramento de SNMP, sFlow, syslog, traps e desvio de configuração em FortiGate, Palo Alto, SonicWall, pfSense, OPNsense e Firewalla. Auto-hospedado. Um contêiner. 30 segundos para o primeiro poll.",
+    "subtitle": "Monitoramento de SNMP, sFlow, NetFlow/IPFIX, syslog, traps e desvio de configuração em FortiGate, Palo Alto, Cisco ASA, SonicWall, pfSense, OPNsense, Firewalla — e qualquer dispositivo SNMP. Multiusuário com papéis e 2FA. Auto-hospedado. Um contêiner. 30 segundos para o primeiro poll.",
     "copy_btn": "Copiar",
     "copied_btn": "Copiado!",
     "read_docs": "Ler os docs →",
-    "stat_audit_label": "Descobertas de Auditoria Abertas",
+    "stat_audit_label": "Auditado Continuamente",
     "stat_vendors_label": "Fabricantes Suportados",
-    "stat_license_label": "Licença Open Source",
-    "badge_prefix": "Última Versão:"
+    "stat_license_label": "Licença Open Source"
   },
   "why": {
     "tag": "Focado em Operações",
-    "title": "Construído sob medida para firewalls.",
+    "title": "Construído com foco em firewalls.",
     "intro": "Ferramentas de monitoramento de rede genéricas fornecem apenas uma parede de gráficos OID padrão. O Firewall-Mon é feito especificamente para firewalls.",
     "card1_title": "Inteligência Profunda de Fabricantes",
-    "card1_desc": "Perfis nativos para seis famílias de firewalls leem CPU, sessões, túneis VPN, estados de HA e métricas de SPU/ASIC de forma imediata. Zero complicação com MIBs.",
+    "card1_desc": "Perfis nativos para oito famílias de firewalls leem CPU, sessões, túneis VPN, estados de HA e métricas de SPU/ASIC de forma imediata. Zero complicação com MIBs.",
     "card2_title": "Desvio de Configuração com Tags de Risco",
-    "card2_desc": "As alterações de configuração são normalizadas em um modelo de objeto neutro. Cada alteração é classificada por risco – destacando falhas de segurança antes da sua auditoria.",
+    "card2_desc": "As alterações de configuração são normalizadas em um modelo de objeto neutro em relação a fabricantes. Cada alteração é classificada por risco — destacando falhas de segurança antes da sua auditoria.",
     "card3_title": "Sondas para Travessia de NAT/CGNAT",
-    "card3_desc": "Coletores locais em locais remotos enviam métricas através de conexões HTTPS de saída. Nenhuma porta de entrada precisa ser exposta, mantendo suas filiais protegidas."
+    "card3_desc": "Sondas em locais remotos enviam métricas através de conexões HTTPS de saída. Nenhuma porta de entrada precisa ser exposta, mantendo suas filiais completamente protegidas."
   },
   "demo": {
     "tag": "Visualização Interativa",
     "title": "O Painel de Operações ao Vivo",
     "intro": "Experimente a interface que engenheiros de segurança de rede usam para monitorar uma frota de firewalls distribuída em tempo real.",
     "fleet_title": "FROTA DE FIREWALLS",
-    "online_badge": "6 ONLINE",
+    "online_badge": "7 ONLINE",
     "poll_interval": "Intervalo de poll: <strong>30s</strong>",
     "last_poll": "Último poll:",
     "just_now": "Agora mesmo",
@@ -72,7 +73,7 @@
   "drift": {
     "tag": "Classificação de Risco",
     "title": "Desvio de Configuração Classificado por Risco",
-    "intro": "Toda modificação de configuração é normalizada para um modelo neutro. Nosso sistema de classificação de segurança analisa cada diff e sinaliza vulnerabilidades.",
+    "intro": "Toda modificação de configuração é normalizada para um modelo neutro em relação a fabricantes. Nosso sistema de classificação de segurança analisa cada diff e sinaliza vulnerabilidades de segurança.",
     "detected_changes": "ALTERAÇÕES DETECTADAS",
     "change": "ALTERAÇÃO",
     "vulnerability_tagged": "Vulnerabilidade Marcada:",
@@ -87,9 +88,9 @@
   },
   "sflow": {
     "tag": "Monitoramento de Tráfego de Alta Performance",
-    "title": "Analisador de Fluxo sFlow v5",
-    "intro": "Identifique picos de largura de banda instantaneamente com detalhes brutos de conversação, utilizando nosso pipeline PostgreSQL <code class=\"mono-code\">pgx COPY</code> que grava 10× mais rápido do que inserções de linha normais via ORM.",
-    "live_stream": "Fluxo de Tráfego em Tempo Real (sFlow)",
+    "title": "Análise de Fluxo Multiprotocolo",
+    "intro": "Ingira <strong>sFlow v5, NetFlow v5/v9 e IPFIX</strong> lado a lado — com despacho de versão baseado em conteúdo, decodificação de templates por fabricante e <strong>visibilidade de fluxos negados</strong> a partir de eventos de firewall. Faça a triagem de picos com detalhe bruto no nível da conversação através do nosso pipeline PostgreSQL <code class=\"mono-code\">pgx COPY</code>, que grava 10× mais rápido do que inserções de linha normais via ORM.",
+    "live_stream": "Fluxo de Tráfego em Tempo Real (sFlow · NetFlow · IPFIX)",
     "run_triage": "Executar Triagem de Pico",
     "src_addr": "Endereço de Origem",
     "dst_addr": "Endereço de Destino",
@@ -97,8 +98,38 @@
     "protocol": "Protocolo",
     "flow_rate": "Taxa de Fluxo",
     "packets": "Pacotes",
+    "flow_source": "Origem",
+    "denied_tag": "NEGADO",
     "analysis_completed": "ANÁLISE DE TRIAGEM DE PICO CONCLUÍDA:",
-    "alert_text": "Tráfego anômalo detectado na Porta 4444 do host <code class=\"mono-code\">10.200.5.88</code> para o IP externo <code class=\"mono-code\">185.112.145.4</code> (porta conhecida de Metasploit). Regra correspondente: <span class=\"tag-alert-rule\">Suspicious_Shell_Outbound</span>."
+    "alert_text": "Tráfego de saída anômalo na Porta 4444 do host <code class=\"mono-code\">10.200.5.88</code> para <code class=\"mono-code\">185.112.145.4</code> (porta conhecida de Metasploit). Um evento NetFlow de fluxo negado (<code class=\"mono-code\">firewall_event=denied</code>) do mesmo IP externo correlaciona uma sondagem Telnet de entrada. Regra correspondente: <span class=\"tag-alert-rule\">Suspicious_Shell_Outbound</span>."
+  },
+  "access": {
+    "tag": "Controle de Acesso e Identidade",
+    "title": "Multiusuário, com papéis reais.",
+    "intro": "O Firewall-Mon deixou de ser uma ferramenta de administrador único. Dê à sua equipe acesso com escopo, proteja logins com autenticação de dois fatores e automatize com tokens de API — tudo imposto no lado do servidor.",
+    "card1_title": "Controle de Acesso Baseado em Papéis",
+    "card1_desc": "Três papéis — <strong>admin</strong>, <strong>operador</strong> e <strong>observador</strong> — impostos em cada rota, não apenas ocultos na interface. Operadores executam as alterações do dia a dia; observadores têm acesso somente leitura; apenas admins gerenciam usuários, credenciais e configurações.",
+    "card2_title": "Autenticação de Dois Fatores",
+    "card2_desc": "2FA TOTP opcional (RFC 6238) com códigos de recuperação de uso único e um assistente de inscrição guiado. Os segredos são criptografados em repouso; ativar ou desativar o 2FA revoga instantaneamente todas as sessões ativas.",
+    "card3_title": "Tokens de API com Escopo",
+    "card3_desc": "Emita tokens de leitura ou de leitura/escrita para automação e contas de serviço. Os privilégios do token seguem o papel atual do proprietário, e desativar ou excluir uma conta revoga instantaneamente seus tokens."
+  },
+  "alerting": {
+    "tag": "Alertas Corporativos e Plantão",
+    "title": "Alertas que se comportam como um NOC.",
+    "intro": "Corte o ruído e encaminhe o sinal. O Firewall-Mon agrupa incidentes, escala por etapas de plantão em camadas e cria uma linha de base para cada dispositivo em relação ao seu próprio histórico.",
+    "sg1_title": "Agrupamento de Incidentes",
+    "sg1_desc": "Quando um dispositivo fica offline, seus alertas de CPU, interface e VPN se anexam a um único incidente e permanecem silenciados — para que você receba uma única história e um único resumo de recuperação, e não uma enxurrada de notificações.",
+    "sg2_title": "Cadeias de Etapas de Escalonamento",
+    "sg2_desc": "Defina etapas em camadas por política — 5 min, 15 min, 60 min — cada uma encaminhada exatamente para seus próprios canais e destinatários. Alertas não confirmados sobem a cadeia automaticamente.",
+    "sg3_title": "Limiares Inteligentes",
+    "sg3_desc": "A histerese de banda de recuperação evita a oscilação entre disparo e recuperação, e a linha de base adaptativa por z-score alerta quando uma métrica se desvia do normal das últimas 24h do próprio dispositivo — e não de um palpite estático.",
+    "sg4_title": "Supressão de Oscilação",
+    "sg4_desc": "Alertas que disparam e se resolvem repetidamente são marcados e silenciados automaticamente, e depois retomam por conta própria assim que o padrão se estabiliza — sem silenciamento manual, sem perder eventos reais.",
+    "integrations_title": "Encaminhe para qualquer lugar",
+    "integrations_desc": "Entregue para os canais onde sua equipe já está. PagerDuty, Opsgenie e Teams têm estado — eventos de recuperação resolvem o incidente que abriram. Os webhooks são assinados com HMAC.",
+    "chip_email": "E-mail",
+    "mttr_note": "Relatórios executivos acompanham <strong>MTTA / MTTR</strong> e seus alertas mais ruidosos ao longo de 30 dias contínuos."
   },
   "probe": {
     "tag": "Topologia de Ingestão Idempotente",
@@ -106,44 +137,48 @@
     "intro": "Implante coletores locais em sites remotos para sincronizar a telemetria atrás de CGNAT através de HTTPS de saída, mantendo a paridade dos dados em links instáveis.",
     "safeguards_title": "Salvaguardas de Resiliência de Telemetria",
     "sg1_title": "Idempotência de X-Probe-Batch-ID",
-    "sg1_desc": "Cada lote de pacotes é marcado com um cabeçalho UUID exclusivo. Novas tentativas após perda de pacotes são validadas no destino, evitando duplicidade na análise de logs ou picos de tráfego falsos.",
+    "sg1_desc": "Cada lote de pacotes é marcado com um cabeçalho UUID exclusivo. Novas tentativas após perda de pacotes são validadas no destino, evitando duplicidade na análise de logs ou picos de tráfego.",
     "sg2_title": "Aperto de Mão de Versão de Schema",
-    "sg2_desc": "Se um coletor remoto e o collector central tiverem divergência de esquema, a API `fwmon-api` retorna HTTP 426 Upgrade Required. A fila do disco local é retida, travando seus logs até a conclusão segura da migração.",
+    "sg2_desc": "Se uma sonda remota e o coletor central tiverem divergência de esquema, o `fwmon-api` sinaliza HTTP 426 Upgrade Required. A fila do disco local da sonda é retida, travando seus logs até a conclusão segura da migração.",
     "sg3_title": "Criptografia de Segredos SHA-256",
-    "sg3_desc": "Chaves de autenticação de sondas e senhas de dispositivos são criptografadas em repouso usando AES-256-GCM. A verificação da descriptografia é executada ao iniciar; os coletores falham imediatamente se a chave for alterada."
+    "sg3_desc": "Chaves de autenticação de sondas e senhas de dispositivos são hasheadas em repouso usando AES-256-GCM. A verificação da descriptografia é executada ao iniciar; os coletores falham imediatamente se a chave for alterada."
   },
   "features": {
     "tag": "Capacidades",
     "title": "Monitoramento de nível de produção.",
     "intro": "Cada recurso é projetado para velocidade, conformidade e neutralidade de fabricante.",
     "card1_title": "SNMP Multi-Fabricante",
-    "card1_desc": "Seis fabricantes. Perfis OID nativos. Zero complicação com MIBs.",
-    "card2_title": "Diffs de Configuração por Risco",
+    "card1_desc": "Oito fabricantes — de FortiGate a Cisco ASA a qualquer dispositivo SNMP. Perfis OID nativos.",
+    "card2_title": "Diffs de Configuração Classificados por Risco",
     "card2_desc": "Detecte uma regra aberta para ANY antes de ser aplicada.",
-    "card3_title": "Ingestão sFlow v5",
-    "card3_desc": "Principais conexões, destinos e portas — sem necessidade de PCAP.",
+    "card3_title": "Fluxo Multiprotocolo",
+    "card3_desc": "sFlow, NetFlow v5/v9 e IPFIX — com visibilidade de fluxos negados. Sem PCAP.",
     "card4_title": "Arquitetura Probe-Relay",
-    "card4_desc": "Monitore firewalls em filiais atrás de CGNAT através de uma única conexão HTTPS de saída.",
+    "card4_desc": "Firewalls de filiais atrás de CGNAT, monitorados através de uma única conexão HTTPS de saída.",
     "card5_title": "Implantação em Contêiner Único",
-    "card5_desc": "Um simples `docker compose up -d`. PostgreSQL 16 integrado de fábrica.",
+    "card5_desc": "Um simples `docker compose up -d`. PostgreSQL 16 integrado.",
     "card6_title": "Segurança de Nível de Auditoria",
-    "card6_desc": "AES-256-GCM, rotação de chaves, chaves fail-fast. 0 de 170 descobertas abertas."
+    "card6_desc": "AES-256-GCM, chaves fail-fast, log de auditoria somente-anexação. Auditado continuamente, zero em aberto.",
+    "card7_title": "Papéis e 2FA",
+    "card7_desc": "RBAC, dois fatores TOTP com códigos de recuperação e tokens de API com escopo.",
+    "card8_title": "Alertas Corporativos",
+    "card8_desc": "Agrupamento de incidentes, cadeias de escalonamento, PagerDuty, Opsgenie e Teams."
   },
   "reports": {
     "tag": "Relatórios Operacionais",
     "title": "Relatórios por e-mail, redesenhados.",
-    "intro": "Resumos diários com novo estilo contendo Plus Jakarta Sans e gradientes escuros modernos – otimizados para compatibilidade com Gmail e Outlook."
+    "intro": "Resumos diários com novo estilo contendo Plus Jakarta Sans e gradientes escuros modernos — elaborados para serem totalmente compatíveis com Gmail e Outlook."
   },
   "security": {
     "tag": "Segurança Pronta para Auditoria",
-    "title": "170 Descobertas. Zero Abertas.",
-    "intro": "Submetemos o Firewall-Mon a uma auditoria de segurança abrangente de 170 descobertas. Todas as falhas foram resolvidas, corrigidas e verificadas sob nossa suíte de testes de segurança estáticos de 98 testes.",
+    "title": "Auditado continuamente. Zero em aberto.",
+    "intro": "O Firewall-Mon passou por repetidas auditorias de engenharia independentes — começando com uma revisão pública de lançamento com 170 descobertas e continuando por passagens contínuas de consistência e segurança. Centenas de descobertas foram encontradas, corrigidas e verificadas em CI. Todas estão fechadas.",
     "item1_title": "Criptografia de Segredos AES-256-GCM",
-    "item1_desc": "Comunidades SNMP, credenciais SSH e tokens de webhook do Slack são protegidos por hashes de chaves de criptografia AES-GCM.",
+    "item1_desc": "Comunidades SNMP, credenciais SSH, segredos TOTP e todas as chaves de notificação — Slack, PagerDuty, Opsgenie e webhooks — são criptografados em repouso com AES-256-GCM.",
     "item2_title": "Validação de Descriptografia Fail-Fast M8",
-    "item2_desc": "Coletores e receptores falham imediatamente na inicialização se as credenciais de criptografia do banco de dados não descriptografarem os segredos. Evita estados de polling corrompidos.",
+    "item2_desc": "Coletores e receptores falham imediatamente na inicialização se as credenciais de criptografia do banco de dados não descriptografarem os segredos. Evita estados de polling desatualizados.",
     "item3_title": "Trilha de Auditoria Append-Only",
-    "item3_desc": "Todas as ações administrativas, logins e backups de configuração geram registros imutáveis gravados diretamente no console."
+    "item3_desc": "Todas as ações administrativas, eventos de login e backups de configuração geram registros imutáveis gravados diretamente na saída padrão."
   },
   "quickstart": {
     "tag": "Início Rápido",
@@ -152,10 +187,10 @@
     "tab_docker": "Docker Compose",
     "tab_systemd": "Systemd / Nativo",
     "tab_relay": "Remote Probe Relay",
-    "docker_desc": "Clone o repositório, configure o ambiente e compile o contêiner localmente (imagem pré-compilada em breve):",
+    "docker_desc": "Baixe a imagem publicada no Docker Hub e suba a stack completa — PostgreSQL 16 está integrado — com um único comando:",
     "docker_next": "Clonar e implantar:",
     "systemd_desc": "Execute o Firewall-Mon nativamente como um daemon do systemd. Compile o executável único usando Go 1.22+:",
-    "relay_desc": "Execute o Firewall-Collector nas filiais para encaminhar dados SNMP para o servidor principal. Imagem hospedada no Docker Hub:"
+    "relay_desc": "Execute o leve Firewall-Collector em servidores remotos atrás de firewalls de filiais para encaminhar dados SNMP para o servidor principal. A imagem está hospedada no Docker Hub:"
   },
   "footer": {
     "brand_desc": "Sistema de monitoramento de firewall neutro em relação a fabricantes, construído para velocidade, auditorias de segurança e travessia de topologias complexas.",
@@ -166,8 +201,7 @@
     "ref_docs": "Docs de Referência",
     "arch_spec": "Especificação de Arquitetura",
     "changelog": "Registro de Alterações",
-    "copyright": "&copy; 2026 Firewall-Mon. Um projeto <a href=\"https://www.technicallabs.org\" target=\"_blank\" style=\"color: var(--text-secondary); text-decoration: underline;\">TechnicalLabs</a> criado por Xphox da <a href=\"https://www.xphox.net\" target=\"_blank\" style=\"color: var(--text-secondary); text-decoration: underline;\">Xphox Networks</a>. Licenciado sob a Licença MIT.",
-    "meta": "v0.10.498 (2026-06-27)"
+    "copyright": "&copy; 2026 Firewall-Mon. Um projeto <a href=\"https://www.technicallabs.org\" target=\"_blank\" style=\"color: var(--text-secondary); text-decoration: underline;\">TechnicalLabs</a> criado por Xphox da <a href=\"https://www.xphox.net\" target=\"_blank\" style=\"color: var(--text-secondary); text-decoration: underline;\">Xphox Networks</a>. Licenciado sob a Licença MIT."
   },
   "devices": {
     "hq-fortigate": {
@@ -177,7 +211,7 @@
       "logs": [
         "Ciclo de polling concluído para o dispositivo HQ-FortiGate-01. Todas as OIDs correspondem ao perfil do fabricante.",
         "FortiOS: Estado de HA verificado como saudável. Nó ativo na unidade primária.",
-        "Lote de interface sFlow enviado para PostgreSQL flow_samples (Pgx batch INSERT: OK)",
+        "Lote bruto de interface sFlow enviado para PostgreSQL flow_samples (Pgx batch INSERT: OK)",
         "FortiOS: Tentativa de login SSH de 10.100.12.80 - falha na autenticação."
       ]
     },
@@ -200,7 +234,18 @@
         "Ciclo de polling concluído para o dispositivo Colo-PaloAlto-01.",
         "Limite de sessões: 500.000. Uso atual: 22%. Limiar de desempenho normal.",
         "PAN-OS: Estado do túnel 'vpn-branch-32' alterado para DOWN. Acionando rota do AlertManager.",
-        "Invariantes de segurança estática: 0 anomalias detectadas na base de regras."
+        "Template NetFlow v9 atualizado; campo App-ID (IE 56701) decodificado para 114.800 fluxos."
+      ]
+    },
+    "dc-ciscoasa": {
+      "vendor": "Perfil SNMP Cisco ASA (ASA 9.18)",
+      "ha": "Ativo-Standby",
+      "haTrend": "Failover saudável (peer em standby)",
+      "logs": [
+        "Ciclo de polling concluído para o dispositivo DC-CiscoASA-01. MIBs corporativas Cisco correspondidas.",
+        "CISCO-FIREWALL-MIB: contagem de conexões 72.540 (cfwConnectionStatValue).",
+        "Fluxo NSEL NEGADO: 185.112.145.4 → 10.100.4.7:23 (firewall_event=denied).",
+        "CISCO-MEMORY-POOL-MIB: pool com 41% usado. Par de failover sincronizado."
       ]
     },
     "edge-sonicwall": {
@@ -231,7 +276,7 @@
       "haTrend": "HA não configurado",
       "logs": [
         "Ciclo de polling concluído para o dispositivo Lab-Firewalla-01.",
-        "Ping do coletor remoto concluído: versão do esquema v0.10.498 verificada.",
+        "Ping do relay da sonda remota concluído: versão do esquema de handshake v0.11.31 verificada.",
         "Pegada de memória de CPU: 1.2GB/4GB (30% consumida).",
         "Limpeza de banco de dados de fluxo concluída. Limpo 0 linhas."
       ]

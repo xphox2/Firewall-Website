@@ -3,6 +3,38 @@
 All notable changes to the Firewall-Mon marketing website are documented here.
 This file follows [Keep a Changelog](https://keepachangelog.com/) conventions; versions are newest-first.
 
+## [0.2.0] - 2026-07-05
+
+Major content refresh bringing the site up to date with the Firewall-Mon **v0.11** program
+(server v0.11.31 / collector v1.3.5). Prior versions advertised server v0.10.498.
+
+### Added
+- **Access Control & Identity** section — RBAC (admin/operator/viewer), TOTP two-factor
+  authentication with recovery codes, and scoped API tokens.
+- **Enterprise Alerting & On-Call** section — incident grouping, escalation step chains,
+  smart thresholds (hysteresis + z-score baselining), flap suppression, and an integrations
+  panel (Email, Slack, Discord, Webhook, IRC, PagerDuty, Opsgenie, Microsoft Teams) with
+  MTTA/MTTR reporting. Two new nav entries (Access, Alerting).
+- **Cisco ASA** device added to the live dashboard simulator (7 online), with realistic
+  Cisco enterprise-MIB metrics and an NSEL denied-flow log line.
+- Two new feature-grid tiles: "Roles & 2FA" and "Enterprise Alerting" (gradient tiles).
+- docs.html: NetFlow / IPFIX setup guide, a v0.11 changelog entry, and the full 8-vendor
+  profile map.
+
+### Changed
+- **Flow section** reworked from "sFlow v5 Flow Analyzer" to **Multi-Protocol Flow
+  Analytics** — sFlow + NetFlow v5/v9 + IPFIX, a flow-source column, and a denied-flow row.
+- **Vendors 6 → 8** everywhere (hero, why, features, README, simulator): added Cisco ASA
+  and a generic SNMP profile.
+- **Security** section reframed from a frozen "170 findings" to continuous-auditing language.
+- Quick start now uses the **published Docker Hub image** (`xphox/firewall-mon`) instead of a
+  local build, and documents the NetFlow (2055/udp) and IPFIX (4739/udp) ports.
+- Removed the build-version display entirely (hero "Latest Release" badge, nav version pill, footer version line) and the dead GitHub release poller — a marketing site doesn't need to track the product version. Hero subtitle broadened.
+- Simulator VPN/HA status logic made robust (parses "up / total" instead of matching
+  hardcoded strings; healthy Active-Standby pairs now read green).
+- All new/changed copy translated across the 10 locales (key parity preserved).
+- CSS cache-bust bumped to `?v=0.2.0`.
+
 ## [0.1.4] - 2026-06-28
 
 ### Changed

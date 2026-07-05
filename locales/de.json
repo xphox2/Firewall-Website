@@ -3,6 +3,8 @@
     "why": "Warum wir",
     "demo": "Live-Demo",
     "config_drift": "Konfigurations-Drift",
+    "access": "Zugriff",
+    "alerting": "Alarmierung",
     "architecture": "Architektur",
     "features": "Funktionen",
     "security": "Sicherheit",
@@ -11,33 +13,32 @@
     "github_docs": "GitHub"
   },
   "hero": {
-    "title": "Eine Oberfläche für Ihre <span class=\"accent-text\">Firewall-Flotte.</span>",
-    "subtitle": "SNMP, sFlow, Syslog, Traps und Konfigurations-Drift-Überwachung für FortiGate, Palo Alto, SonicWall, pfSense, OPNsense und Firewalla. Self-hosted. Ein Container. 30 Sekunden bis zur ersten Abfrage.",
+    "title": "Eine zentrale Oberfläche für Ihre <span class=\"accent-text\">Firewall-Flotte.</span>",
+    "subtitle": "SNMP, sFlow, NetFlow/IPFIX, Syslog, Traps und Konfigurations-Drift-Überwachung für FortiGate, Palo Alto, Cisco ASA, SonicWall, pfSense, OPNsense, Firewalla – und jedes SNMP-Gerät. Mehrbenutzerfähig mit Rollen und 2FA. Self-hosted. Ein Container. 30 Sekunden bis zur ersten Abfrage.",
     "copy_btn": "Kopieren",
     "copied_btn": "Kopiert!",
     "read_docs": "Dokumentation lesen →",
-    "stat_audit_label": "Offene Audit-Befunde",
+    "stat_audit_label": "Kontinuierlich auditiert",
     "stat_vendors_label": "Unterstützte Hersteller",
-    "stat_license_label": "Open-Source-Lizenz",
-    "badge_prefix": "Neueste Version:"
+    "stat_license_label": "Open-Source-Lizenz"
   },
   "why": {
     "tag": "Aus der Praxis",
     "title": "Speziell für Firewalls entwickelt.",
-    "intro": "Allgemeine Netzwerk-Monitoring-Tools bieten Ihnen oft nur eine Wand aus generischen OID-Graphen. Firewall-Mon ist speziell auf Firewalls ausgerichtet.",
+    "intro": "Allgemeine Netzwerk-Monitoring-Tools bieten Ihnen nur eine Wand aus generischen OID-Graphen. Firewall-Mon ist speziell für Firewalls entwickelt.",
     "card1_title": "Tiefe Hersteller-Intelligenz",
-    "card1_desc": "Native Profile für sechs Firewall-Familien lesen CPU, Sitzungen, VPN-Tunnel, HA-Status und SPU/ASIC-Metriken direkt ab Werk aus. Kein mühsames MIB-Konfigurieren mehr.",
+    "card1_desc": "Native Profile für acht Firewall-Familien lesen CPU, Sitzungen, VPN-Tunnel, HA-Status und SPU/ASIC-Metriken direkt ab Werk aus. Kein mühsames MIB-Konfigurieren.",
     "card2_title": "Konfigurations-Drift mit Risikotags",
-    "card2_desc": "Konfigurationsänderungen werden in ein herstellerneutrales Objektmodell normalisiert. Jede Änderung wird nach Risiko klassifiziert – so sehen Sie Sicherheitslücken noch vor dem Audit.",
+    "card2_desc": "Konfigurationsänderungen werden in ein herstellerneutrales Objektmodell normalisiert. Jede Änderung wird nach Risiko klassifiziert – so werden Sicherheitsverletzungen noch vor dem Audit hervorgehoben.",
     "card3_title": "NAT/CGNAT Traversal Probes",
-    "card3_desc": "Lokale Probes an entfernten Standorten senden Metriken über ausgehende HTTPS-Verbindungen. Es müssen keine eingehenden Ports geöffnet werden, wodurch Ihre Standorte geschützt bleiben."
+    "card3_desc": "Lokale Probes an entfernten Standorten senden Metriken über ausgehende HTTPS-Verbindungen. Es müssen keine eingehenden Ports geöffnet werden, wodurch Ihre Zweigstellen vollständig abgeschottet bleiben."
   },
   "demo": {
     "tag": "Interaktive Vorschau",
     "title": "Das Live-Betriebs-Dashboard",
     "intro": "Erleben Sie die Benutzeroberfläche, mit der Netzwerksicherheitsingenieure eine verteilte Firewall-Flotte in Echtzeit überwachen.",
     "fleet_title": "FIREWALL-FLOTTE",
-    "online_badge": "6 ONLINE",
+    "online_badge": "7 ONLINE",
     "poll_interval": "Abfrageintervall: <strong>30s</strong>",
     "last_poll": "Letzte Abfrage:",
     "just_now": "Gerade eben",
@@ -87,9 +88,9 @@
   },
   "sflow": {
     "tag": "Hochleistungs-Traffic-Monitoring",
-    "title": "sFlow v5 Flow-Analyzer",
-    "intro": "Analysieren Sie Bandbreitenspitzen sofort mit detaillierten Gesprächsdaten auf Paketebene über unsere PostgreSQL-Pipeline <code class=\"mono-code\">pgx COPY</code>, die 10× schneller schreibt als normale ORM-Zeileneinfügungen.",
-    "live_stream": "Live-Traffic-Stream (sFlow)",
+    "title": "Multi-Protokoll-Flow-Analytik",
+    "intro": "Erfassen Sie <strong>sFlow v5, NetFlow v5/v9 und IPFIX</strong> nebeneinander – mit inhaltsbasiertem Versions-Dispatch, herstellerspezifischer Template-Dekodierung und <strong>Sichtbarkeit abgelehnter Flows</strong> aus Firewall-Ereignissen. Analysieren Sie Spitzen anhand von Konversationsdetails auf Rohdatenebene über unsere PostgreSQL-Pipeline <code class=\"mono-code\">pgx COPY</code>, die 10× schneller schreibt als normale ORM-Zeileneinfügungen.",
+    "live_stream": "Live-Flow-Stream (sFlow · NetFlow · IPFIX)",
     "run_triage": "Spike-Triage ausführen",
     "src_addr": "Quelladresse",
     "dst_addr": "Zieladresse",
@@ -97,8 +98,38 @@
     "protocol": "Protokoll",
     "flow_rate": "Flow-Rate",
     "packets": "Pakete",
+    "flow_source": "Quelle",
+    "denied_tag": "ABGELEHNT",
     "analysis_completed": "SPIKE-TRIAGE-ANALYSE ABGESCHLOSSEN:",
-    "alert_text": "Anomaler Datenverkehr auf Port 4444 von Host <code class=\"mono-code\">10.200.5.88</code> zu externer IP <code class=\"mono-code\">185.112.145.4</code> (bekannter Metasploit-Port) erkannt. Übereinstimmende Regel: <span class=\"tag-alert-rule\">Suspicious_Shell_Outbound</span>."
+    "alert_text": "Anomaler ausgehender Datenverkehr auf Port 4444 von Host <code class=\"mono-code\">10.200.5.88</code> zu <code class=\"mono-code\">185.112.145.4</code> (bekannter Metasploit-Port). Ein NetFlow-Ereignis über einen abgelehnten Flow (<code class=\"mono-code\">firewall_event=denied</code>) von derselben externen IP korreliert mit einem eingehenden Telnet-Probe. Regelübereinstimmung: <span class=\"tag-alert-rule\">Suspicious_Shell_Outbound</span>."
+  },
+  "access": {
+    "tag": "Zugriffskontrolle & Identität",
+    "title": "Mehrbenutzerfähig, mit echten Rollen.",
+    "intro": "Firewall-Mon ist kein reines Single-Admin-Tool mehr. Geben Sie Ihrem Team abgestuften Zugriff, schützen Sie Anmeldungen mit Zwei-Faktor-Authentifizierung und automatisieren Sie mit API-Tokens – alles serverseitig durchgesetzt.",
+    "card1_title": "Rollenbasierte Zugriffskontrolle",
+    "card1_desc": "Drei Rollen – <strong>Admin</strong>, <strong>Operator</strong> und <strong>Viewer</strong> – werden auf jeder Route durchgesetzt, nicht nur in der UI versteckt. Operatoren führen den täglichen Betrieb aus; Viewer erhalten nur Lesezugriff; nur Admins verwalten Benutzer, Zugangsdaten und Einstellungen.",
+    "card2_title": "Zwei-Faktor-Authentifizierung",
+    "card2_desc": "Optionale TOTP-2FA (RFC 6238) mit einmalig nutzbaren Wiederherstellungscodes und einem geführten Einrichtungsassistenten. Geheimnisse werden im Ruhezustand verschlüsselt; das Aktivieren oder Deaktivieren von 2FA widerruft sofort jede aktive Sitzung.",
+    "card3_title": "Abgestufte API-Tokens",
+    "card3_desc": "Erstellen Sie Lese- oder Lese-/Schreib-Tokens für Automatisierung und Dienstkonten. Token-Berechtigungen folgen der aktuellen Rolle des Besitzers, und das Deaktivieren oder Löschen eines Kontos widerruft dessen Tokens sofort."
+  },
+  "alerting": {
+    "tag": "Enterprise-Alarmierung & Bereitschaft",
+    "title": "Alarme, die sich wie ein NOC verhalten.",
+    "intro": "Reduzieren Sie das Rauschen und leiten Sie das Signal weiter. Firewall-Mon gruppiert Vorfälle, eskaliert über abgestufte Bereitschaftsstufen und vergleicht jedes Gerät mit seiner eigenen Historie.",
+    "sg1_title": "Vorfallgruppierung",
+    "sg1_desc": "Wenn ein Gerät offline geht, werden dessen CPU-, Schnittstellen- und VPN-Alarme an einen einzigen Vorfall angehängt und stummgeschaltet – so erhalten Sie eine Geschichte und eine Wiederherstellungszusammenfassung, keinen Pager-Sturm.",
+    "sg2_title": "Eskalations-Stufenketten",
+    "sg2_desc": "Definieren Sie abgestufte Stufen pro Richtlinie – 5 Min., 15 Min., 60 Min. – jeweils an genau ihre eigenen Kanäle und Empfänger geleitet. Nicht quittierte Alarme steigen die Kette automatisch hinauf.",
+    "sg3_title": "Intelligente Schwellenwerte",
+    "sg3_desc": "Eine Hysterese mit Klarband stoppt das Flattern zwischen Auslösen und Wiederherstellen, und adaptives Z-Score-Baselining alarmiert, wenn eine Metrik vom eigenen normalen 24h-Verlauf des Geräts abweicht – kein statisches Raten.",
+    "sg4_title": "Flatter-Unterdrückung",
+    "sg4_desc": "Alarme, die wiederholt auslösen und sich auflösen, werden automatisch markiert und stummgeschaltet und nehmen von selbst wieder auf, sobald sich das Muster beruhigt – kein manuelles Stummschalten, keine verpassten echten Ereignisse.",
+    "integrations_title": "Leiten Sie es überallhin weiter",
+    "integrations_desc": "Zustellung an die Kanäle, in denen Ihr Team bereits arbeitet. PagerDuty, Opsgenie und Teams sind zustandsbehaftet – Wiederherstellungsereignisse lösen den Vorfall auf, den sie geöffnet haben. Webhooks sind HMAC-signiert.",
+    "chip_email": "E-Mail",
+    "mttr_note": "Management-Berichte verfolgen <strong>MTTA / MTTR</strong> und Ihre lautesten Alarme über rollierende 30 Tage."
   },
   "probe": {
     "tag": "Idempotente Ingestion-Topologie",
@@ -108,38 +139,42 @@
     "sg1_title": "X-Probe-Batch-ID-Idempotenz",
     "sg1_desc": "Jeder Paket-Batch ist mit einem eindeutigen, UUID-basierten Header versehen. Wiederholungsversuche bei Paketverlusten werden im Ruhezustand überprüft, um doppelte Protokollanalysen oder Datenverkehrsspitzen zu verhindern.",
     "sg2_title": "Schema-Version-Handshake",
-    "sg2_desc": "Wenn bei einer Remote-Probe und dem zentralen Collector ein Schema-Mismatch auftritt, meldet `fwmon-api` HTTP 426 Upgrade Required. Die interne Festplattenwarteschlange der Probe hält die Daten, bis die Migration sicher abgeschlossen ist.",
+    "sg2_desc": "Wenn bei einer Remote-Probe und dem zentralen Collector ein Schema-Mismatch auftritt, meldet `fwmon-api` HTTP 426 Upgrade Required. Die interne Festplattenwarteschlange der Probe hält die Daten und sperrt Ihre Protokolle, bis die Migration sicher abgeschlossen ist.",
     "sg3_title": "SHA-256-Geheimnisverschlüsselung",
-    "sg3_desc": "Probe-Authentifizierungsschlüssel und Gerätepasswörter werden im Ruhezustand mit AES-256-GCM-Verschlüsselung geschützt. Die Entschlüsselungsprüfung wird beim Start durchgeführt; Poller brechen bei einer Schlüsseländerung sofort ab."
+    "sg3_desc": "Probe-Authentifizierungsschlüssel und Gerätepasswörter werden im Ruhezustand mit AES-256-GCM gehasht. Die Entschlüsselungsprüfung wird beim Start durchgeführt; Poller brechen bei einer Schlüsseländerung sofort ab."
   },
   "features": {
     "tag": "Funktionen",
-    "title": "Überwachung auf Enterprise-Niveau.",
-    "intro": "Jedes Feature ist auf Geschwindigkeit, Compliance und Herstellerneutralität ausgelegt.",
+    "title": "Überwachung auf Produktionsniveau.",
+    "intro": "Jedes Feature ist auf Geschwindigkeit, Compliance-Posture und Herstellerneutralität ausgelegt.",
     "card1_title": "Multi-Vendor SNMP",
-    "card1_desc": "Unterstützung für sechs Hersteller. Native OID-Profile. Kein MIB-Wrestling.",
+    "card1_desc": "Acht Hersteller – von FortiGate über Cisco ASA bis zu jedem SNMP-Gerät. Native OID-Profile.",
     "card2_title": "Risikoklassifizierte Konfig-Diffs",
     "card2_desc": "Erkennen Sie eine auf ANY geöffnete Regel, bevor sie aktiv wird.",
-    "card3_title": "sFlow v5 Ingest",
-    "card3_desc": "Top-Talker, Ziele und Ports – ganz ohne PCAP.",
+    "card3_title": "Multi-Protokoll-Flow",
+    "card3_desc": "sFlow, NetFlow v5/v9 & IPFIX – mit Sichtbarkeit abgelehnter Flows. Kein PCAP.",
     "card4_title": "Probe-Relay-Architektur",
-    "card4_desc": "Firewalls in Zweigstellen hinter CGNAT über eine einzige ausgehende HTTPS-Verbindung abfragen.",
+    "card4_desc": "Firewalls in Zweigstellen hinter CGNAT, abgefragt über eine einzige ausgehende HTTPS-Verbindung.",
     "card5_title": "Ein-Container-Bereitstellung",
-    "card5_desc": "Ein einfaches `docker compose up -d`. PostgreSQL 16 ist bereits integriert.",
+    "card5_desc": "Ein `docker compose up -d`. PostgreSQL 16 ist bereits integriert.",
     "card6_title": "Sicherheit auf Audit-Niveau",
-    "card6_desc": "AES-256-GCM, Schlüsselrotation, Fail-Fast-Keys. 0 von 170 Audit-Befunden offen."
+    "card6_desc": "AES-256-GCM, Fail-Fast-Keys, Append-Only-Audit-Log. Kontinuierlich auditiert, null offen.",
+    "card7_title": "Rollen & 2FA",
+    "card7_desc": "RBAC, TOTP-Zwei-Faktor mit Wiederherstellungscodes und abgestufte API-Tokens.",
+    "card8_title": "Enterprise-Alarmierung",
+    "card8_desc": "Vorfallgruppierung, Eskalationsketten, PagerDuty, Opsgenie & Teams."
   },
   "reports": {
     "tag": "Betriebsberichte",
     "title": "E-Mail-Berichte, neu gestaltet.",
-    "intro": "Neu gestaltete tägliche Berichte mit Plus Jakarta Sans und modernen dunklen Farbverläufen – optimiert für Gmail und Outlook."
+    "intro": "Neu gestaltete tägliche Berichte mit Plus Jakarta Sans und modernen dunklen Farbverläufen – so gestaltet, dass sie vollständig mit Gmail und Outlook kompatibel sind."
   },
   "security": {
-    "tag": "Audit-Bereite Sicherheit",
-    "title": "170 Befunde. Null offen.",
-    "intro": "Wir haben Firewall-Mon einem umfassenden Sicherheitsaudit mit 170 Befunden unterzogen. Jeder einzelne Befund wurde vollständig behoben, gepatcht und unter unserer statischen Sicherheits-Testsuite mit 98 Tests verifiziert.",
+    "tag": "Audit-bereite Sicherheit",
+    "title": "Kontinuierlich auditiert. Null offen.",
+    "intro": "Firewall-Mon hat wiederholte unabhängige technische Audits durchlaufen – beginnend mit einer Public-Release-Prüfung mit 170 Befunden und fortlaufend über kontinuierliche Konsistenz- und Sicherheitsprüfungen. Hunderte von Befunden wurden gefunden, behoben und in CI verifiziert. Jeder einzelne ist geschlossen.",
     "item1_title": "AES-256-GCM-Geheimnisverschlüsselung",
-    "item1_desc": "SNMP-Communities, SSH-Zugangsdaten und Slack-Webhook-Token werden mit AES-GCM-Verschlüsselungsschlüssel-Hashes geschützt.",
+    "item1_desc": "SNMP-Communities, SSH-Zugangsdaten, TOTP-Geheimnisse und jeder Benachrichtigungsschlüssel – Slack, PagerDuty, Opsgenie und Webhooks – werden im Ruhezustand mit AES-256-GCM verschlüsselt.",
     "item2_title": "M8 Fail-Fast-Entschlüsselungsprüfung",
     "item2_desc": "Poller und Empfänger stürzen bei der Initialisierung sofort ab, wenn die Datenbank-Verschlüsselungsdaten Geheimnisse nicht entschlüsseln können. Verhindert veraltete Polling-Zustände.",
     "item3_title": "Append-Only-Audit-Trail",
@@ -147,13 +182,13 @@
   },
   "quickstart": {
     "tag": "Schnellstart",
-    "title": "30 Sekunden bis zum ersten Abfragezyklus.",
+    "title": "30 Sekunden bis zur ersten Abfrage.",
     "intro": "Stellen Sie die Anwendung lokal oder in der Produktion mit einem einzigen Befehl bereit.",
     "tab_docker": "Docker Compose",
     "tab_systemd": "Systemd / Nativ",
     "tab_relay": "Remote Probe Relay",
-    "docker_desc": "Klonen Sie das Repository, konfigurieren Sie die Umgebung und erstellen Sie den Container lokal (ein fertiges Image folgt in Kürze):",
-    "docker_next": "Klonen und starten:",
+    "docker_desc": "Ziehen Sie das veröffentlichte Image von Docker Hub und starten Sie den vollständigen Stack – PostgreSQL 16 ist bereits integriert – mit einem einzigen Befehl:",
+    "docker_next": "Klonen und bereitstellen:",
     "systemd_desc": "Führen Sie Firewall-Mon nativ als systemd-Daemon aus. Kompilieren Sie das einzelne Binary mit Go 1.22+:",
     "relay_desc": "Führen Sie den leichtgewichtigen Firewall-Collector auf Remote-Servern hinter Firewalls in Zweigstellen aus, um SNMP-Daten an den Hauptserver weiterzuleiten. Das Image wird auf Docker Hub gehostet:"
   },
@@ -166,8 +201,7 @@
     "ref_docs": "Referenz-Docs",
     "arch_spec": "Architekturspezifikation",
     "changelog": "Changelog",
-    "copyright": "&copy; 2026 Firewall-Mon. Ein <a href=\"https://www.technicallabs.org\" target=\"_blank\" style=\"color: var(--text-secondary); text-decoration: underline;\">TechnicalLabs</a>-Projekt, das von Xphox von <a href=\"https://www.xphox.net\" target=\"_blank\" style=\"color: var(--text-secondary); text-decoration: underline;\">Xphox Networks</a> erstellt wurde. Lizenziert unter der MIT-Lizenz.",
-    "meta": "v0.10.498 (2026-06-27)"
+    "copyright": "&copy; 2026 Firewall-Mon. Ein <a href=\"https://www.technicallabs.org\" target=\"_blank\" style=\"color: var(--text-secondary); text-decoration: underline;\">TechnicalLabs</a>-Projekt, das von Xphox von <a href=\"https://www.xphox.net\" target=\"_blank\" style=\"color: var(--text-secondary); text-decoration: underline;\">Xphox Networks</a> erstellt wurde. Lizenziert unter der MIT-Lizenz."
   },
   "devices": {
     "hq-fortigate": {
@@ -187,7 +221,7 @@
       "haTrend": "Peer aktiv (10.200.2.1)",
       "logs": [
         "Abfragezyklus für Gerät Branch-OPNsense-02 abgeschlossen.",
-        "CPU-Kerntemperaturen abgerufen: Kern0: 42°C, Kern1: 45°C.",
+        "CPU-Kerntemperaturen abgerufen: Core0: 42°C, Core1: 45°C.",
         "Flow-Batch über X-Probe-Batch-ID: e82f1b40 empfangen.",
         "OPNsense carp: Verbindungsstatus auf Schnittstelle wan geändert: BACKUP"
       ]
@@ -200,7 +234,18 @@
         "Abfragezyklus für Gerät Colo-PaloAlto-01 abgeschlossen.",
         "Sitzungslimit: 500.000. Aktuelle Nutzung: 22%. Leistungs-Schwellenwert normal.",
         "PAN-OS: Status von Tunnel 'vpn-branch-32' auf DOWN geändert. Starte AlertManager-Route.",
-        "Statische Sicherheitsinvariante: 0 Anomalien im Regelsatz erkannt."
+        "NetFlow-v9-Template aktualisiert; App-ID-Feld (IE 56701) für 114.800 Flows dekodiert."
+      ]
+    },
+    "dc-ciscoasa": {
+      "vendor": "Cisco ASA-SNMP-Profil (ASA 9.18)",
+      "ha": "Active-Standby",
+      "haTrend": "Failover gesund (Peer im Standby)",
+      "logs": [
+        "Abfragezyklus für Gerät DC-CiscoASA-01 abgeschlossen. Cisco-Enterprise-MIBs abgeglichen.",
+        "CISCO-FIREWALL-MIB: Verbindungsanzahl 72.540 (cfwConnectionStatValue).",
+        "NSEL-Flow ABGELEHNT: 185.112.145.4 → 10.100.4.7:23 (firewall_event=denied).",
+        "CISCO-MEMORY-POOL-MIB: Pool zu 41% belegt. Failover-Paar synchronisiert."
       ]
     },
     "edge-sonicwall": {
@@ -231,7 +276,7 @@
       "haTrend": "HA nicht konfiguriert",
       "logs": [
         "Abfragezyklus für Gerät Lab-Firewalla-01 abgeschlossen.",
-        "Ping-Abfrage für Remote Probe Relay erfolgreich: Schemaversion v0.10.498 verifiziert.",
+        "Ping-Abfrage für Remote Probe Relay erfolgreich: Handshake-Schemaversion v0.11.31 verifiziert.",
         "CPU-Speicherbedarf: 1,2 GB/4 GB (30% verbraucht).",
         "Flow-Datenbankbereinigung abgeschlossen. 0 Zeilen bereinigt."
       ]
