@@ -3,6 +3,8 @@
     "why": "選ばれる理由",
     "demo": "ライブデモ",
     "config_drift": "構成ドリフト",
+    "access": "アクセス管理",
+    "alerting": "アラート",
     "architecture": "アーキテクチャ",
     "features": "機能",
     "security": "セキュリティ",
@@ -12,11 +14,11 @@
   },
   "hero": {
     "title": "ファイアウォール群を<span class=\"accent-text\">一元管理。</span>",
-    "subtitle": "FortiGate, Palo Alto, SonicWall, pfSense, OPNsense, Firewallaに対応した、SNMP, sFlow, syslog, トラップおよび構成ドリフトの監視システム。セルフホスト対応、単一コンテナで動作、起動から最初のポーリングまでわずか30秒。",
+    "subtitle": "FortiGate, Palo Alto, Cisco ASA, SonicWall, pfSense, OPNsense, Firewalla、そしてあらゆるSNMPデバイスに対応した、SNMP, sFlow, NetFlow/IPFIX, syslog, トラップ、構成ドリフトの監視システム。ロールと2FAによるマルチユーザー対応。セルフホスト。単一コンテナ。起動から最初のポーリングまでわずか30秒。",
     "copy_btn": "コピー",
     "copied_btn": "コピーしました！",
     "read_docs": "ドキュメントを読む →",
-    "stat_audit_label": "未解決の監査指摘事項",
+    "stat_audit_label": "継続的に監査",
     "stat_vendors_label": "対応ベンダー数",
     "stat_license_label": "オープンソースライセンス",
     "badge_prefix": "最新リリース:"
@@ -26,7 +28,7 @@
     "title": "ファイアウォール専用設計。",
     "intro": "一般的なネットワーク監視ツールは凡庸なOIDグラフを並べるだけです。Firewall-Monはファイアウォールに特化して構築されています。",
     "card1_title": "ディープベンダーインテリジェンス",
-    "card1_desc": "6つの主要ファイアウォール製品に対応するネイティブプロファイルにより、CPU、セッション、VPNトンネル、HA状態、SPU/ASICメトリクスを即座に取得。複雑なMIB設定は不要です。",
+    "card1_desc": "8つのファイアウォール製品ファミリーに対応するネイティブプロファイルにより、CPU、セッション、VPNトンネル、HA状態、SPU/ASICメトリクスを即座に取得。複雑なMIB設定は不要です。",
     "card2_title": "リスクタグ付き構成ドリフト",
     "card2_desc": "構成の変更はベンダーに依存しない標準オブジェクトモデルに正規化されます。すべての変更がリスク分類され、監査前にセキュリティ侵害を浮き彫りにします。",
     "card3_title": "NAT/CGNAT トラバーサルプローブ",
@@ -37,7 +39,7 @@
     "title": "ライブ運用ダッシュボード",
     "intro": "ネットワークセキュリティエンジニアが分散されたファイアウォール群をリアルタイムで監視するために使用するインターフェースを体験してください。",
     "fleet_title": "ファイアウォール群",
-    "online_badge": "6台 オンライン",
+    "online_badge": "7台 オンライン",
     "poll_interval": "ポーリング間隔: <strong>30秒</strong>",
     "last_poll": "最終ポーリング:",
     "just_now": "たった今",
@@ -87,9 +89,9 @@
   },
   "sflow": {
     "tag": "高性能トラフィック監視",
-    "title": "sFlow v5 フローアナライザー",
-    "intro": "PostgreSQLの <code class=\"mono-code\">pgx COPY</code> パイプライン（通常のORM行挿入の10倍高速）を利用し、生データレベル of 会話詳細から帯域幅スパイクを即座に判定します。",
-    "live_stream": "ライブトラフィックストリーム (sFlow)",
+    "title": "マルチプロトコル フローアナリティクス",
+    "intro": "<strong>sFlow v5, NetFlow v5/v9, IPFIX</strong> を並行して取り込み — コンテンツベースのバージョン振り分け、ベンダーごとのテンプレートデコード、ファイアウォールイベントからの<strong>拒否フローの可視化</strong>を実現。PostgreSQLの <code class=\"mono-code\">pgx COPY</code> パイプライン（通常のORM行挿入の10倍高速）を利用し、生の会話レベルの詳細からスパイクを判定します。",
+    "live_stream": "ライブフローストリーム (sFlow · NetFlow · IPFIX)",
     "run_triage": "スパイク判定を実行",
     "src_addr": "送信元アドレス",
     "dst_addr": "送信先アドレス",
@@ -97,8 +99,38 @@
     "protocol": "プロトコル",
     "flow_rate": "流量",
     "packets": "パケット数",
+    "flow_source": "ソース",
+    "denied_tag": "拒否",
     "analysis_completed": "スパイク判定分析完了:",
-    "alert_text": "ホスト <code class=\"mono-code\">10.200.5.88</code> から外部IP <code class=\"mono-code\">185.112.145.4</code> へのポート 4444 上の異常トラフィックを検出しました (既知のMetasploitポート)。マッチングルール: <span class=\"tag-alert-rule\">Suspicious_Shell_Outbound</span>。"
+    "alert_text": "ホスト <code class=\"mono-code\">10.200.5.88</code> から <code class=\"mono-code\">185.112.145.4</code> へのポート 4444 上の異常なアウトバウンドトラフィックを検出しました (既知のMetasploitポート)。同一の外部IPからのNetFlow拒否フローイベント (<code class=\"mono-code\">firewall_event=denied</code>) が、インバウンドのTelnet探索と相関しています。マッチングルール: <span class=\"tag-alert-rule\">Suspicious_Shell_Outbound</span>。"
+  },
+  "access": {
+    "tag": "アクセス制御とアイデンティティ",
+    "title": "本物のロールを備えたマルチユーザー。",
+    "intro": "Firewall-Monはもはや単一管理者向けのツールではありません。チームにスコープ付きアクセスを付与し、二要素認証でログインを保護し、APIトークンで自動化 — すべてサーバー側で強制されます。",
+    "card1_title": "ロールベースアクセス制御",
+    "card1_desc": "<strong>管理者</strong>、<strong>オペレーター</strong>、<strong>閲覧者</strong>の3つのロールを、UIで隠すだけでなくすべてのルートで強制。オペレーターは日常的な変更を実行し、閲覧者は読み取り専用、ユーザー・認証情報・設定に触れられるのは管理者だけです。",
+    "card2_title": "二要素認証",
+    "card2_desc": "使い捨てのリカバリーコードとガイド付き登録ウィザードを備えた、オプトインのTOTP 2FA (RFC 6238)。シークレットは保存時に暗号化され、2FAの有効化または無効化はすべての有効なセッションを即座に無効化します。",
+    "card3_title": "スコープ付きAPIトークン",
+    "card3_desc": "自動化やサービスアカウント向けに、読み取り専用または読み書きトークンを発行。トークンの権限は所有者の現在のロールに従い、アカウントの無効化または削除は即座にそのトークンを失効させます。"
+  },
+  "alerting": {
+    "tag": "エンタープライズアラートとオンコール",
+    "title": "NOCのように振る舞うアラート。",
+    "intro": "ノイズを削減し、シグナルを届けます。Firewall-Monはインシデントをグループ化し、階層化されたオンコールステップを通じてエスカレーションし、各デバイスを自身の履歴に対してベースライン化します。",
+    "sg1_title": "インシデントグループ化",
+    "sg1_desc": "デバイスがオフラインになると、そのCPU、インターフェース、VPNのアラートは単一のインシデントに集約されミュートされます — ポケベルの嵐ではなく、1つのストーリーと1つの復旧サマリーが得られます。",
+    "sg2_title": "エスカレーションステップチェーン",
+    "sg2_desc": "ポリシーごとに階層化されたステップ（5分、15分、60分）を定義し、それぞれを専用のチャネルと受信者に振り分けます。未確認のアラートは自動的にチェーンを上昇します。",
+    "sg3_title": "スマートしきい値",
+    "sg3_desc": "クリアバンドヒステリシスが発火/復旧のフラッピングを防ぎ、適応型のZスコアベースライン化により、メトリクスがデバイス自身の直近24時間の正常値から逸脱したときにアラートを出します — 静的な当て推量ではありません。",
+    "sg4_title": "フラップ抑制",
+    "sg4_desc": "繰り返し発火・解決するアラートは自動的にタグ付けされ沈黙化され、パターンが落ち着けば自ら再開します — 手動ミュートも、実イベントの見逃しもありません。",
+    "integrations_title": "どこへでもルーティング",
+    "integrations_desc": "チームが既に利用しているチャネルへ配信します。PagerDuty、Opsgenie、Teamsはステートフルで、復旧イベントは開いたインシデントを解決します。WebhookはHMAC署名されます。",
+    "chip_email": "メール",
+    "mttr_note": "エグゼクティブレポートは、直近30日間の<strong>MTTA / MTTR</strong>と最もノイズの多いアラートを追跡します。"
   },
   "probe": {
     "tag": "べき等性インジェストトポロジー",
@@ -114,34 +146,38 @@
   },
   "features": {
     "tag": "対応機能",
-    "title": "本番環境に対応する監視性能。",
+    "title": "本番環境グレードの監視。",
     "intro": "すべての機能は、速度、コンプライアンス維持、ベンダーニュートラルを目的として設計されています。",
     "card1_title": "マルチベンダー対応 SNMP",
-    "card1_desc": "6つの主要ベンダーに対応。ネイティブOIDプロファイル。複雑なMIB設定に悩まされることはありません。",
+    "card1_desc": "8つのベンダー — FortiGateからCisco ASA、あらゆるSNMPデバイスまで。ネイティブOIDプロファイル。",
     "card2_title": "リスク分類された構成差分",
-    "card2_desc": "送信元「ANY」に開放された危険なルールを、デプロイ前に警告します。",
-    "card3_title": "sFlow v5 インジェスト",
-    "card3_desc": "PCAPデータなしで、主要な接続元、接続先、ポートをリアルタイム分析します。",
+    "card2_desc": "ANYに開放されたルールを、デプロイ前に浮き彫りにします。",
+    "card3_title": "マルチプロトコルフロー",
+    "card3_desc": "sFlow, NetFlow v5/v9 & IPFIX — 拒否フローの可視化付き。PCAP不要。",
     "card4_title": "プローブ・リレー アーキテクチャ",
     "card4_desc": "CGNAT背後の拠点ファイアウォールを、アウトバウンドHTTPSのシングル接続でポーリングします。",
     "card5_title": "シングルコンテナデプロイ",
-    "card5_desc": "単一の `docker compose up -d` コマンドで起動。PostgreSQL 16も同梱されています。",
-    "card6_title": "監査対応レベルのセキュリティ",
-    "card6_desc": "AES-256-GCM、自動キーローテーション、フェイルファストキーを採用。170項目の指摘はすべて対応済み。"
+    "card5_desc": "単一の `docker compose up -d`。PostgreSQL 16も同梱。",
+    "card6_title": "監査グレードのセキュリティ",
+    "card6_desc": "AES-256-GCM、フェイルファストキー、追記専用の監査ログ。継続的に監査され、未解決ゼロ。",
+    "card7_title": "ロールと2FA",
+    "card7_desc": "RBAC、リカバリーコード付きTOTP二要素認証、スコープ付きAPIトークン。",
+    "card8_title": "エンタープライズアラート",
+    "card8_desc": "インシデントグループ化、エスカレーションチェーン、PagerDuty、Opsgenie & Teams。"
   },
   "reports": {
     "tag": "運用レポート",
-    "title": "美しく再設計された電子メールレポート。",
-    "intro": "Plus Jakarta Sansフォントとモダンなダークグラデーションを採用した新しい日次概要レポート。GmailやOutlookとの完全な互換性を確保して作されています。"
+    "title": "再設計された電子メールレポート。",
+    "intro": "Plus Jakarta Sansフォントとモダンなダークグラデーションを採用した新しいスタイルの日次概要レポート — GmailやOutlookとの完全な互換性を追求して作り込まれています。"
   },
   "security": {
     "tag": "監査対応済みのセキュリティ",
-    "title": "170の指摘事項。未解決ゼロ。",
-    "intro": "Firewall-Monは170項目に及ぶ包括的なセキュリティ監査を受けました。すべての指摘事項は完全に対処・修正され、98項目の静的セキュリティテストスイートで合格が実証されています。",
+    "title": "継続的に監査済み。未解決ゼロ。",
+    "intro": "Firewall-Monは、170項目の指摘を含む公開リリースレビューを起点として、継続的な一貫性・セキュリティレビューを通じ、独立したエンジニアリング監査を繰り返し受けてきました。数百件の指摘が発見・修正され、CIで検証されています。そのすべてがクローズされています。",
     "item1_title": "AES-256-GCMによるシークレットの暗号化",
-    "item1_desc": "SNMPコミュニティ名、SSH認証情報、Slack Webhookトークンは、AES-GCM暗号化キーのハッシュを使用して保護されています。",
+    "item1_desc": "SNMPコミュニティ名、SSH認証情報、TOTPシークレット、そしてSlack、PagerDuty、Opsgenie、Webhookを含むすべての通知キーは、AES-256-GCMで保存時に暗号化されます。",
     "item2_title": "M8フェイルファスト復号検証",
-    "item2_desc": "データベース暗号化キーでのシークレット復号に失敗した場合、ポーラーとレシーバーは初期化時に即座にクラッシュします。不正なポーリング状態を防ぎます。",
+    "item2_desc": "データベース暗号化認証情報でのシークレット復号に失敗した場合、ポーラーとレシーバーは初期化時に即座にクラッシュします。不正なポーリング状態を防ぎます。",
     "item3_title": "追記専用の監査トレイル",
     "item3_desc": "すべての管理者操作、ログインイベント、構成バックアップは、標準出力に直接書き出される不変ログを生成します。"
   },
@@ -152,7 +188,7 @@
     "tab_docker": "Docker Compose",
     "tab_systemd": "Systemd / ネイティブ",
     "tab_relay": "リモートプローブリレー",
-    "docker_desc": "リポジトリをクローンし、環境変数を設定して、コンテナをローカルでビルドします (ビルド済みイメージは近日提供予定):",
+    "docker_desc": "Docker Hubで公開されているイメージをプルし、1つのコマンドでスタック全体を起動します — PostgreSQL 16も同梱されています:",
     "docker_next": "クローンしてデプロイ:",
     "systemd_desc": "Firewall-Monをsystemdデーモンとしてネイティブに実行します。Go 1.22+を使用して単一バイナリをコンパイルします:",
     "relay_desc": "リモートサーバー上の拠点ファイアウォール背後で軽量なFirewall-Collectorを実行し、SNMPデータをメインサーバーに転送します。イメージはDocker Hubにホストされています:"
@@ -167,7 +203,7 @@
     "arch_spec": "アーキテクチャ仕様",
     "changelog": "変更履歴",
     "copyright": "&copy; 2026 Firewall-Mon. <a href=\"https://www.xphox.net\" target=\"_blank\" style=\"color: var(--text-secondary); text-decoration: underline;\">Xphox Networks</a>のXphoxによって作成された<a href=\"https://www.technicallabs.org\" target=\"_blank\" style=\"color: var(--text-secondary); text-decoration: underline;\">TechnicalLabs</a>プロジェクトです。MITライセンスのもとでライセンスされています。",
-    "meta": "v0.10.498 (2026-06-27)"
+    "meta": "v0.11.31 (2026-07-05)"
   },
   "devices": {
     "hq-fortigate": {
@@ -200,7 +236,18 @@
         "デバイス Colo-PaloAlto-01 のポーラーサイクルが完了しました。",
         "セッション制限: 500,000。現在の使用率: 22%。パフォーマンスしきい値は正常です。",
         "PAN-OS: トンネル 'vpn-branch-32' の状態が DOWN に変更されました。AlertManagerルートを起動しています。",
-        "静的セキュリティ不変条件: ルールベースで0件の異常が検出されました。"
+        "NetFlow v9 テンプレートが更新されました。App-IDフィールド (IE 56701) を114,800フローに対してデコードしました。"
+      ]
+    },
+    "dc-ciscoasa": {
+      "vendor": "Cisco ASA SNMPプロファイル (ASA 9.18)",
+      "ha": "アクティブ-スタンバイ",
+      "haTrend": "フェイルオーバー正常 (ピアはスタンバイ)",
+      "logs": [
+        "デバイス DC-CiscoASA-01 のポーラーサイクルが完了しました。Cisco エンタープライズMIBが一致しました。",
+        "CISCO-FIREWALL-MIB: コネクション数 72,540 (cfwConnectionStatValue)。",
+        "NSEL フロー拒否: 185.112.145.4 → 10.100.4.7:23 (firewall_event=denied)。",
+        "CISCO-MEMORY-POOL-MIB: プール使用率 41%。フェイルオーバーペアは同期済み。"
       ]
     },
     "edge-sonicwall": {
@@ -231,7 +278,7 @@
       "haTrend": "HA未構成",
       "logs": [
         "デバイス Lab-Firewalla-01 のポーラーサイクルが完了しました。",
-        "リモートプローブリレーのping完了: ハンドシェイクスキーマバージョン v0.10.498 が検証されました。",
+        "リモートプローブリレーのping完了: ハンドシェイクスキーマバージョン v0.11.31 が検証されました。",
         "CPUメモリ使用量: 1.2GB/4GB (30%消費)。",
         "フローデータベースのVacuum処理が完了しました。削除された行: 0行。"
       ]

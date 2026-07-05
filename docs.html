@@ -13,8 +13,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Firewall-Mon — Technical Documentation</title>
-    <meta name="description" content="Reference documentation and architecture specifications for Firewall-Mon. Understand process components, telemetry sync loops, and SNMP setups.">
-    
+    <meta name="description" content="Reference documentation and architecture specifications for Firewall-Mon. Understand process components, telemetry sync loops, SNMP setups, and sFlow / NetFlow / IPFIX flow ingestion.">
+
     <!-- Favicon Links -->
     <link rel="icon" type="image/png" sizes="32x32" href="assets/features/f6-audit-posture.png">
     
@@ -24,7 +24,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&family=Plus+Jakarta+Sans:wght@600;700&display=swap" rel="stylesheet">
     
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="css/style.css?v=0.1.5">
+    <link rel="stylesheet" href="css/style.css?v=0.2.0">
     
     <!-- Custom Documentation Specific Styles -->
     <style>
@@ -566,6 +566,7 @@
                 <ul>
                     <li><span class="docs-nav-item" data-section="fortigate-snmp">FortiGate SNMP Setup</span></li>
                     <li><span class="docs-nav-item" data-section="fortigate-sflow">FortiGate sFlow Setup</span></li>
+                    <li><span class="docs-nav-item" data-section="netflow-ipfix">NetFlow / IPFIX Setup</span></li>
                     <li><span class="docs-nav-item" data-section="custom-vendor">Custom Profiles</span></li>
                 </ul>
             </nav>
@@ -577,7 +578,7 @@
             <!-- SECTION 1: Introduction -->
             <section class="docs-section" id="section-intro">
                 <h1>Documentation Overview</h1>
-                <p>Welcome to the Firewall-Mon documentation center. Firewall-Mon is a vendor-agnostic, high-performance firewall fleet monitoring system. It provides real-time SNMP status polling, raw sFlow traffic analytics, trap routing, and security-classified config drift logging in a unified dashboard.</p>
+                <p>Welcome to the Firewall-Mon documentation center. Firewall-Mon is a vendor-agnostic, high-performance firewall fleet monitoring system. It provides real-time SNMP status polling across eight vendor families, multi-protocol flow analytics (sFlow, NetFlow v5/v9, and IPFIX with denied-flow visibility), trap routing, and security-classified config drift logging in a unified dashboard — with role-based access control and optional two-factor authentication.</p>
                 
                 <h2>Product Posture</h2>
                 <p>Unlike general Network Management Systems (NMS) which offer generic OID walks and massive configuration tables, Firewall-Mon is designed strictly <strong>firewall-first</strong>. It provides immediate, out-of-the-box visibility into CPU/ASIC chips, interface states, dynamic VPN tunnels (IPsec, SSL, dialup), High Availability (HA) cluster health, and environment sensors.</p>
@@ -614,7 +615,7 @@
                             <div class="flow-elements">
                                 <div class="flow-el"><span>SNMP Agent</span> <span class="sub-lbl">UDP 161</span></div>
                                 <div class="flow-el"><span>Trap Generator</span> <span class="sub-lbl">UDP 162</span></div>
-                                <div class="flow-el"><span>sFlow Exporter</span> <span class="sub-lbl">UDP 6343</span></div>
+                                <div class="flow-el"><span>Flow Exporters</span> <span class="sub-lbl">sFlow 6343 · NetFlow 2055 · IPFIX 4739</span></div>
                             </div>
                         </div>
 
@@ -787,6 +788,35 @@
                 <p>Tracking the development of the Firewall-Mon monitoring system core from the verified releases. Semantic versioning is strictly followed.</p>
                 
                 <div class="changelog-timeline">
+                    <!-- Version 0.11.x program -->
+                    <div class="timeline-item">
+                        <div class="timeline-header">
+                            <span class="timeline-version">v0.11.x</span>
+                            <span class="timeline-date">2026-07</span>
+                        </div>
+                        <div class="timeline-body">
+                            <div class="timeline-badge-group">
+                                <span class="badge badge-info">Feature Program</span>
+                                <span class="badge badge-success">Security Audited</span>
+                            </div>
+                            <div class="timeline-change-item">
+                                <strong>NetFlow v5/v9 &amp; IPFIX ingestion:</strong> Added a full flow pipeline alongside sFlow — content-based version dispatch, a v9/IPFIX template engine, biflow handling, dual-export dedup, and <strong>denied-flow visibility</strong> (firewall_event) from FortiGate, Palo Alto, and Cisco ASA NSEL exporters. Server v0.11.20 + Collector v1.3.0 (Migration v29).
+                            </div>
+                            <div class="timeline-change-item">
+                                <strong>Access control &amp; 2FA:</strong> Multi-user with admin/operator/viewer roles enforced server-side, scoped API tokens, and opt-in TOTP two-factor authentication with recovery codes.
+                            </div>
+                            <div class="timeline-change-item">
+                                <strong>Enterprise alerting:</strong> Incident grouping, escalation step chains, flap suppression, clear-band hysteresis and z-score baselining, plus PagerDuty, Opsgenie, and Microsoft Teams channels and MTTA/MTTR reporting.
+                            </div>
+                            <div class="timeline-change-item">
+                                <strong>Two new SNMP vendors:</strong> Cisco ASA (Cisco enterprise CPU/memory/connection/failover MIBs) and a standards-only Generic (MIB-II / HOST-RESOURCES) profile bring supported vendors to eight.
+                            </div>
+                            <div class="timeline-change-item">
+                                <strong>Delivery:</strong> Official images published to Docker Hub (<code>xphox/firewall-mon</code>, <code>xphox/firewall-collector</code>), plus a Prometheus scrape pack and a prebuilt Grafana dashboard. Continuous engineering audits keep open findings at zero.
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- Version 0.10.498 -->
                     <div class="timeline-item">
                         <div class="timeline-header">
@@ -995,6 +1025,37 @@ sudo tcpdump -i any port 6343 -nn</code></pre>
                 </div>
             </section>
 
+            <!-- SECTION: NetFlow / IPFIX Setup -->
+            <section class="docs-section hidden" id="section-netflow-ipfix">
+                <h1>NetFlow &amp; IPFIX Setup Guide</h1>
+                <p>In addition to sFlow, Firewall-Mon (and the remote Firewall-Collector) ingest <strong>NetFlow v5, NetFlow v9, and IPFIX</strong>. Exporters are auto-detected by the datagram version word, so a v9 exporter aimed at the IPFIX port still decodes correctly. Point your firewall's flow export at the server (or a collector) on these UDP ports:</p>
+                <div class="code-block-wrapper">
+                    <pre><code class="lang-bash"># Default flow ingest ports
+6343/udp   # sFlow v5
+2055/udp   # NetFlow v5 / v9
+4739/udp   # IPFIX</code></pre>
+                </div>
+
+                <h2>1. Denied-Flow Visibility</h2>
+                <p>NetFlow v9/IPFIX exporters can emit firewall events (IE 233). Cisco ASA NSEL, FortiGate, and Palo Alto denial records are ingested as flows with <code>firewall_event = denied</code> — surfacing blocked traffic that never shows up in interface counters. Zero-byte denial and flow-create records are intentionally kept.</p>
+
+                <h2>2. Sampling &amp; Templates</h2>
+                <p>Sampled exporters (e.g. FortiGate sampled NetFlow) are pre-multiplied by the resolved sampling rate at ingest, so byte and packet counts reflect real volume. v9/IPFIX templates are cached (and persisted across restarts) per exporter, source ID, and template ID. For exporters that never advertise a sampler, set an explicit rate:</p>
+                <div class="code-block-wrapper">
+                    <pre><code class="lang-bash"># On the collector: pin a sampling rate for an exporter that omits options data
+PROBE_NETFLOW_SAMPLING_OVERRIDES=192.0.2.1=1000</code></pre>
+                </div>
+
+                <h2>3. Dual Export (sFlow + NetFlow)</h2>
+                <p>If a device exports both sFlow and NetFlow, Firewall-Mon de-duplicates per device so bytes aren't double-counted (default policy <code>prefer-netflow</code>), and the admin console flags any device seen exporting via more than one protocol in the last hour.</p>
+
+                <h2>4. Test Reception</h2>
+                <div class="code-block-wrapper">
+                    <pre><code class="lang-bash"># Inspect incoming NetFlow / IPFIX datagrams on the server host
+sudo tcpdump -i any 'udp port 2055 or udp port 4739' -nn</code></pre>
+                </div>
+            </section>
+
             <!-- SECTION 5: Custom Vendor Setup -->
             <section class="docs-section hidden" id="section-custom-vendor">
                 <h1>Custom SNMP Vendor Setup</h1>
@@ -1022,8 +1083,15 @@ sudo tcpdump -i any port 6343 -nn</code></pre>
                     <pre><code class="lang-go">var Profiles = map[string]VendorProfile{
     "fortigate": &amp;FortiGateProfile{},
     "paloalto":  &amp;PaloAltoProfile{},
-    "custom":    &amp;CustomProfile{}, // Your profile here
+    "cisco_asa": &amp;CiscoASAProfile{},
+    "sonicwall": &amp;SonicWallProfile{},
+    "firewalla": &amp;FirewallaProfile{},
+    "pfsense":   &amp;PfSenseProfile{},
+    "opnsense":  &amp;OPNsenseProfile{},
+    "generic":   &amp;GenericProfile{}, // standards-only MIB-II fallback
+    "custom":    &amp;CustomProfile{},  // Your profile here
 }</code></pre>
+                <p class="mt">Unknown or unmapped vendor strings fall back to the <code>generic</code> standards-only profile (MIB-II + HOST-RESOURCES), so any SNMP device reports interface, CPU, and memory metrics out of the box.</p>
                 </div>
             </section>
 
@@ -1070,7 +1138,7 @@ sudo tcpdump -i any port 6343 -nn</code></pre>
         <div class="footer-bottom">
             <div class="footer-bottom-container">
                 <p data-i18n="footer.copyright" data-i18n-html="true">&copy; 2026 Firewall-Mon. A <a href="https://www.technicallabs.org" target="_blank" style="color: var(--text-secondary); text-decoration: underline;">TechnicalLabs</a> project created by Xphox of <a href="https://www.xphox.net" target="_blank" style="color: var(--text-secondary); text-decoration: underline;">Xphox Networks</a>. Licensed under the MIT License.</p>
-                <div class="footer-meta" data-i18n="footer.meta" id="footer-release-meta">v0.10.498 (2026-06-27)</div>
+                <div class="footer-meta" data-i18n="footer.meta" id="footer-release-meta">v0.11.31 (2026-07-05)</div>
             </div>
         </div>
     </footer>

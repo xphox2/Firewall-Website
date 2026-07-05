@@ -146,7 +146,22 @@ function setupDashboardSimulator() {
                 "[INFO] Poller cycle complete for device Colo-PaloAlto-01.",
                 "[INFO] Session limit: 500,000. Current usage: 22%. Performance threshold normal.",
                 "[TRAP] PAN-OS: Tunnel 'vpn-branch-32' state changed to DOWN. Triggering AlertManager route.",
-                "[INFO] Static security invariants: 0 anomalies detected in rulebase."
+                "[INFO] NetFlow v9 template refreshed; App-ID field (IE 56701) decoded for 114,800 flows."
+            ]
+        },
+        "dc-ciscoasa": {
+            name: "DC-CiscoASA-01",
+            vendor: "Cisco ASA SNMP Profile (ASA 9.18)",
+            cpu: 33,
+            sessions: "72,540",
+            vpn: "24 / 24",
+            ha: "Active-Standby",
+            haTrend: "Failover healthy (peer standby)",
+            logs: [
+                "[INFO] Poller cycle complete for device DC-CiscoASA-01. Cisco enterprise MIBs matched.",
+                "[INFO] CISCO-FIREWALL-MIB: connection count 72,540 (cfwConnectionStatValue).",
+                "[TRAP] NSEL flow DENIED: 185.112.145.4 → 10.100.4.7:23 (firewall_event=denied).",
+                "[INFO] CISCO-MEMORY-POOL-MIB: pool 41% used. Failover pair synchronized."
             ]
         },
         "edge-sonicwall": {
@@ -189,7 +204,7 @@ function setupDashboardSimulator() {
             haTrend: "HA not configured",
             logs: [
                 "[INFO] Poller cycle complete for device Lab-Firewalla-01.",
-                "[INFO] Remote probe relay ping complete: handshake schema version v0.10.498 verified.",
+                "[INFO] Remote probe relay ping complete: handshake schema version v0.11.31 verified.",
                 "[INFO] CPU memory footprint: 1.2GB/4GB (30% consumed).",
                 "[INFO] Flow database vacuum complete. Cleaned 0 rows."
             ]
@@ -301,15 +316,18 @@ function setupDashboardSimulator() {
         // Sessions
         if (sessionsValEl) sessionsValEl.textContent = devData.sessions;
         
-        // VPN
+        // VPN — parse "up / total" so any healthy pair reads as UP (not just
+        // the two hardcoded strings the old logic checked for).
         if (vpnValEl) vpnValEl.textContent = devData.vpn;
         if (vpnTrendEl) {
-            if (devData.vpn.includes("12 / 12") || devData.vpn.includes("2 / 2")) {
-                vpnTrendEl.textContent = window.t ? window.t("demo.vpn_trend_up") : "All tunnels UP";
-                vpnTrendEl.className = "metric-trend text-success";
-            } else if (devData.vpn.includes("0 / 0")) {
+            const parts = String(devData.vpn).split("/").map(s => parseInt(s.trim(), 10));
+            const up = parts[0], total = parts[1];
+            if (Number.isFinite(total) && total === 0) {
                 vpnTrendEl.textContent = window.t ? window.t("demo.vpn_trend_none") : "No tunnels defined";
                 vpnTrendEl.className = "metric-trend text-muted";
+            } else if (Number.isFinite(up) && Number.isFinite(total) && up >= total) {
+                vpnTrendEl.textContent = window.t ? window.t("demo.vpn_trend_up") : "All tunnels UP";
+                vpnTrendEl.className = "metric-trend text-success";
             } else {
                 vpnTrendEl.textContent = window.t ? window.t("demo.vpn_trend_alert") : "Tunnel degradation Alert";
                 vpnTrendEl.className = "metric-trend text-warning";
@@ -319,7 +337,7 @@ function setupDashboardSimulator() {
         // HA
         if (haValEl) {
             haValEl.textContent = window.t ? window.t(`devices.${activeDeviceKey}.ha`) : devData.ha;
-            if (devData.ha.includes("Active-Passive") || devData.ha.includes("Active-Active")) {
+            if (devData.ha.includes("Active-Passive") || devData.ha.includes("Active-Active") || devData.ha.includes("Active-Standby")) {
                 haValEl.className = "metric-value text-success";
             } else if (devData.ha.includes("CARP Backup") || devData.ha.includes("CARP Master")) {
                 haValEl.className = "metric-value text-warning";

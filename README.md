@@ -9,9 +9,9 @@ This repository hosts the front-end codebase for the marketing website, complete
 ## 🚀 Features
 
 * **Modern, Sleek UI**: High-performance, fully responsive dark-themed landing page.
-* **Interactive Live Dashboard Simulator**: A real-time mockup console that simulates SNMP polling logs, interface bandwidth stats, and VPN states across 6 major firewall vendors (Fortinet, Palo Alto, SonicWall, pfSense, OPNsense, Firewalla).
+* **Interactive Live Dashboard Simulator**: A real-time mockup console that simulates SNMP polling logs, interface bandwidth stats, and VPN states across 8 firewall vendors (Fortinet, Palo Alto, Cisco ASA, SonicWall, pfSense, OPNsense, Firewalla, and a generic SNMP profile).
 * **Config Drift Viewer**: Interactive configuration change diff parser with risk classification.
-* **sFlow Spike Triage Simulator**: Live flow capture simulator demonstrating threat intelligence alerting.
+* **Multi-Protocol Flow Triage Simulator**: Live flow capture simulator (sFlow, NetFlow v5/v9, and IPFIX) demonstrating denied-flow visibility and threat-intelligence alerting.
 * **10 Supported Locales**: Fully internationalized (i18n) landing pages supporting:
   * English (EN)
   * Deutsch (DE)

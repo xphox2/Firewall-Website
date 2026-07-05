@@ -13,7 +13,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Firewall-Mon — One Pane of Glass for Your Firewall Fleet</title>
-    <meta name="description" content="Vendor-agnostic firewall monitoring with SNMP polling, sFlow ingest, config change tracking, and distributed probe-relays. Self-hosted in one Docker container.">
+    <meta name="description" content="Vendor-agnostic firewall monitoring with SNMP polling, sFlow + NetFlow/IPFIX flow analytics, config change tracking, role-based access with 2FA, and distributed probe-relays. Self-hosted in one Docker container.">
     
     <!-- Favicon Links -->
     <link rel="icon" type="image/png" sizes="32x32" href="assets/features/f6-audit-posture.png">
@@ -24,7 +24,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&family=Plus+Jakarta+Sans:wght@600;700&display=swap" rel="stylesheet">
     
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="css/style.css?v=0.1.5">
+    <link rel="stylesheet" href="css/style.css?v=0.2.0">
 </head>
 <body>
     <!-- Top Decorative Gradient Glows -->
@@ -48,6 +48,8 @@
                     <li><a href="#why" data-i18n="nav.why">Why Us</a></li>
                     <li><a href="#demo" data-i18n="nav.demo">Live Demo</a></li>
                     <li><a href="#config-diff" data-i18n="nav.config_drift">Config Drift</a></li>
+                    <li><a href="#access" data-i18n="nav.access">Access</a></li>
+                    <li><a href="#alerting" data-i18n="nav.alerting">Alerting</a></li>
                     <li><a href="#probe-relay" data-i18n="nav.architecture">Architecture</a></li>
                     <li><a href="#features" data-i18n="nav.features">Features</a></li>
                     <li><a href="#security" data-i18n="nav.security">Security</a></li>
@@ -59,7 +61,7 @@
                             <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
                         </svg>
                         <span data-i18n="nav.github">Star on GitHub</span>
-                        <span class="stars-count" id="repo-stars">v0.10.498</span>
+                        <span class="stars-count" id="repo-stars">v0.11.31</span>
                     </a>
                     
                     <a href="#quickstart" class="btn btn-primary btn-sm" data-i18n="nav.install">Install Now</a>
@@ -103,11 +105,11 @@
                 <div class="hero-text-content">
                     <div class="hero-badge">
                         <span class="pulse-dot"></span>
-                        <span data-i18n="hero.badge_prefix">Latest Release:</span> <span class="git-release-tag">v0.10.498</span>
+                        <span data-i18n="hero.badge_prefix">Latest Release:</span> <span class="git-release-tag">v0.11.31</span>
                     </div>
                     <h1 data-i18n="hero.title" data-i18n-html="true">One pane of glass for your <span class="accent-text">firewall fleet.</span></h1>
                     <p class="hero-subtitle" data-i18n="hero.subtitle">
-                        SNMP, sFlow, syslog, traps, and config drift monitoring across FortiGate, Palo Alto, SonicWall, pfSense, OPNsense, and Firewalla. Self-hosted. One container. 30 seconds to first poll.
+                        SNMP, sFlow, NetFlow/IPFIX, syslog, traps, and config-drift monitoring across FortiGate, Palo Alto, Cisco ASA, SonicWall, pfSense, OPNsense, Firewalla — and any SNMP device. Multi-user with roles and 2FA. Self-hosted. One container. 30 seconds to first poll.
                     </p>
                     
                     <div class="hero-ctas">
@@ -123,12 +125,12 @@
                     
                     <div class="trust-stats">
                         <div class="trust-stat">
-                            <span class="stat-number">0 / 170</span>
-                            <span class="stat-label" data-i18n="hero.stat_audit_label">Open Audit Findings</span>
+                            <span class="stat-number">0 Open</span>
+                            <span class="stat-label" data-i18n="hero.stat_audit_label">Continuously Audited</span>
                         </div>
                         <div class="trust-divider"></div>
                         <div class="trust-stat">
-                            <span class="stat-number">6</span>
+                            <span class="stat-number">8</span>
                             <span class="stat-label" data-i18n="hero.stat_vendors_label">Vendors Supported</span>
                         </div>
                         <div class="trust-divider"></div>
@@ -163,7 +165,7 @@
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
                         </div>
                         <h3 data-i18n="why.card1_title">Deep Vendor Intelligence</h3>
-                        <p data-i18n="why.card1_desc">Native profiles for six firewall families read CPU, sessions, VPN tunnels, HA states, and SPU/ASIC metrics out-of-the-box. Zero MIB wrestling.</p>
+                        <p data-i18n="why.card1_desc">Native profiles for eight firewall families read CPU, sessions, VPN tunnels, HA states, and SPU/ASIC metrics out-of-the-box. Zero MIB wrestling.</p>
                     </div>
                     
                     <div class="why-card">
@@ -199,7 +201,7 @@
                     <div class="sim-sidebar">
                         <div class="sidebar-header">
                             <h3 data-i18n="demo.fleet_title">FIREWALL FLEET</h3>
-                            <span class="badge badge-success" data-i18n="demo.online_badge">6 ONLINE</span>
+                            <span class="badge badge-success" data-i18n="demo.online_badge">7 ONLINE</span>
                         </div>
                         <ul class="device-list" id="sim-device-list">
                             <li class="device-item active" data-device="hq-fortigate">
@@ -221,6 +223,13 @@
                                 <div class="device-info">
                                     <span class="device-name">Colo-PaloAlto-01</span>
                                     <span class="device-model">PA-3410 (PAN-OS 10.2)</span>
+                                </div>
+                            </li>
+                            <li class="device-item" data-device="dc-ciscoasa">
+                                <span class="status-dot healthy"></span>
+                                <div class="device-info">
+                                    <span class="device-name">DC-CiscoASA-01</span>
+                                    <span class="device-model">ASA 5516-X (ASA 9.18)</span>
                                 </div>
                             </li>
                             <li class="device-item" data-device="edge-sonicwall">
@@ -483,33 +492,34 @@
             </div>
         </section>
 
-        <!-- sFlow v5 Ingest Section -->
+        <!-- Multi-Protocol Flow Analytics Section -->
         <section class="sflow-section" id="sflow">
             <div class="section-container">
                 <div class="section-header">
                     <span class="section-tag" data-i18n="sflow.tag">High-Performance Traffic Monitoring</span>
-                    <h2 data-i18n="sflow.title">sFlow v5 Flow Analyzer</h2>
-                    <p class="section-intro" data-i18n="sflow.intro" data-i18n-html="true">Triage bandwidth spikes instantly with raw conversation-level details, utilizing our PostgreSQL <code class="mono-code">pgx COPY</code> pipeline which writes 10× faster than normal ORM row inserts.</p>
+                    <h2 data-i18n="sflow.title">Multi-Protocol Flow Analytics</h2>
+                    <p class="section-intro" data-i18n="sflow.intro" data-i18n-html="true">Ingest <strong>sFlow v5, NetFlow v5/v9, and IPFIX</strong> side by side — with content-based version dispatch, per-vendor template decoding, and <strong>denied-flow visibility</strong> from firewall events. Triage spikes on raw conversation-level detail via our PostgreSQL <code class="mono-code">pgx COPY</code> pipeline, which writes 10× faster than normal ORM row inserts.</p>
                 </div>
-                
+
                 <div class="sflow-widget">
                     <div class="widget-header">
                         <div class="active-triage">
                             <span class="status-dot syncing"></span>
-                            <span>Live Traffic Stream (sFlow)</span>
+                            <span data-i18n="sflow.live_stream">Live Flow Stream (sFlow · NetFlow · IPFIX)</span>
                         </div>
-                        <button class="btn btn-secondary btn-sm" id="btn-triage-spike">Run Spike Triage</button>
+                        <button class="btn btn-secondary btn-sm" id="btn-triage-spike" data-i18n="sflow.run_triage">Run Spike Triage</button>
                     </div>
                     <div class="triage-table-wrapper">
                         <table class="triage-table" id="flow-table">
                             <thead>
                                 <tr>
-                                    <th>Source Address</th>
-                                    <th>Destination Address</th>
-                                    <th>Port</th>
-                                    <th>Protocol</th>
-                                    <th>Flow Rate</th>
-                                    <th>Packets</th>
+                                    <th data-i18n="sflow.src_addr">Source Address</th>
+                                    <th data-i18n="sflow.dst_addr">Destination Address</th>
+                                    <th data-i18n="sflow.port">Port</th>
+                                    <th data-i18n="sflow.protocol">Protocol</th>
+                                    <th data-i18n="sflow.flow_rate">Flow Rate</th>
+                                    <th data-i18n="sflow.packets">Packets</th>
+                                    <th data-i18n="sflow.flow_source">Source</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -520,6 +530,7 @@
                                     <td>TCP (TLS)</td>
                                     <td>1.2 MB/s</td>
                                     <td>850/s</td>
+                                    <td><span class="flow-src-tag sflow">sFlow</span></td>
                                 </tr>
                                 <tr class="flow-row">
                                     <td><code class="mono-code">10.100.12.14</code></td>
@@ -528,6 +539,7 @@
                                     <td>UDP (DNS)</td>
                                     <td>12 KB/s</td>
                                     <td>40/s</td>
+                                    <td><span class="flow-src-tag netflow">NetFlow v9</span></td>
                                 </tr>
                                 <tr class="flow-row">
                                     <td><code class="mono-code">192.168.50.8</code></td>
@@ -536,6 +548,16 @@
                                     <td>TCP (SMB)</td>
                                     <td>12.4 MB/s</td>
                                     <td>9,200/s</td>
+                                    <td><span class="flow-src-tag ipfix">IPFIX</span></td>
+                                </tr>
+                                <tr class="flow-row denied-flow">
+                                    <td><code class="mono-code">185.112.145.4</code></td>
+                                    <td><code class="mono-code">10.100.4.7</code></td>
+                                    <td>23</td>
+                                    <td>TCP <span class="tag-denied" data-i18n="sflow.denied_tag">DENIED</span></td>
+                                    <td>0 B/s</td>
+                                    <td>3/s</td>
+                                    <td><span class="flow-src-tag ipfix">IPFIX / NSEL</span></td>
                                 </tr>
                                 <tr class="flow-row" id="spike-row-1">
                                     <td><code class="mono-code">10.200.5.88</code></td>
@@ -544,6 +566,7 @@
                                     <td>TCP (Unencrypted)</td>
                                     <td>140 KB/s</td>
                                     <td>120/s</td>
+                                    <td><span class="flow-src-tag netflow">NetFlow v9</span></td>
                                 </tr>
                                 <tr class="flow-row">
                                     <td><code class="mono-code">10.100.4.15</code></td>
@@ -552,6 +575,7 @@
                                     <td>TCP (QUIC)</td>
                                     <td>450 KB/s</td>
                                     <td>320/s</td>
+                                    <td><span class="flow-src-tag sflow">sFlow</span></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -559,7 +583,110 @@
                     <div class="triage-alert hidden" id="triage-alert-box">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="alert-icon"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
                         <div class="alert-text">
-                            <strong>SPIKE TRIAGE ANALYSIS COMPLETED:</strong> Anomalous traffic detected on Port 4444 from host <code class="mono-code">10.200.5.88</code> to external IP <code class="mono-code">185.112.145.4</code> (Known Metasploit port). Rule matching: <span class="tag-alert-rule">Suspicious_Shell_Outbound</span>.
+                            <strong data-i18n="sflow.analysis_completed">SPIKE TRIAGE ANALYSIS COMPLETED:</strong> <span data-i18n="sflow.alert_text" data-i18n-html="true">Anomalous outbound traffic on Port 4444 from host <code class="mono-code">10.200.5.88</code> to <code class="mono-code">185.112.145.4</code> (known Metasploit port). A NetFlow denied-flow event (<code class="mono-code">firewall_event=denied</code>) from the same external IP correlates an inbound Telnet probe. Rule matching: <span class="tag-alert-rule">Suspicious_Shell_Outbound</span>.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Access Control & Identity Section -->
+        <section class="access-section" id="access">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-tag" data-i18n="access.tag">Access Control &amp; Identity</span>
+                    <h2 data-i18n="access.title">Multi-user, with real roles.</h2>
+                    <p class="section-intro" data-i18n="access.intro">Firewall-Mon is no longer a single-admin tool. Give your team scoped access, protect logins with two-factor authentication, and automate with API tokens — all enforced server-side.</p>
+                </div>
+
+                <div class="why-grid">
+                    <div class="why-card">
+                        <div class="card-icon-wrapper">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                        </div>
+                        <h3 data-i18n="access.card1_title">Role-Based Access Control</h3>
+                        <p data-i18n="access.card1_desc">Three roles — <strong>admin</strong>, <strong>operator</strong>, and <strong>viewer</strong> — enforced on every route, not just hidden in the UI. Operators run day-to-day changes; viewers get read-only; only admins touch users, credentials, and settings.</p>
+                    </div>
+
+                    <div class="why-card">
+                        <div class="card-icon-wrapper">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                        </div>
+                        <h3 data-i18n="access.card2_title">Two-Factor Authentication</h3>
+                        <p data-i18n="access.card2_desc">Opt-in TOTP 2FA (RFC 6238) with single-use recovery codes and a guided enrollment wizard. Secrets are encrypted at rest; enabling or disabling 2FA revokes every live session instantly.</p>
+                    </div>
+
+                    <div class="why-card">
+                        <div class="card-icon-wrapper">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"></path></svg>
+                        </div>
+                        <h3 data-i18n="access.card3_title">Scoped API Tokens</h3>
+                        <p data-i18n="access.card3_desc">Issue read or read/write tokens for automation and service accounts. Token privileges follow the owner's current role, and disabling or deleting an account instantly revokes its tokens.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Enterprise Alerting & On-Call Section -->
+        <section class="alerting-section" id="alerting">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-tag" data-i18n="alerting.tag">Enterprise Alerting &amp; On-Call</span>
+                    <h2 data-i18n="alerting.title">Alerts that behave like a NOC.</h2>
+                    <p class="section-intro" data-i18n="alerting.intro">Cut the noise and route the signal. Firewall-Mon groups incidents, escalates through tiered on-call steps, and baselines each device against its own history.</p>
+                </div>
+
+                <div class="probe-layout-grid">
+                    <div class="probe-details-panel">
+                        <div class="safeguard-item">
+                            <div class="sg-num">01</div>
+                            <div class="sg-content">
+                                <h4 data-i18n="alerting.sg1_title">Incident Grouping</h4>
+                                <p data-i18n="alerting.sg1_desc">When a device goes offline, its CPU, interface, and VPN alerts attach to a single incident and stay muted — so you get one story and one recovery summary, not a pager storm.</p>
+                            </div>
+                        </div>
+
+                        <div class="safeguard-item">
+                            <div class="sg-num">02</div>
+                            <div class="sg-content">
+                                <h4 data-i18n="alerting.sg2_title">Escalation Step Chains</h4>
+                                <p data-i18n="alerting.sg2_desc">Define tiered steps per policy — 5 min, 15 min, 60 min — each routed to exactly its own channels and recipients. Unacknowledged alerts climb the chain automatically.</p>
+                            </div>
+                        </div>
+
+                        <div class="safeguard-item">
+                            <div class="sg-num">03</div>
+                            <div class="sg-content">
+                                <h4 data-i18n="alerting.sg3_title">Smart Thresholds</h4>
+                                <p data-i18n="alerting.sg3_desc">Clear-band hysteresis stops fire/recover flapping, and adaptive z-score baselining alerts when a metric strays from the device's own trailing-24h normal — not a static guess.</p>
+                            </div>
+                        </div>
+
+                        <div class="safeguard-item">
+                            <div class="sg-num">04</div>
+                            <div class="sg-content">
+                                <h4 data-i18n="alerting.sg4_title">Flap Suppression</h4>
+                                <p data-i18n="alerting.sg4_desc">Alerts that fire and resolve repeatedly are tagged and silenced automatically, then resume on their own once the pattern settles — no manual muting, no missed real events.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="integrations-panel">
+                        <h3 data-i18n="alerting.integrations_title">Route it anywhere</h3>
+                        <p data-i18n="alerting.integrations_desc">Deliver to the channels your team already lives in. PagerDuty, Opsgenie, and Teams are stateful — recovery events resolve the incident they opened. Webhooks are HMAC-signed.</p>
+                        <div class="integration-chips">
+                            <span class="channel-chip" data-i18n="alerting.chip_email">Email</span>
+                            <span class="channel-chip">Slack</span>
+                            <span class="channel-chip">Discord</span>
+                            <span class="channel-chip">Webhook</span>
+                            <span class="channel-chip">IRC</span>
+                            <span class="channel-chip accent">PagerDuty</span>
+                            <span class="channel-chip accent">Opsgenie</span>
+                            <span class="channel-chip accent">Microsoft Teams</span>
+                        </div>
+                        <div class="integrations-metric">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V10"></path><path d="M18 20V4"></path><path d="M6 20v-4"></path></svg>
+                            <span data-i18n="alerting.mttr_note" data-i18n-html="true">Executive reports track <strong>MTTA / MTTR</strong> and your noisiest alerts over a rolling 30 days.</span>
                         </div>
                     </div>
                 </div>
@@ -649,7 +776,7 @@
                                 <span class="feature-card-title" data-i18n="features.card1_title">Multi-Vendor SNMP</span>
                                 <span class="feature-card-pill">01</span>
                             </div>
-                            <p class="feature-card-tagline" data-i18n="features.card1_desc">Six vendors. Native OID profiles. Zero MIB wrestling.</p>
+                            <p class="feature-card-tagline" data-i18n="features.card1_desc">Eight vendors — FortiGate to Cisco ASA to any SNMP device. Native OID profiles.</p>
                         </div>
                     </div>
                     
@@ -670,10 +797,10 @@
                         <div class="feature-card-overlay"></div>
                         <div class="feature-card-content">
                             <div class="feature-card-header">
-                                <span class="feature-card-title" data-i18n="features.card3_title">sFlow v5 Ingest</span>
+                                <span class="feature-card-title" data-i18n="features.card3_title">Multi-Protocol Flow</span>
                                 <span class="feature-card-pill">03</span>
                             </div>
-                            <p class="feature-card-tagline" data-i18n="features.card3_desc">Top talkers, destinations, and ports — without PCAP.</p>
+                            <p class="feature-card-tagline" data-i18n="features.card3_desc">sFlow, NetFlow v5/v9 &amp; IPFIX — with denied-flow visibility. No PCAP.</p>
                         </div>
                     </div>
                     
@@ -709,7 +836,31 @@
                                 <span class="feature-card-title" data-i18n="features.card6_title">Audit-Grade Security</span>
                                 <span class="feature-card-pill">06</span>
                             </div>
-                            <p class="feature-card-tagline" data-i18n="features.card6_desc">AES-256-GCM, key rotation, fail-fast keys. 0 of 170 findings open.</p>
+                            <p class="feature-card-tagline" data-i18n="features.card6_desc">AES-256-GCM, fail-fast keys, append-only audit log. Continuously audited, zero open.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 7 -->
+                    <div class="feature-card feature-card--noimg feature-card--access">
+                        <div class="feature-card-overlay"></div>
+                        <div class="feature-card-content">
+                            <div class="feature-card-header">
+                                <span class="feature-card-title" data-i18n="features.card7_title">Roles &amp; 2FA</span>
+                                <span class="feature-card-pill">07</span>
+                            </div>
+                            <p class="feature-card-tagline" data-i18n="features.card7_desc">RBAC, TOTP two-factor with recovery codes, and scoped API tokens.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 8 -->
+                    <div class="feature-card feature-card--noimg feature-card--alerting">
+                        <div class="feature-card-overlay"></div>
+                        <div class="feature-card-content">
+                            <div class="feature-card-header">
+                                <span class="feature-card-title" data-i18n="features.card8_title">Enterprise Alerting</span>
+                                <span class="feature-card-pill">08</span>
+                            </div>
+                            <p class="feature-card-tagline" data-i18n="features.card8_desc">Incident grouping, escalation chains, PagerDuty, Opsgenie &amp; Teams.</p>
                         </div>
                     </div>
                 </div>
@@ -736,13 +887,13 @@
                         <div class="email-content-body">
                             <div class="report-header">
                                 <h1>FIREWALL-MON</h1>
-                                <span class="report-date">June 28, 2026</span>
+                                <span class="report-date">July 5, 2026</span>
                             </div>
                             
                             <div class="report-hero">
                                 <div class="report-hero-left">
                                     <h2>All Systems Operational</h2>
-                                    <p>Daily Summary Report for your 6 monitored appliances.</p>
+                                    <p>Daily Summary Report for your 8 monitored appliances.</p>
                                 </div>
                                 <div class="report-hero-stat">
                                     <span class="stat-big">100%</span>
@@ -764,7 +915,7 @@
                                     <ul class="report-list">
                                         <li>Total Syslog Warnings: <strong class="color-warning">14</strong></li>
                                         <li>Critical Config Drifts: <strong class="color-danger">1</strong></li>
-                                        <li>VPN Tunnels Restarts: <strong>0</strong></li>
+                                        <li>Mean Time to Acknowledge: <strong>4.2 min</strong></li>
                                     </ul>
                                 </div>
                             </div>
@@ -789,15 +940,15 @@
                 <div class="security-grid">
                     <div class="security-text">
                         <span class="section-tag" data-i18n="security.tag">Audit-Ready Security</span>
-                        <h2 data-i18n="security.title">170 Findings. Zero Open.</h2>
-                        <p data-i18n="security.intro">We subjected Firewall-Mon to a comprehensive 170-finding security audit. Every single finding has been fully addressed, patched, and verified under our 98-test static security suite.</p>
+                        <h2 data-i18n="security.title">Continuously audited. Zero open.</h2>
+                        <p data-i18n="security.intro">Firewall-Mon has been through repeated independent engineering audits — starting with a 170-finding public-release review and continuing through ongoing consistency and security passes. Hundreds of findings have been found, fixed, and verified in CI. Every one is closed.</p>
                         
                         <div class="security-list">
                             <div class="sec-item">
                                 <svg class="sec-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
                                 <div>
                                     <h4 data-i18n="security.item1_title">AES-256-GCM Secret Encryption</h4>
-                                    <p data-i18n="security.item1_desc">SNMP communities, SSH credentials, and Slack webhook tokens are locked using AES-GCM encryption key hashes.</p>
+                                    <p data-i18n="security.item1_desc">SNMP communities, SSH credentials, TOTP secrets, and every notification key — Slack, PagerDuty, Opsgenie, and webhooks — are encrypted at rest with AES-256-GCM.</p>
                                 </div>
                             </div>
                             
@@ -825,7 +976,7 @@
                                 <svg width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                                     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                                 </svg>
-                                <span class="badge-audit-count">170/170</span>
+                                <span class="badge-audit-count">0 OPEN</span>
                             </div>
                             <h3>AUDIT POSTURE INVARIANT</h3>
                             <p class="status-green">VERIFIED SECURE • 0 FINDINGS OPEN</p>
@@ -857,18 +1008,20 @@
                     <div class="quickstart-content">
                         <!-- Docker content -->
                         <div class="qs-pane" id="qs-docker">
-                            <p data-i18n="quickstart.docker_desc">Clone the repository, configure the environment, and build the container locally (pre-built image coming soon):</p>
+                            <p data-i18n="quickstart.docker_desc">Pull the published image from Docker Hub and bring up the full stack — PostgreSQL 16 is bundled — with one command:</p>
                             <div class="code-block-wrapper">
                                 <pre><code class="lang-yaml">version: '3.8'
 services:
   firewall-mon:
-    build: . # Build from local Dockerfile (Image coming soon to Docker Hub)
+    image: xphox/firewall-mon:0.11 # Published to Docker Hub
     container_name: fwmon
     restart: unless-stopped
     ports:
       - "8080:8080"
-      - "162:162/udp" # SNMP Traps
+      - "162:162/udp"   # SNMP Traps
       - "6343:6343/udp" # sFlow
+      - "2055:2055/udp" # NetFlow v5/v9
+      - "4739:4739/udp" # IPFIX
     environment:
       - JWT_SECRET=change-this-vibe-secret-value-123
       - ENCRYPTION_KEY=32-byte-hex-string-for-aes-keys
@@ -922,8 +1075,8 @@ docker run -d \
   -e COLLECTOR_URL="https://your-main-collector:8080" \
   -e PROBE_KEY="sha256-probe-bearer-auth-token" \
   -e SYNC_INTERVAL=30s \
-  xphox/firewall-collector:latest</code></pre>
-                                <button class="btn-copy-code" data-clipboard="docker run -d --name fw-collector -e COLLECTOR_URL='https://your-main-collector:8080' -e PROBE_KEY='sha256-probe-bearer-auth-token' -e SYNC_INTERVAL=30s xphox/firewall-collector:latest">
+  xphox/firewall-collector:1.3</code></pre>
+                                <button class="btn-copy-code" data-clipboard="docker run -d --name fw-collector -e COLLECTOR_URL='https://your-main-collector:8080' -e PROBE_KEY='sha256-probe-bearer-auth-token' -e SYNC_INTERVAL=30s xphox/firewall-collector:1.3">
                                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="copy-icon"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
                                 </button>
                             </div>
@@ -974,7 +1127,7 @@ docker run -d \
         <div class="footer-bottom">
             <div class="footer-bottom-container">
                 <p data-i18n="footer.copyright" data-i18n-html="true">&copy; 2026 Firewall-Mon. A <a href="https://www.technicallabs.org" target="_blank" style="color: var(--text-secondary); text-decoration: underline;">TechnicalLabs</a> project created by Xphox of <a href="https://www.xphox.net" target="_blank" style="color: var(--text-secondary); text-decoration: underline;">Xphox Networks</a>. Licensed under the MIT License.</p>
-                <div class="footer-meta" data-i18n="footer.meta" id="footer-release-meta">v0.10.498 (2026-06-27)</div>
+                <div class="footer-meta" data-i18n="footer.meta" id="footer-release-meta">v0.11.31 (2026-07-05)</div>
             </div>
         </div>
     </footer>
