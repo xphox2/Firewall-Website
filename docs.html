@@ -566,6 +566,7 @@
                 <ul>
                     <li><span class="docs-nav-item" data-section="fortigate-snmp">FortiGate SNMP Setup</span></li>
                     <li><span class="docs-nav-item" data-section="fortigate-sflow">FortiGate sFlow Setup</span></li>
+                    <li><span class="docs-nav-item" data-section="fortigate-netflow">FortiGate NetFlow Setup</span></li>
                     <li><span class="docs-nav-item" data-section="netflow-ipfix">NetFlow / IPFIX Setup</span></li>
                     <li><span class="docs-nav-item" data-section="custom-vendor">Custom Profiles</span></li>
                 </ul>
@@ -924,7 +925,7 @@ end</code></pre>
                     <pre><code class="lang-bash">config system snmp
     config trapd
         edit 1
-            set ip <your-firewall-mon-server-ip>
+            set ip &lt;your-firewall-mon-server-ip&gt;
             set port 162
             set status enable
         next
@@ -1025,10 +1026,100 @@ sudo tcpdump -i any port 6343 -nn</code></pre>
                 </div>
             </section>
 
+            <!-- SECTION: FortiGate NetFlow Setup -->
+            <section class="docs-section hidden" id="section-fortigate-netflow">
+                <h1>FortiGate NetFlow Setup Guide</h1>
+                <p>Configure NetFlow v9 on your FortiGate to export session-level flow records — including <strong>denied sessions</strong> — to the Firewall-Mon server or remote Firewall-Collector on port <code>2055</code>. NetFlow complements sFlow: it carries complete session accounting and firewall events (allow/deny), which power the denied-flow analytics that packet-sampled sFlow cannot provide.</p>
+
+                <h2>1. Point NetFlow at the Collector</h2>
+                <p>On FortiOS 7.0 / 7.2 the collector is configured with flat fields:</p>
+                <div class="code-block-wrapper">
+                    <pre><code class="lang-bash">config system netflow
+    set collector-ip &lt;your-collector-or-server-ip&gt;
+    set collector-port 2055
+    set active-flow-timeout 60
+    set inactive-flow-timeout 15
+end</code></pre>
+                </div>
+                <p>On FortiOS 7.4 and later the flat fields were replaced by a collector table:</p>
+                <div class="code-block-wrapper">
+                    <pre><code class="lang-bash">config system netflow
+    config collectors
+        edit 1
+            set ip &lt;your-collector-or-server-ip&gt;
+            set port 2055
+        next
+    end
+    set active-flow-timeout 60
+    set inactive-flow-timeout 15
+end</code></pre>
+                </div>
+                <p>The default timeouts are acceptable if your build rejects the two <code>set</code> lines; the values above keep long-lived sessions reporting on a predictable cadence.</p>
+
+                <h2>2. Enable NetFlow on Specific Interfaces</h2>
+                <p>Like sFlow, NetFlow export is enabled per interface. Enable it on every interface whose traffic you want analyzed — WAN at minimum:</p>
+                <div class="code-block-wrapper">
+                    <pre><code class="lang-bash">config system interface
+    edit "port1"
+        set netflow-sampler both
+    next
+end</code></pre>
+                </div>
+                <p><code>both</code> exports ingress and egress; <code>rx</code> / <code>tx</code> restrict direction.</p>
+
+                <h2>3. Export Denied Sessions</h2>
+                <p>By default a FortiGate does not create session-table entries for denied traffic, so denials never appear in NetFlow. Two settings change that — note they live in <strong>different configuration trees</strong>:</p>
+                <div class="code-block-wrapper">
+                    <pre><code class="lang-bash"># Per-VDOM (repeat inside each VDOM if you use them)
+config system settings
+    set ses-denied-traffic enable
+end
+
+# Global (optional — 30 s is already the default)
+config system global
+    set block-session-timer 30
+end</code></pre>
+                </div>
+                <table class="docs-table">
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Scope</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>ses-denied-traffic</code></td>
+                            <td>per-VDOM</td>
+                            <td>Adds denied sessions to the session table so they export as NetFlow records with <code>firewall_event = denied</code>. This is what enables Firewall-Mon's denied-flow analytics.</td>
+                        </tr>
+                        <tr>
+                            <td><code>block-session-timer</code></td>
+                            <td>global</td>
+                            <td>Seconds a denied session stays in the table (1–300, default 30). Repeated denied packets refresh the timer. Lower it (e.g. 10) if the session table comes under pressure during scans — don't disable the feature.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h2>4. Verify on the FortiGate</h2>
+                <div class="code-block-wrapper">
+                    <pre><code class="lang-bash"># Confirm the exporter configuration
+get system netflow
+
+# Watch export datagrams leave toward the collector
+diagnose sniffer packet any 'udp and port 2055' 4 10</code></pre>
+                </div>
+                <p>Flows should appear on the Firewall-Mon Flows page labeled <strong>NetFlow v9</strong> within a few minutes of live traffic.</p>
+
+                <h2>5. Running sFlow and NetFlow Together</h2>
+                <p>If the device also exports sFlow, keep both enabled — the collector de-duplicates per device (default policy <code>prefer-netflow</code>) so byte totals are never double-counted, and the admin console flags devices seen exporting via more than one protocol. See the <em>NetFlow / IPFIX Setup</em> section for sampling overrides and template behavior.</p>
+            </section>
+
             <!-- SECTION: NetFlow / IPFIX Setup -->
             <section class="docs-section hidden" id="section-netflow-ipfix">
                 <h1>NetFlow &amp; IPFIX Setup Guide</h1>
-                <p>In addition to sFlow, Firewall-Mon (and the remote Firewall-Collector) ingest <strong>NetFlow v5, NetFlow v9, and IPFIX</strong>. Exporters are auto-detected by the datagram version word, so a v9 exporter aimed at the IPFIX port still decodes correctly. Point your firewall's flow export at the server (or a collector) on these UDP ports:</p>
+                <p>In addition to sFlow, Firewall-Mon (and the remote Firewall-Collector) ingest <strong>NetFlow v5, NetFlow v9, and IPFIX</strong>. Exporters are auto-detected by the datagram version word, so a v9 exporter aimed at the IPFIX port still decodes correctly. Point your firewall's flow export at the server (or a collector) on these UDP ports (FortiGate operators: the <em>FortiGate NetFlow Setup</em> guide has the exact CLI, including denied-session export):</p>
                 <div class="code-block-wrapper">
                     <pre><code class="lang-bash"># Default flow ingest ports
 6343/udp   # sFlow v5
