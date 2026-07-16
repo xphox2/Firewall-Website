@@ -3,6 +3,16 @@
 All notable changes to the Firewall-Mon marketing website are documented here.
 This file follows [Keep a Changelog](https://keepachangelog.com/) conventions; versions are newest-first.
 
+## [0.2.1] - 2026-07-16
+
+### Added
+- **FortiGate NetFlow Setup guide** (docs page, Vendor Setups) — mirrors the sFlow guide: collector
+  config for FortiOS 7.0/7.2 (flat fields) and 7.4+ (collector table), per-interface
+  `netflow-sampler`, denied-session export (`ses-denied-traffic` per-VDOM +
+  `block-session-timer` global, with correct config-tree placement), on-box verification, and
+  the sFlow+NetFlow dual-export/dedup note. The generic NetFlow / IPFIX section now points
+  FortiGate operators at it.
+
 ## [0.2.0] - 2026-07-05
 
 Major content refresh bringing the site up to date with the Firewall-Mon **v0.11** program
