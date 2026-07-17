@@ -3,6 +3,16 @@
 All notable changes to the Firewall-Mon marketing website are documented here.
 This file follows [Keep a Changelog](https://keepachangelog.com/) conventions; versions are newest-first.
 
+## [0.2.2] - 2026-07-17
+
+### Fixed
+- **FortiGate NetFlow guide — denied-traffic section corrected.** Live verification (FortiOS 7.4,
+  controlled denied traffic, collector sequence accounting) proved FortiOS does not export blocked
+  sessions via NetFlow, even with `ses-denied-traffic` enabled. Section 3 rewritten: denied-traffic
+  visibility on FortiGate comes from syslog (`action="deny"` forward logs + implicit-deny logging);
+  `ses-denied-traffic` documented as a CPU optimization only. Generic NetFlow / IPFIX section now
+  attributes `firewall_event = denied` records to Cisco ASA NSEL and Palo Alto exporters only.
+
 ## [0.2.1] - 2026-07-16
 
 ### Added

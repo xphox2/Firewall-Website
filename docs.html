@@ -1029,7 +1029,7 @@ sudo tcpdump -i any port 6343 -nn</code></pre>
             <!-- SECTION: FortiGate NetFlow Setup -->
             <section class="docs-section hidden" id="section-fortigate-netflow">
                 <h1>FortiGate NetFlow Setup Guide</h1>
-                <p>Configure NetFlow v9 on your FortiGate to export session-level flow records — including <strong>denied sessions</strong> — to the Firewall-Mon server or remote Firewall-Collector on port <code>2055</code>. NetFlow complements sFlow: it carries complete session accounting and firewall events (allow/deny), which power the denied-flow analytics that packet-sampled sFlow cannot provide.</p>
+                <p>Configure NetFlow v9 on your FortiGate to export session-level flow records to the Firewall-Mon server or remote Firewall-Collector on port <code>2055</code>. NetFlow complements sFlow: it carries complete, unsampled session accounting — every session with exact byte/packet counts and timing — that packet-sampled sFlow cannot provide. (Denied traffic is the exception: FortiOS reports it via syslog, not NetFlow — see section 3.)</p>
 
                 <h2>1. Point NetFlow at the Collector</h2>
                 <p>On FortiOS 7.0 / 7.2 the collector is configured with flat fields:</p>
@@ -1067,40 +1067,23 @@ end</code></pre>
                 </div>
                 <p><code>both</code> exports ingress and egress; <code>rx</code> / <code>tx</code> restrict direction.</p>
 
-                <h2>3. Export Denied Sessions</h2>
-                <p>By default a FortiGate does not create session-table entries for denied traffic, so denials never appear in NetFlow. Two settings change that — note they live in <strong>different configuration trees</strong>:</p>
+                <h2>3. Denied Traffic — Use Syslog, Not NetFlow</h2>
+                <p><strong>FortiOS does not export blocked sessions via NetFlow.</strong> Even with <code>ses-denied-traffic</code> enabled (which adds denied sessions to the session table and flags them <code>netflow-origin</code>), the exporter never emits records for them — verified live against FortiOS 7.4 with controlled denied traffic and collector-side sequence accounting. NetFlow <code>firewall_event = denied</code> records come from Cisco ASA NSEL and Palo Alto exporters only.</p>
+                <p>On FortiGate, denied-traffic visibility comes from <strong>syslog</strong>: forward-traffic logs with <code>action="deny"</code> carry the full tuple (source, destination, ports, protocol, policy, interfaces, source country), and Firewall-Mon ingests them natively. Make sure your deny policies log traffic, and enable implicit-deny logging:</p>
                 <div class="code-block-wrapper">
-                    <pre><code class="lang-bash"># Per-VDOM (repeat inside each VDOM if you use them)
-config system settings
-    set ses-denied-traffic enable
+                    <pre><code class="lang-bash"># On each deny policy you want visibility into
+config firewall policy
+    edit &lt;policy-id&gt;
+        set logtraffic all
+    next
 end
 
-# Global (optional — 30 s is already the default)
-config system global
-    set block-session-timer 30
+# Log the implicit deny (policy 0)
+config log setting
+    set fwpolicy-implicit-log enable
 end</code></pre>
                 </div>
-                <table class="docs-table">
-                    <thead>
-                        <tr>
-                            <th>Parameter</th>
-                            <th>Scope</th>
-                            <th>Description</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><code>ses-denied-traffic</code></td>
-                            <td>per-VDOM</td>
-                            <td>Adds denied sessions to the session table so they export as NetFlow records with <code>firewall_event = denied</code>. This is what enables Firewall-Mon's denied-flow analytics.</td>
-                        </tr>
-                        <tr>
-                            <td><code>block-session-timer</code></td>
-                            <td>global</td>
-                            <td>Seconds a denied session stays in the table (1–300, default 30). Repeated denied packets refresh the timer. Lower it (e.g. 10) if the session table comes under pressure during scans — don't disable the feature.</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <p><code>ses-denied-traffic</code> (per-VDOM <code>config system settings</code>) remains a worthwhile <em>CPU optimization</em> under scan/flood conditions — repeated denied packets match an existing block session instead of re-evaluating the policy set — but it does not affect flow export.</p>
 
                 <h2>4. Verify on the FortiGate</h2>
                 <div class="code-block-wrapper">
@@ -1119,7 +1102,7 @@ diagnose sniffer packet any 'udp and port 2055' 4 10</code></pre>
             <!-- SECTION: NetFlow / IPFIX Setup -->
             <section class="docs-section hidden" id="section-netflow-ipfix">
                 <h1>NetFlow &amp; IPFIX Setup Guide</h1>
-                <p>In addition to sFlow, Firewall-Mon (and the remote Firewall-Collector) ingest <strong>NetFlow v5, NetFlow v9, and IPFIX</strong>. Exporters are auto-detected by the datagram version word, so a v9 exporter aimed at the IPFIX port still decodes correctly. Point your firewall's flow export at the server (or a collector) on these UDP ports (FortiGate operators: the <em>FortiGate NetFlow Setup</em> guide has the exact CLI, including denied-session export):</p>
+                <p>In addition to sFlow, Firewall-Mon (and the remote Firewall-Collector) ingest <strong>NetFlow v5, NetFlow v9, and IPFIX</strong>. Exporters are auto-detected by the datagram version word, so a v9 exporter aimed at the IPFIX port still decodes correctly. Point your firewall's flow export at the server (or a collector) on these UDP ports (FortiGate operators: the <em>FortiGate NetFlow Setup</em> guide has the exact CLI):</p>
                 <div class="code-block-wrapper">
                     <pre><code class="lang-bash"># Default flow ingest ports
 6343/udp   # sFlow v5
@@ -1128,7 +1111,7 @@ diagnose sniffer packet any 'udp and port 2055' 4 10</code></pre>
                 </div>
 
                 <h2>1. Denied-Flow Visibility</h2>
-                <p>NetFlow v9/IPFIX exporters can emit firewall events (IE 233). Cisco ASA NSEL, FortiGate, and Palo Alto denial records are ingested as flows with <code>firewall_event = denied</code> — surfacing blocked traffic that never shows up in interface counters. Zero-byte denial and flow-create records are intentionally kept.</p>
+                <p>NetFlow v9/IPFIX exporters can emit firewall events (IE 233). Cisco ASA NSEL and Palo Alto denial records are ingested as flows with <code>firewall_event = denied</code> — surfacing blocked traffic that never shows up in interface counters. Zero-byte denial and flow-create records are intentionally kept. FortiGate does not export denied sessions via NetFlow — its denied-traffic visibility comes through syslog (see the <em>FortiGate NetFlow Setup</em> guide, section 3).</p>
 
                 <h2>2. Sampling &amp; Templates</h2>
                 <p>Sampled exporters (e.g. FortiGate sampled NetFlow) are pre-multiplied by the resolved sampling rate at ingest, so byte and packet counts reflect real volume. v9/IPFIX templates are cached (and persisted across restarts) per exporter, source ID, and template ID. For exporters that never advertise a sampler, set an explicit rate:</p>
