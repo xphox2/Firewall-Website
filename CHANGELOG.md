@@ -3,6 +3,16 @@
 All notable changes to the Firewall-Mon marketing website are documented here.
 This file follows [Keep a Changelog](https://keepachangelog.com/) conventions; versions are newest-first.
 
+## [0.2.13] - 2026-07-18
+
+### Changed
+- Re-translated the strings reworded in v0.2.12 into all 9 non-English locales
+  (de, es, fr, it, ja, ko, pt, ru, zh) — hero subtitle/stats, security intro,
+  feature intro/descriptions, the 8 feature-detail modal texts, and the "Details"
+  affordance. Technical terms and product names stay in English by convention;
+  the sflow intro's `<strong>` markup is preserved. Replaces the English
+  placeholders noted in v0.2.12.
+
 ## [0.2.12] - 2026-07-18
 
 ### Changed
