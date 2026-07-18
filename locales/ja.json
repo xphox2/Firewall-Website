@@ -14,22 +14,24 @@
   },
   "hero": {
     "title": "ファイアウォール群を<span class=\"accent-text\">一元管理。</span>",
-    "subtitle": "FortiGate, Palo Alto, Cisco ASA, SonicWall, pfSense, OPNsense, Firewalla、そしてあらゆるSNMPデバイスに対応した、SNMP, sFlow, NetFlow/IPFIX, syslog, トラップ、構成ドリフトの監視システム。ロールと2FAによるマルチユーザー対応。セルフホスト。単一コンテナ。起動から最初のポーリングまでわずか30秒。",
+    "subtitle": "SNMP, sFlow, NetFlow/IPFIX, syslog, traps, and config-drift monitoring across every major firewall platform — and any SNMP device. Multi-user with roles and 2FA. Self-hosted. One container.",
     "copy_btn": "コピー",
     "copied_btn": "コピーしました！",
     "read_docs": "ドキュメントを読む →",
-    "stat_audit_label": "継続的に監査",
-    "stat_vendors_label": "対応ベンダー数",
-    "stat_license_label": "オープンソースライセンス"
+    "stat_license_label": "オープンソースライセンス",
+    "stat_vendor_value": "Multi-Vendor",
+    "stat_vendor_label": "Firewall Support",
+    "stat_host_value": "Self-Hosted",
+    "stat_host_label": "One Container"
   },
   "why": {
     "tag": "運用現場の実績",
     "title": "ファイアウォール専用設計。",
     "intro": "一般的なネットワーク監視ツールは凡庸なOIDグラフを並べるだけです。Firewall-Monはファイアウォールに特化して構築されています。",
     "card1_title": "ディープベンダーインテリジェンス",
-    "card1_desc": "8つのファイアウォール製品ファミリーに対応するネイティブプロファイルにより、CPU、セッション、VPNトンネル、HA状態、SPU/ASICメトリクスを即座に取得。複雑なMIB設定は不要です。",
+    "card1_desc": "Native profiles across many firewall platforms read CPU, sessions, VPN tunnels, HA states, and SPU/ASIC metrics out-of-the-box. Zero MIB wrestling.",
     "card2_title": "リスクタグ付き構成ドリフト",
-    "card2_desc": "構成の変更はベンダーに依存しない標準オブジェクトモデルに正規化されます。すべての変更がリスク分類され、監査前にセキュリティ侵害を浮き彫りにします。",
+    "card2_desc": "Every config change is classified by risk—so a rule opened to ANY surfaces before it reaches production, not during your next audit.",
     "card3_title": "NAT/CGNAT トラバーサルプローブ",
     "card3_desc": "拠点側のプローブは、アウトバウンドHTTPSを介してメトリクスを送信します。インバウンドポートの開放が不要なため、拠点を完全に保護します。"
   },
@@ -89,7 +91,7 @@
   "sflow": {
     "tag": "高性能トラフィック監視",
     "title": "マルチプロトコル フローアナリティクス",
-    "intro": "<strong>sFlow v5, NetFlow v5/v9, IPFIX</strong> を並行して取り込み — コンテンツベースのバージョン振り分け、ベンダーごとのテンプレートデコード、ファイアウォールイベントからの<strong>拒否フローの可視化</strong>を実現。PostgreSQLの <code class=\"mono-code\">pgx COPY</code> パイプライン（通常のORM行挿入の10倍高速）を利用し、生の会話レベルの詳細からスパイクを判定します。",
+    "intro": "Ingest <strong>sFlow v5, NetFlow v5/v9, and IPFIX</strong> side by side — with content-based version dispatch, per-vendor template decoding, and <strong>denied-flow visibility</strong> from firewall events. Triage spikes on raw conversation-level detail.",
     "live_stream": "ライブフローストリーム (sFlow · NetFlow · IPFIX)",
     "run_triage": "スパイク判定を実行",
     "src_addr": "送信元アドレス",
@@ -146,9 +148,9 @@
   "features": {
     "tag": "対応機能",
     "title": "本番環境グレードの監視。",
-    "intro": "すべての機能は、速度、コンプライアンス維持、ベンダーニュートラルを目的として設計されています。",
+    "intro": "Built for speed, compliance posture, and any firewall you run. Tap a card for the detail.",
     "card1_title": "マルチベンダー対応 SNMP",
-    "card1_desc": "8つのベンダー — FortiGateからCisco ASA、あらゆるSNMPデバイスまで。ネイティブOIDプロファイル。",
+    "card1_desc": "Any SNMP-capable firewall, with native per-platform OID profiles.",
     "card2_title": "リスク分類された構成差分",
     "card2_desc": "ANYに開放されたルールを、デプロイ前に浮き彫りにします。",
     "card3_title": "マルチプロトコルフロー",
@@ -158,11 +160,20 @@
     "card5_title": "シングルコンテナデプロイ",
     "card5_desc": "単一の `docker compose up -d`。PostgreSQL 16も同梱。",
     "card6_title": "監査グレードのセキュリティ",
-    "card6_desc": "AES-256-GCM、フェイルファストキー、追記専用の監査ログ。継続的に監査され、未解決ゼロ。",
+    "card6_desc": "AES-256-GCM secrets, fail-fast keys, and an append-only audit log.",
     "card7_title": "ロールと2FA",
     "card7_desc": "RBAC、リカバリーコード付きTOTP二要素認証、スコープ付きAPIトークン。",
     "card8_title": "エンタープライズアラート",
-    "card8_desc": "インシデントグループ化、エスカレーションチェーン、PagerDuty、Opsgenie & Teams。"
+    "card8_desc": "インシデントグループ化、エスカレーションチェーン、PagerDuty、Opsgenie & Teams。",
+    "more": "Details →",
+    "card1_detail": "Native OID profiles for every major firewall platform, plus a standards-only generic profile, mean CPU, sessions, VPN tunnels, HA state, and interface health arrive on day one — no MIB hunting, no per-device templates to hand-build.",
+    "card2_detail": "Every configuration snapshot is normalized and compared, and each change is scored by risk. A rule opened to ANY, a disabled log, or a weakened policy is flagged the moment it appears — so you catch it before it ships, not during the next audit.",
+    "card3_detail": "sFlow v5, NetFlow v5/v9, and IPFIX are ingested side by side with content-based version dispatch and per-platform template decoding. Denied-flow visibility comes straight from firewall events, so you can triage a spike down to the conversation without a packet capture.",
+    "card4_detail": "Remote and branch sites run a lightweight probe that pushes metrics out over a single outbound HTTPS connection. Nothing inbound is exposed, so firewalls behind CGNAT or strict egress rules are monitored without opening a port.",
+    "card5_detail": "One docker compose up -d brings up the full stack with PostgreSQL 16 bundled. No external database to provision and no message broker to babysit — it is self-hosted and running in well under a minute.",
+    "card6_detail": "SNMP communities, SSH credentials, TOTP secrets, and notification keys are encrypted at rest with AES-256-GCM. Pollers fail fast if a secret cannot be decrypted, and every administrative action lands in an append-only audit trail.",
+    "card7_detail": "Admin, operator, and viewer roles are enforced server-side, with scoped API tokens for automation. Opt-in TOTP two-factor with recovery codes protects every account without a third-party identity provider.",
+    "card8_detail": "Alerts are grouped into incidents with escalation chains, flap suppression, and z-score baselining to cut noise. Route them to PagerDuty, Opsgenie, or Microsoft Teams, and track MTTA/MTTR to see how fast you actually respond."
   },
   "reports": {
     "tag": "運用レポート",
@@ -172,7 +183,7 @@
   "security": {
     "tag": "監査対応済みのセキュリティ",
     "title": "継続的に監査済み。未解決ゼロ。",
-    "intro": "Firewall-Monは、170項目の指摘を含む公開リリースレビューを起点として、継続的な一貫性・セキュリティレビューを通じ、独立したエンジニアリング監査を繰り返し受けてきました。数百件の指摘が発見・修正され、CIで検証されています。そのすべてがクローズされています。",
+    "intro": "Firewall-Mon is independently engineering-audited and re-checked in CI on every build. Encryption, access control, and audit logging are verified continuously — open findings stay at zero.",
     "item1_title": "AES-256-GCMによるシークレットの暗号化",
     "item1_desc": "SNMPコミュニティ名、SSH認証情報、TOTPシークレット、そしてSlack、PagerDuty、Opsgenie、Webhookを含むすべての通知キーは、AES-256-GCMで保存時に暗号化されます。",
     "item2_title": "M8フェイルファスト復号検証",
@@ -194,7 +205,6 @@
   },
   "footer": {
     "brand_desc": "速度、セキュリティ監査、および複雑なトポロジー通過のために構築された、ベンダー不問のファイアウォール監視システム。",
-    "labs_created": "Firewall-Monは、<a href=\"https://www.xphox.net\" target=\"_blank\" style=\"color: var(--accent); text-decoration: underline;\">Xphox Networks</a>のXphoxによって作成された<a href=\"https://www.technicallabs.org\" target=\"_blank\" style=\"color: var(--accent); text-decoration: underline;\">TechnicalLabs</a>プロジェクトです。",
     "open_source": "オープンソース",
     "license": "MITライセンス",
     "documentation": "ドキュメント",

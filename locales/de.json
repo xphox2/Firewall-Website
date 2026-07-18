@@ -14,22 +14,24 @@
   },
   "hero": {
     "title": "Eine zentrale Oberfläche für Ihre <span class=\"accent-text\">Firewall-Flotte.</span>",
-    "subtitle": "SNMP, sFlow, NetFlow/IPFIX, Syslog, Traps und Konfigurations-Drift-Überwachung für FortiGate, Palo Alto, Cisco ASA, SonicWall, pfSense, OPNsense, Firewalla – und jedes SNMP-Gerät. Mehrbenutzerfähig mit Rollen und 2FA. Self-hosted. Ein Container. 30 Sekunden bis zur ersten Abfrage.",
+    "subtitle": "SNMP, sFlow, NetFlow/IPFIX, syslog, traps, and config-drift monitoring across every major firewall platform — and any SNMP device. Multi-user with roles and 2FA. Self-hosted. One container.",
     "copy_btn": "Kopieren",
     "copied_btn": "Kopiert!",
     "read_docs": "Dokumentation lesen →",
-    "stat_audit_label": "Kontinuierlich auditiert",
-    "stat_vendors_label": "Unterstützte Hersteller",
-    "stat_license_label": "Open-Source-Lizenz"
+    "stat_license_label": "Open-Source-Lizenz",
+    "stat_vendor_value": "Multi-Vendor",
+    "stat_vendor_label": "Firewall Support",
+    "stat_host_value": "Self-Hosted",
+    "stat_host_label": "One Container"
   },
   "why": {
     "tag": "Aus der Praxis",
     "title": "Speziell für Firewalls entwickelt.",
     "intro": "Allgemeine Netzwerk-Monitoring-Tools bieten Ihnen nur eine Wand aus generischen OID-Graphen. Firewall-Mon ist speziell für Firewalls entwickelt.",
     "card1_title": "Tiefe Hersteller-Intelligenz",
-    "card1_desc": "Native Profile für acht Firewall-Familien lesen CPU, Sitzungen, VPN-Tunnel, HA-Status und SPU/ASIC-Metriken direkt ab Werk aus. Kein mühsames MIB-Konfigurieren.",
+    "card1_desc": "Native profiles across many firewall platforms read CPU, sessions, VPN tunnels, HA states, and SPU/ASIC metrics out-of-the-box. Zero MIB wrestling.",
     "card2_title": "Konfigurations-Drift mit Risikotags",
-    "card2_desc": "Konfigurationsänderungen werden in ein herstellerneutrales Objektmodell normalisiert. Jede Änderung wird nach Risiko klassifiziert – so werden Sicherheitsverletzungen noch vor dem Audit hervorgehoben.",
+    "card2_desc": "Every config change is classified by risk—so a rule opened to ANY surfaces before it reaches production, not during your next audit.",
     "card3_title": "NAT/CGNAT Traversal Probes",
     "card3_desc": "Lokale Probes an entfernten Standorten senden Metriken über ausgehende HTTPS-Verbindungen. Es müssen keine eingehenden Ports geöffnet werden, wodurch Ihre Zweigstellen vollständig abgeschottet bleiben."
   },
@@ -89,7 +91,7 @@
   "sflow": {
     "tag": "Hochleistungs-Traffic-Monitoring",
     "title": "Multi-Protokoll-Flow-Analytik",
-    "intro": "Erfassen Sie <strong>sFlow v5, NetFlow v5/v9 und IPFIX</strong> nebeneinander – mit inhaltsbasiertem Versions-Dispatch, herstellerspezifischer Template-Dekodierung und <strong>Sichtbarkeit abgelehnter Flows</strong> aus Firewall-Ereignissen. Analysieren Sie Spitzen anhand von Konversationsdetails auf Rohdatenebene über unsere PostgreSQL-Pipeline <code class=\"mono-code\">pgx COPY</code>, die 10× schneller schreibt als normale ORM-Zeileneinfügungen.",
+    "intro": "Ingest <strong>sFlow v5, NetFlow v5/v9, and IPFIX</strong> side by side — with content-based version dispatch, per-vendor template decoding, and <strong>denied-flow visibility</strong> from firewall events. Triage spikes on raw conversation-level detail.",
     "live_stream": "Live-Flow-Stream (sFlow · NetFlow · IPFIX)",
     "run_triage": "Spike-Triage ausführen",
     "src_addr": "Quelladresse",
@@ -146,9 +148,9 @@
   "features": {
     "tag": "Funktionen",
     "title": "Überwachung auf Produktionsniveau.",
-    "intro": "Jedes Feature ist auf Geschwindigkeit, Compliance-Posture und Herstellerneutralität ausgelegt.",
+    "intro": "Built for speed, compliance posture, and any firewall you run. Tap a card for the detail.",
     "card1_title": "Multi-Vendor SNMP",
-    "card1_desc": "Acht Hersteller – von FortiGate über Cisco ASA bis zu jedem SNMP-Gerät. Native OID-Profile.",
+    "card1_desc": "Any SNMP-capable firewall, with native per-platform OID profiles.",
     "card2_title": "Risikoklassifizierte Konfig-Diffs",
     "card2_desc": "Erkennen Sie eine auf ANY geöffnete Regel, bevor sie aktiv wird.",
     "card3_title": "Multi-Protokoll-Flow",
@@ -158,11 +160,20 @@
     "card5_title": "Ein-Container-Bereitstellung",
     "card5_desc": "Ein `docker compose up -d`. PostgreSQL 16 ist bereits integriert.",
     "card6_title": "Sicherheit auf Audit-Niveau",
-    "card6_desc": "AES-256-GCM, Fail-Fast-Keys, Append-Only-Audit-Log. Kontinuierlich auditiert, null offen.",
+    "card6_desc": "AES-256-GCM secrets, fail-fast keys, and an append-only audit log.",
     "card7_title": "Rollen & 2FA",
     "card7_desc": "RBAC, TOTP-Zwei-Faktor mit Wiederherstellungscodes und abgestufte API-Tokens.",
     "card8_title": "Enterprise-Alarmierung",
-    "card8_desc": "Vorfallgruppierung, Eskalationsketten, PagerDuty, Opsgenie & Teams."
+    "card8_desc": "Vorfallgruppierung, Eskalationsketten, PagerDuty, Opsgenie & Teams.",
+    "more": "Details →",
+    "card1_detail": "Native OID profiles for every major firewall platform, plus a standards-only generic profile, mean CPU, sessions, VPN tunnels, HA state, and interface health arrive on day one — no MIB hunting, no per-device templates to hand-build.",
+    "card2_detail": "Every configuration snapshot is normalized and compared, and each change is scored by risk. A rule opened to ANY, a disabled log, or a weakened policy is flagged the moment it appears — so you catch it before it ships, not during the next audit.",
+    "card3_detail": "sFlow v5, NetFlow v5/v9, and IPFIX are ingested side by side with content-based version dispatch and per-platform template decoding. Denied-flow visibility comes straight from firewall events, so you can triage a spike down to the conversation without a packet capture.",
+    "card4_detail": "Remote and branch sites run a lightweight probe that pushes metrics out over a single outbound HTTPS connection. Nothing inbound is exposed, so firewalls behind CGNAT or strict egress rules are monitored without opening a port.",
+    "card5_detail": "One docker compose up -d brings up the full stack with PostgreSQL 16 bundled. No external database to provision and no message broker to babysit — it is self-hosted and running in well under a minute.",
+    "card6_detail": "SNMP communities, SSH credentials, TOTP secrets, and notification keys are encrypted at rest with AES-256-GCM. Pollers fail fast if a secret cannot be decrypted, and every administrative action lands in an append-only audit trail.",
+    "card7_detail": "Admin, operator, and viewer roles are enforced server-side, with scoped API tokens for automation. Opt-in TOTP two-factor with recovery codes protects every account without a third-party identity provider.",
+    "card8_detail": "Alerts are grouped into incidents with escalation chains, flap suppression, and z-score baselining to cut noise. Route them to PagerDuty, Opsgenie, or Microsoft Teams, and track MTTA/MTTR to see how fast you actually respond."
   },
   "reports": {
     "tag": "Betriebsberichte",
@@ -172,7 +183,7 @@
   "security": {
     "tag": "Audit-bereite Sicherheit",
     "title": "Kontinuierlich auditiert. Null offen.",
-    "intro": "Firewall-Mon hat wiederholte unabhängige technische Audits durchlaufen – beginnend mit einer Public-Release-Prüfung mit 170 Befunden und fortlaufend über kontinuierliche Konsistenz- und Sicherheitsprüfungen. Hunderte von Befunden wurden gefunden, behoben und in CI verifiziert. Jeder einzelne ist geschlossen.",
+    "intro": "Firewall-Mon is independently engineering-audited and re-checked in CI on every build. Encryption, access control, and audit logging are verified continuously — open findings stay at zero.",
     "item1_title": "AES-256-GCM-Geheimnisverschlüsselung",
     "item1_desc": "SNMP-Communities, SSH-Zugangsdaten, TOTP-Geheimnisse und jeder Benachrichtigungsschlüssel – Slack, PagerDuty, Opsgenie und Webhooks – werden im Ruhezustand mit AES-256-GCM verschlüsselt.",
     "item2_title": "M8 Fail-Fast-Entschlüsselungsprüfung",
@@ -194,7 +205,6 @@
   },
   "footer": {
     "brand_desc": "Herstellerneutrales Firewall-Monitoring-System, das auf Geschwindigkeit, Sicherheitsaudits und die Durchquerung komplexer Topologien ausgelegt ist.",
-    "labs_created": "Firewall-Mon ist ein <a href=\"https://www.technicallabs.org\" target=\"_blank\" style=\"color: var(--accent); text-decoration: underline;\">TechnicalLabs</a>-Projekt, das von Xphox von <a href=\"https://www.xphox.net\" target=\"_blank\" style=\"color: var(--accent); text-decoration: underline;\">Xphox Networks</a> erstellt wurde.",
     "open_source": "Open Source",
     "license": "MIT-Lizenz",
     "documentation": "Dokumentation",

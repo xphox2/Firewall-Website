@@ -38,7 +38,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&family=Plus+Jakarta+Sans:wght@600;700&display=swap" rel="stylesheet">
     
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="css/style.css?v=0.2.4">
+    <link rel="stylesheet" href="css/style.css?v=0.2.12">
 </head>
 <body>
     <!-- Top Decorative Gradient Glows -->
@@ -118,7 +118,7 @@
                 <div class="hero-text-content">
                     <h1 data-i18n="hero.title" data-i18n-html="true">One pane of glass for your <span class="accent-text">firewall fleet.</span></h1>
                     <p class="hero-subtitle" data-i18n="hero.subtitle">
-                        SNMP, sFlow, NetFlow/IPFIX, syslog, traps, and config-drift monitoring across FortiGate, Palo Alto, Cisco ASA, SonicWall, pfSense, OPNsense, Firewalla — and any SNMP device. Multi-user with roles and 2FA. Self-hosted. One container. 30 seconds to first poll.
+                        SNMP, sFlow, NetFlow/IPFIX, syslog, traps, and config-drift monitoring across every major firewall platform — and any SNMP device. Multi-user with roles and 2FA. Self-hosted. One container.
                     </p>
                     
                     <div class="hero-ctas">
@@ -134,13 +134,13 @@
                     
                     <div class="trust-stats">
                         <div class="trust-stat">
-                            <span class="stat-number">0 Open</span>
-                            <span class="stat-label" data-i18n="hero.stat_audit_label">Continuously Audited</span>
+                            <span class="stat-number" data-i18n="hero.stat_vendor_value">Multi-Vendor</span>
+                            <span class="stat-label" data-i18n="hero.stat_vendor_label">Firewall Support</span>
                         </div>
                         <div class="trust-divider"></div>
                         <div class="trust-stat">
-                            <span class="stat-number">8</span>
-                            <span class="stat-label" data-i18n="hero.stat_vendors_label">Vendors Supported</span>
+                            <span class="stat-number" data-i18n="hero.stat_host_value">Self-Hosted</span>
+                            <span class="stat-label" data-i18n="hero.stat_host_label">One Container</span>
                         </div>
                         <div class="trust-divider"></div>
                         <div class="trust-stat">
@@ -177,7 +177,7 @@
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
                         </div>
                         <h3 data-i18n="why.card1_title">Deep Vendor Intelligence</h3>
-                        <p data-i18n="why.card1_desc">Native profiles for eight firewall families read CPU, sessions, VPN tunnels, HA states, and SPU/ASIC metrics out-of-the-box. Zero MIB wrestling.</p>
+                        <p data-i18n="why.card1_desc">Native profiles across many firewall platforms read CPU, sessions, VPN tunnels, HA states, and SPU/ASIC metrics out-of-the-box. Zero MIB wrestling.</p>
                     </div>
                     
                     <div class="why-card">
@@ -185,7 +185,7 @@
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path><path d="M22 12H2"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
                         </div>
                         <h3 data-i18n="why.card2_title">Config Drift with Risk Tags</h3>
-                        <p data-i18n="why.card2_desc">Config changes are normalized to a vendor-neutral object model. Every change is classified by risk—highlighting security breaches before your audit.</p>
+                        <p data-i18n="why.card2_desc">Every config change is classified by risk—so a rule opened to ANY surfaces before it reaches production, not during your next audit.</p>
                     </div>
                     
                     <div class="why-card">
@@ -510,7 +510,7 @@
                 <div class="section-header">
                     <span class="section-tag" data-i18n="sflow.tag">High-Performance Traffic Monitoring</span>
                     <h2 data-i18n="sflow.title">Multi-Protocol Flow Analytics</h2>
-                    <p class="section-intro" data-i18n="sflow.intro" data-i18n-html="true">Ingest <strong>sFlow v5, NetFlow v5/v9, and IPFIX</strong> side by side — with content-based version dispatch, per-vendor template decoding, and <strong>denied-flow visibility</strong> from firewall events. Triage spikes on raw conversation-level detail via our PostgreSQL <code class="mono-code">pgx COPY</code> pipeline, which writes 10× faster than normal ORM row inserts.</p>
+                    <p class="section-intro" data-i18n="sflow.intro" data-i18n-html="true">Ingest <strong>sFlow v5, NetFlow v5/v9, and IPFIX</strong> side by side — with content-based version dispatch, per-vendor template decoding, and <strong>denied-flow visibility</strong> from firewall events. Triage spikes on raw conversation-level detail.</p>
                 </div>
 
                 <div class="sflow-widget">
@@ -776,105 +776,115 @@
                 <div class="section-header">
                     <span class="section-tag" data-i18n="features.tag">Capabilities</span>
                     <h2 data-i18n="features.title">Production-grade monitoring.</h2>
-                    <p class="section-intro" data-i18n="features.intro">Every feature is built for speed, compliance posture, and vendor neutrality.</p>
+                    <p class="section-intro" data-i18n="features.intro">Built for speed, compliance posture, and any firewall you run. Tap a card for the detail.</p>
                 </div>
-                
+
                 <div class="features-grid">
                     <!-- Card 1 -->
-                    <div class="feature-card" style="background-image: url('assets/features/f1-multivendor.png?v=0.2.10');">
+                    <div class="feature-card" data-feature="card1" role="button" tabindex="0" aria-label="Multi-Vendor SNMP — view details" style="background-image: url('assets/features/f1-multivendor.png?v=0.2.10');">
                         <div class="feature-card-overlay"></div>
                         <div class="feature-card-content">
                             <div class="feature-card-header">
                                 <span class="feature-card-title" data-i18n="features.card1_title">Multi-Vendor SNMP</span>
-                                <span class="feature-card-pill">01</span>
                             </div>
-                            <p class="feature-card-tagline" data-i18n="features.card1_desc">Eight vendors — FortiGate to Cisco ASA to any SNMP device. Native OID profiles.</p>
+                            <p class="feature-card-tagline" data-i18n="features.card1_desc">Any SNMP-capable firewall, with native per-platform OID profiles.</p>
+                            <span class="feature-card-more" data-i18n="features.more">Details →</span>
                         </div>
                     </div>
-                    
+
                     <!-- Card 2 -->
-                    <div class="feature-card" style="background-image: url('assets/features/f2-config-drift.png?v=0.2.6');">
+                    <div class="feature-card" data-feature="card2" role="button" tabindex="0" aria-label="Risk-Classified Config Diffs — view details" style="background-image: url('assets/features/f2-config-drift.png?v=0.2.6');">
                         <div class="feature-card-overlay"></div>
                         <div class="feature-card-content">
                             <div class="feature-card-header">
                                 <span class="feature-card-title" data-i18n="features.card2_title">Risk-Classified Config Diffs</span>
-                                <span class="feature-card-pill">02</span>
                             </div>
                             <p class="feature-card-tagline" data-i18n="features.card2_desc">Surface a rule opened to ANY before it ships.</p>
+                            <span class="feature-card-more" data-i18n="features.more">Details →</span>
                         </div>
                     </div>
-                    
+
                     <!-- Card 3 -->
-                    <div class="feature-card" style="background-image: url('assets/features/f3-sflow.png?v=0.2.6');">
+                    <div class="feature-card" data-feature="card3" role="button" tabindex="0" aria-label="Multi-Protocol Flow — view details" style="background-image: url('assets/features/f3-sflow.png?v=0.2.6');">
                         <div class="feature-card-overlay"></div>
                         <div class="feature-card-content">
                             <div class="feature-card-header">
                                 <span class="feature-card-title" data-i18n="features.card3_title">Multi-Protocol Flow</span>
-                                <span class="feature-card-pill">03</span>
                             </div>
                             <p class="feature-card-tagline" data-i18n="features.card3_desc">sFlow, NetFlow v5/v9 &amp; IPFIX — with denied-flow visibility. No PCAP.</p>
+                            <span class="feature-card-more" data-i18n="features.more">Details →</span>
                         </div>
                     </div>
-                    
+
                     <!-- Card 4 -->
-                    <div class="feature-card" style="background-image: url('assets/features/f4-probe-relay.png?v=0.2.10');">
+                    <div class="feature-card" data-feature="card4" role="button" tabindex="0" aria-label="Probe-Relay Architecture — view details" style="background-image: url('assets/features/f4-probe-relay.png?v=0.2.10');">
                         <div class="feature-card-overlay"></div>
                         <div class="feature-card-content">
                             <div class="feature-card-header">
                                 <span class="feature-card-title" data-i18n="features.card4_title">Probe-Relay Architecture</span>
-                                <span class="feature-card-pill">04</span>
                             </div>
                             <p class="feature-card-tagline" data-i18n="features.card4_desc">Branch firewalls behind CGNAT, polled through one outbound HTTPS.</p>
+                            <span class="feature-card-more" data-i18n="features.more">Details →</span>
                         </div>
                     </div>
-                    
+
                     <!-- Card 5 -->
-                    <div class="feature-card" style="background-image: url('assets/features/f5-single-container.png?v=0.2.8');">
+                    <div class="feature-card" data-feature="card5" role="button" tabindex="0" aria-label="Single-Container Deploy — view details" style="background-image: url('assets/features/f5-single-container.png?v=0.2.8');">
                         <div class="feature-card-overlay"></div>
                         <div class="feature-card-content">
                             <div class="feature-card-header">
                                 <span class="feature-card-title" data-i18n="features.card5_title">Single-Container Deploy</span>
-                                <span class="feature-card-pill">05</span>
                             </div>
                             <p class="feature-card-tagline" data-i18n="features.card5_desc">One `docker compose up -d`. PostgreSQL 16 bundled.</p>
+                            <span class="feature-card-more" data-i18n="features.more">Details →</span>
                         </div>
                     </div>
-                    
+
                     <!-- Card 6 -->
-                    <div class="feature-card" style="background-image: url('assets/features/f6-audit-posture.png?v=0.2.8');">
+                    <div class="feature-card" data-feature="card6" role="button" tabindex="0" aria-label="Audit-Grade Security — view details" style="background-image: url('assets/features/f6-audit-posture.png?v=0.2.8');">
                         <div class="feature-card-overlay"></div>
                         <div class="feature-card-content">
                             <div class="feature-card-header">
                                 <span class="feature-card-title" data-i18n="features.card6_title">Audit-Grade Security</span>
-                                <span class="feature-card-pill">06</span>
                             </div>
-                            <p class="feature-card-tagline" data-i18n="features.card6_desc">AES-256-GCM, fail-fast keys, append-only audit log. Continuously audited, zero open.</p>
+                            <p class="feature-card-tagline" data-i18n="features.card6_desc">AES-256-GCM secrets, fail-fast keys, and an append-only audit log.</p>
+                            <span class="feature-card-more" data-i18n="features.more">Details →</span>
                         </div>
                     </div>
 
                     <!-- Card 7 -->
-                    <div class="feature-card" style="background-image: url('assets/features/f7-roles-2fa.png?v=0.2.8');">
+                    <div class="feature-card" data-feature="card7" role="button" tabindex="0" aria-label="Roles and 2FA — view details" style="background-image: url('assets/features/f7-roles-2fa.png?v=0.2.8');">
                         <div class="feature-card-overlay"></div>
                         <div class="feature-card-content">
                             <div class="feature-card-header">
                                 <span class="feature-card-title" data-i18n="features.card7_title">Roles &amp; 2FA</span>
-                                <span class="feature-card-pill">07</span>
                             </div>
                             <p class="feature-card-tagline" data-i18n="features.card7_desc">RBAC, TOTP two-factor with recovery codes, and scoped API tokens.</p>
+                            <span class="feature-card-more" data-i18n="features.more">Details →</span>
                         </div>
                     </div>
 
                     <!-- Card 8 -->
-                    <div class="feature-card" style="background-image: url('assets/features/f8-alerting.png?v=0.2.10');">
+                    <div class="feature-card" data-feature="card8" role="button" tabindex="0" aria-label="Enterprise Alerting — view details" style="background-image: url('assets/features/f8-alerting.png?v=0.2.10');">
                         <div class="feature-card-overlay"></div>
                         <div class="feature-card-content">
                             <div class="feature-card-header">
                                 <span class="feature-card-title" data-i18n="features.card8_title">Enterprise Alerting</span>
-                                <span class="feature-card-pill">08</span>
                             </div>
                             <p class="feature-card-tagline" data-i18n="features.card8_desc">Incident grouping, escalation chains, PagerDuty, Opsgenie &amp; Teams.</p>
+                            <span class="feature-card-more" data-i18n="features.more">Details →</span>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <!-- Feature detail modal (populated by js/main.js) -->
+            <div class="feature-modal" id="feature-modal" role="dialog" aria-modal="true" aria-labelledby="feature-modal-title" hidden>
+                <div class="feature-modal-backdrop" data-modal-close></div>
+                <div class="feature-modal-card" role="document">
+                    <button class="feature-modal-close" id="feature-modal-close" aria-label="Close" data-modal-close>&times;</button>
+                    <h3 id="feature-modal-title"></h3>
+                    <p id="feature-modal-body"></p>
                 </div>
             </div>
         </section>
@@ -953,7 +963,7 @@
                     <div class="security-text">
                         <span class="section-tag" data-i18n="security.tag">Audit-Ready Security</span>
                         <h2 data-i18n="security.title">Continuously audited. Zero open.</h2>
-                        <p data-i18n="security.intro">Firewall-Mon has been through repeated independent engineering audits — starting with a 170-finding public-release review and continuing through ongoing consistency and security passes. Hundreds of findings have been found, fixed, and verified in CI. Every one is closed.</p>
+                        <p data-i18n="security.intro">Firewall-Mon is independently engineering-audited and re-checked in CI on every build. Encryption, access control, and audit logging are verified continuously — open findings stay at zero.</p>
                         
                         <div class="security-list">
                             <div class="sec-item">
@@ -991,7 +1001,7 @@
                                 <span class="badge-audit-count">0 OPEN</span>
                             </div>
                             <h3>AUDIT POSTURE INVARIANT</h3>
-                            <p class="status-green">VERIFIED SECURE • 0 FINDINGS OPEN</p>
+                            <p class="status-green">VERIFIED SECURE</p>
                             <div class="metric-dots-grid" id="audit-dots-grid">
                                 <!-- Generated by JS for pixel-perfect placement -->
                             </div>
@@ -1112,7 +1122,6 @@ docker run -d \
                     <span>Firewall-Mon</span>
                 </a>
                 <p data-i18n="footer.brand_desc">Vendor-agnostic firewall monitoring system built for speed, security audits, and complex topology traversal.</p>
-                <p style="margin-top: 12px; font-size: 0.82rem; color: var(--text-muted); line-height: 1.4;" data-i18n="footer.labs_created" data-i18n-html="true">Firewall-Mon is a <a href="https://www.technicallabs.org" target="_blank" style="color: var(--accent); text-decoration: underline;">TechnicalLabs</a> project created by Xphox of <a href="https://www.xphox.net" target="_blank" style="color: var(--accent); text-decoration: underline;">Xphox Networks</a>.</p>
             </div>
             
             <div class="footer-links-grid">

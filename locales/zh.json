@@ -14,22 +14,24 @@
   },
   "hero": {
     "title": "为您的<span class=\"accent-text\">防火墙群</span>提供单一管理视图。",
-    "subtitle": "跨 FortiGate、Palo Alto、Cisco ASA、SonicWall、pfSense、OPNsense、Firewalla —— 以及任何 SNMP 设备 —— 的 SNMP、sFlow、NetFlow/IPFIX、syslog、Trap 及配置漂移监控。支持多用户、角色权限与 2FA。自托管，单容器部署，启动到首次轮询仅需 30 秒。",
+    "subtitle": "SNMP, sFlow, NetFlow/IPFIX, syslog, traps, and config-drift monitoring across every major firewall platform — and any SNMP device. Multi-user with roles and 2FA. Self-hosted. One container.",
     "copy_btn": "复制",
     "copied_btn": "已复制！",
     "read_docs": "阅读文档 →",
-    "stat_audit_label": "持续审计",
-    "stat_vendors_label": "支持的厂商",
-    "stat_license_label": "开源许可协议"
+    "stat_license_label": "开源许可协议",
+    "stat_vendor_value": "Multi-Vendor",
+    "stat_vendor_label": "Firewall Support",
+    "stat_host_value": "Self-Hosted",
+    "stat_host_label": "One Container"
   },
   "why": {
     "tag": "深耕网络安全运维",
     "title": "专为防火墙而生。",
     "intro": "通用网络监控工具只会提供一堵墙的普通 OID 图表。Firewall-Mon 则是专门针对防火墙构建的。",
     "card1_title": "深度厂商智能",
-    "card1_desc": "为八大防火墙家族提供原生配置模板，开箱即用地读取 CPU、并发会话、VPN 隧道、HA 状态和 SPU/ASIC 指标。无需与 MIB 苦苦搏斗。",
+    "card1_desc": "Native profiles across many firewall platforms read CPU, sessions, VPN tunnels, HA states, and SPU/ASIC metrics out-of-the-box. Zero MIB wrestling.",
     "card2_title": "带风险标记的配置漂移",
-    "card2_desc": "配置变更会被规范化为厂商无关的对象模型。每一次更改都会按风险进行分类 —— 在您审计之前就先行暴露安全违规项。",
+    "card2_desc": "Every config change is classified by risk—so a rule opened to ANY surfaces before it reaches production, not during your next audit.",
     "card3_title": "NAT/CGNAT 穿越探测",
     "card3_desc": "远程站点探测器通过出站 HTTPS 回传指标。无需暴露任何入站端口，让您的分支机构保持完全锁定。"
   },
@@ -89,7 +91,7 @@
   "sflow": {
     "tag": "高性能流量监控",
     "title": "多协议流量分析",
-    "intro": "并行接收 <strong>sFlow v5、NetFlow v5/v9 和 IPFIX</strong> —— 基于内容的版本分派、按厂商的模板解码，以及来自防火墙事件的 <strong>拒绝流可视化</strong>。借助我们的 PostgreSQL <code class=\"mono-code\">pgx COPY</code> 管道（写入速度比普通 ORM 单行插入快 10 倍），对原始会话级明细中的流量峰值进行诊断。",
+    "intro": "Ingest <strong>sFlow v5, NetFlow v5/v9, and IPFIX</strong> side by side — with content-based version dispatch, per-vendor template decoding, and <strong>denied-flow visibility</strong> from firewall events. Triage spikes on raw conversation-level detail.",
     "live_stream": "实时流量流 (sFlow · NetFlow · IPFIX)",
     "run_triage": "执行异常流量排查",
     "src_addr": "源地址",
@@ -146,9 +148,9 @@
   "features": {
     "tag": "产品能力",
     "title": "生产级监控。",
-    "intro": "每一项功能都围绕速度、合规态势和厂商中立而构建。",
+    "intro": "Built for speed, compliance posture, and any firewall you run. Tap a card for the detail.",
     "card1_title": "多厂商 SNMP",
-    "card1_desc": "八大厂商 —— 从 FortiGate 到 Cisco ASA 再到任何 SNMP 设备。原生 OID 配置模板。",
+    "card1_desc": "Any SNMP-capable firewall, with native per-platform OID profiles.",
     "card2_title": "风险分类的配置 Diff",
     "card2_desc": "在放开为 ANY 的规则下发之前就将其暴露。",
     "card3_title": "多协议流量",
@@ -158,11 +160,20 @@
     "card5_title": "单容器部署",
     "card5_desc": "一行 `docker compose up -d`。内置 PostgreSQL 16。",
     "card6_title": "审计级安全",
-    "card6_desc": "AES-256-GCM、快速失败密钥、只增审计日志。持续审计，零遗留。",
+    "card6_desc": "AES-256-GCM secrets, fail-fast keys, and an append-only audit log.",
     "card7_title": "角色与 2FA",
     "card7_desc": "RBAC、带恢复码的 TOTP 双因素，以及范围化 API 令牌。",
     "card8_title": "企业级告警",
-    "card8_desc": "事件分组、升级链，支持 PagerDuty、Opsgenie 与 Teams。"
+    "card8_desc": "事件分组、升级链，支持 PagerDuty、Opsgenie 与 Teams。",
+    "more": "Details →",
+    "card1_detail": "Native OID profiles for every major firewall platform, plus a standards-only generic profile, mean CPU, sessions, VPN tunnels, HA state, and interface health arrive on day one — no MIB hunting, no per-device templates to hand-build.",
+    "card2_detail": "Every configuration snapshot is normalized and compared, and each change is scored by risk. A rule opened to ANY, a disabled log, or a weakened policy is flagged the moment it appears — so you catch it before it ships, not during the next audit.",
+    "card3_detail": "sFlow v5, NetFlow v5/v9, and IPFIX are ingested side by side with content-based version dispatch and per-platform template decoding. Denied-flow visibility comes straight from firewall events, so you can triage a spike down to the conversation without a packet capture.",
+    "card4_detail": "Remote and branch sites run a lightweight probe that pushes metrics out over a single outbound HTTPS connection. Nothing inbound is exposed, so firewalls behind CGNAT or strict egress rules are monitored without opening a port.",
+    "card5_detail": "One docker compose up -d brings up the full stack with PostgreSQL 16 bundled. No external database to provision and no message broker to babysit — it is self-hosted and running in well under a minute.",
+    "card6_detail": "SNMP communities, SSH credentials, TOTP secrets, and notification keys are encrypted at rest with AES-256-GCM. Pollers fail fast if a secret cannot be decrypted, and every administrative action lands in an append-only audit trail.",
+    "card7_detail": "Admin, operator, and viewer roles are enforced server-side, with scoped API tokens for automation. Opt-in TOTP two-factor with recovery codes protects every account without a third-party identity provider.",
+    "card8_detail": "Alerts are grouped into incidents with escalation chains, flap suppression, and z-score baselining to cut noise. Route them to PagerDuty, Opsgenie, or Microsoft Teams, and track MTTA/MTTR to see how fast you actually respond."
   },
   "reports": {
     "tag": "运维报告",
@@ -172,7 +183,7 @@
   "security": {
     "tag": "审计就绪的安全",
     "title": "持续审计。零遗留。",
-    "intro": "Firewall-Mon 历经多轮独立的工程审计 —— 从一次包含 170 项发现的公开发布评审开始，并持续进行不间断的一致性与安全检查。数百项发现已被发现、修复，并在 CI 中验证。每一项都已关闭。",
+    "intro": "Firewall-Mon is independently engineering-audited and re-checked in CI on every build. Encryption, access control, and audit logging are verified continuously — open findings stay at zero.",
     "item1_title": "AES-256-GCM 机密加密",
     "item1_desc": "SNMP 共同体名称、SSH 凭据、TOTP 密钥，以及每一个通知密钥 —— Slack、PagerDuty、Opsgenie 和 Webhook —— 都以 AES-256-GCM 在库中加密存储。",
     "item2_title": "M8 快速失败解密校验",
@@ -194,7 +205,6 @@
   },
   "footer": {
     "brand_desc": "厂商无关的防火墙监控系统，专为速度、安全审计和复杂拓扑穿越而构建。",
-    "labs_created": "Firewall-Mon 是由 <a href=\"https://www.xphox.net\" target=\"_blank\" style=\"color: var(--accent); text-decoration: underline;\">Xphox Networks</a> 的 Xphox 创建的 <a href=\"https://www.technicallabs.org\" target=\"_blank\" style=\"color: var(--accent); text-decoration: underline;\">TechnicalLabs</a> 项目。",
     "open_source": "开源项目",
     "license": "MIT 许可证",
     "documentation": "产品文档",

@@ -3,6 +3,38 @@
 All notable changes to the Firewall-Mon marketing website are documented here.
 This file follows [Keep a Changelog](https://keepachangelog.com/) conventions; versions are newest-first.
 
+## [0.2.12] - 2026-07-18
+
+### Changed
+- **Hero stat row simplified**: "0 Open / Continuously Audited" and "8 / Vendors
+  Supported" replaced with cleaner "Multi-Vendor Support · Self-Hosted · MIT".
+- **Reduced vendor-name exposure in marketing copy**: removed the FortiGate/Palo
+  Alto/Cisco ASA/… vendor list from the hero subtitle and feature card 1, and the
+  "eight firewall families/vendors" counts, in favour of "every major firewall
+  platform" / "multi-vendor". The Live Demo simulator and config-drift widget keep
+  their realistic device names (product demo, not advertising).
+- **Security section reworded**: dropped the "170-finding review / hundreds of
+  findings fixed" claim for a cleaner "independently audited, open findings stay at
+  zero" message; trimmed the duplicated "zero open" phrasing that appeared 5×.
+- **Capability cards**: removed the 01–08 number pills and made each card
+  click-to-expand into an accessible modal (Esc / backdrop / keyboard close) with a
+  fuller description of what the feature does. New `features.cardN_detail` strings.
+- **Feature grid alignment**: 8 cards now lay out as an even 4×2 (was 3-col leaving
+  an orphan cell); added a 2-col tablet breakpoint and even mobile section rhythm.
+- Refreshed the on-site product changelog (docs.html) to v0.11.118 — added the
+  report-redesign and Event Rule Profiles highlights.
+
+### Removed
+- Duplicate footer credit line (the "TechnicalLabs project created by Xphox" text
+  appeared twice; the copyright line retains it).
+- Assorted redundant copy: repeated "vendor-agnostic", the duplicated config-drift
+  explanation, the second "30 seconds to first poll", and the "10× faster than ORM"
+  micro-brag.
+
+### Note
+- Several reworded strings are English across all 10 locales pending re-translation
+  (i18n key parity is maintained; runtime falls back to English regardless).
+
 ## [0.2.11] - 2026-07-18
 
 ### Fixed

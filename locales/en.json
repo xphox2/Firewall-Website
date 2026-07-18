@@ -14,22 +14,24 @@
   },
   "hero": {
     "title": "One pane of glass for your <span class=\"accent-text\">firewall fleet.</span>",
-    "subtitle": "SNMP, sFlow, NetFlow/IPFIX, syslog, traps, and config-drift monitoring across FortiGate, Palo Alto, Cisco ASA, SonicWall, pfSense, OPNsense, Firewalla — and any SNMP device. Multi-user with roles and 2FA. Self-hosted. One container. 30 seconds to first poll.",
+    "subtitle": "SNMP, sFlow, NetFlow/IPFIX, syslog, traps, and config-drift monitoring across every major firewall platform — and any SNMP device. Multi-user with roles and 2FA. Self-hosted. One container.",
     "copy_btn": "Copy",
     "copied_btn": "Copied!",
     "read_docs": "Read the docs →",
-    "stat_audit_label": "Continuously Audited",
-    "stat_vendors_label": "Vendors Supported",
-    "stat_license_label": "Open Source License"
+    "stat_license_label": "Open Source License",
+    "stat_vendor_value": "Multi-Vendor",
+    "stat_vendor_label": "Firewall Support",
+    "stat_host_value": "Self-Hosted",
+    "stat_host_label": "One Container"
   },
   "why": {
     "tag": "Grounded in Operations",
     "title": "Built firewall-first.",
     "intro": "General network monitoring tools give you a wall of generic OID graphs. Firewall-Mon is built specifically for firewalls.",
     "card1_title": "Deep Vendor Intelligence",
-    "card1_desc": "Native profiles for eight firewall families read CPU, sessions, VPN tunnels, HA states, and SPU/ASIC metrics out-of-the-box. Zero MIB wrestling.",
+    "card1_desc": "Native profiles across many firewall platforms read CPU, sessions, VPN tunnels, HA states, and SPU/ASIC metrics out-of-the-box. Zero MIB wrestling.",
     "card2_title": "Config Drift with Risk Tags",
-    "card2_desc": "Config changes are normalized to a vendor-neutral object model. Every change is classified by risk—highlighting security breaches before your audit.",
+    "card2_desc": "Every config change is classified by risk—so a rule opened to ANY surfaces before it reaches production, not during your next audit.",
     "card3_title": "NAT/CGNAT Traversal Probes",
     "card3_desc": "Remote site probes push metrics over outbound HTTPS. No inbound ports need to be exposed, keeping your branches completely locked down."
   },
@@ -89,7 +91,7 @@
   "sflow": {
     "tag": "High-Performance Traffic Monitoring",
     "title": "Multi-Protocol Flow Analytics",
-    "intro": "Ingest <strong>sFlow v5, NetFlow v5/v9, and IPFIX</strong> side by side — with content-based version dispatch, per-vendor template decoding, and <strong>denied-flow visibility</strong> from firewall events. Triage spikes on raw conversation-level detail via our PostgreSQL <code class=\"mono-code\">pgx COPY</code> pipeline, which writes 10× faster than normal ORM row inserts.",
+    "intro": "Ingest <strong>sFlow v5, NetFlow v5/v9, and IPFIX</strong> side by side — with content-based version dispatch, per-vendor template decoding, and <strong>denied-flow visibility</strong> from firewall events. Triage spikes on raw conversation-level detail.",
     "live_stream": "Live Flow Stream (sFlow · NetFlow · IPFIX)",
     "run_triage": "Run Spike Triage",
     "src_addr": "Source Address",
@@ -146,9 +148,9 @@
   "features": {
     "tag": "Capabilities",
     "title": "Production-grade monitoring.",
-    "intro": "Every feature is built for speed, compliance posture, and vendor neutrality.",
+    "intro": "Built for speed, compliance posture, and any firewall you run. Tap a card for the detail.",
     "card1_title": "Multi-Vendor SNMP",
-    "card1_desc": "Eight vendors — FortiGate to Cisco ASA to any SNMP device. Native OID profiles.",
+    "card1_desc": "Any SNMP-capable firewall, with native per-platform OID profiles.",
     "card2_title": "Risk-Classified Config Diffs",
     "card2_desc": "Surface a rule opened to ANY before it ships.",
     "card3_title": "Multi-Protocol Flow",
@@ -158,11 +160,20 @@
     "card5_title": "Single-Container Deploy",
     "card5_desc": "One `docker compose up -d`. PostgreSQL 16 bundled.",
     "card6_title": "Audit-Grade Security",
-    "card6_desc": "AES-256-GCM, fail-fast keys, append-only audit log. Continuously audited, zero open.",
+    "card6_desc": "AES-256-GCM secrets, fail-fast keys, and an append-only audit log.",
     "card7_title": "Roles & 2FA",
     "card7_desc": "RBAC, TOTP two-factor with recovery codes, and scoped API tokens.",
     "card8_title": "Enterprise Alerting",
-    "card8_desc": "Incident grouping, escalation chains, PagerDuty, Opsgenie & Teams."
+    "card8_desc": "Incident grouping, escalation chains, PagerDuty, Opsgenie & Teams.",
+    "more": "Details →",
+    "card1_detail": "Native OID profiles for every major firewall platform, plus a standards-only generic profile, mean CPU, sessions, VPN tunnels, HA state, and interface health arrive on day one — no MIB hunting, no per-device templates to hand-build.",
+    "card2_detail": "Every configuration snapshot is normalized and compared, and each change is scored by risk. A rule opened to ANY, a disabled log, or a weakened policy is flagged the moment it appears — so you catch it before it ships, not during the next audit.",
+    "card3_detail": "sFlow v5, NetFlow v5/v9, and IPFIX are ingested side by side with content-based version dispatch and per-platform template decoding. Denied-flow visibility comes straight from firewall events, so you can triage a spike down to the conversation without a packet capture.",
+    "card4_detail": "Remote and branch sites run a lightweight probe that pushes metrics out over a single outbound HTTPS connection. Nothing inbound is exposed, so firewalls behind CGNAT or strict egress rules are monitored without opening a port.",
+    "card5_detail": "One docker compose up -d brings up the full stack with PostgreSQL 16 bundled. No external database to provision and no message broker to babysit — it is self-hosted and running in well under a minute.",
+    "card6_detail": "SNMP communities, SSH credentials, TOTP secrets, and notification keys are encrypted at rest with AES-256-GCM. Pollers fail fast if a secret cannot be decrypted, and every administrative action lands in an append-only audit trail.",
+    "card7_detail": "Admin, operator, and viewer roles are enforced server-side, with scoped API tokens for automation. Opt-in TOTP two-factor with recovery codes protects every account without a third-party identity provider.",
+    "card8_detail": "Alerts are grouped into incidents with escalation chains, flap suppression, and z-score baselining to cut noise. Route them to PagerDuty, Opsgenie, or Microsoft Teams, and track MTTA/MTTR to see how fast you actually respond."
   },
   "reports": {
     "tag": "Operations Reports",
@@ -172,7 +183,7 @@
   "security": {
     "tag": "Audit-Ready Security",
     "title": "Continuously audited. Zero open.",
-    "intro": "Firewall-Mon has been through repeated independent engineering audits — starting with a 170-finding public-release review and continuing through ongoing consistency and security passes. Hundreds of findings have been found, fixed, and verified in CI. Every one is closed.",
+    "intro": "Firewall-Mon is independently engineering-audited and re-checked in CI on every build. Encryption, access control, and audit logging are verified continuously — open findings stay at zero.",
     "item1_title": "AES-256-GCM Secret Encryption",
     "item1_desc": "SNMP communities, SSH credentials, TOTP secrets, and every notification key — Slack, PagerDuty, Opsgenie, and webhooks — are encrypted at rest with AES-256-GCM.",
     "item2_title": "M8 Fail-Fast Decryption Validation",
@@ -194,7 +205,6 @@
   },
   "footer": {
     "brand_desc": "Vendor-agnostic firewall monitoring system built for speed, security audits, and complex topology traversal.",
-    "labs_created": "Firewall-Mon is a <a href=\"https://www.technicallabs.org\" target=\"_blank\" style=\"color: var(--accent); text-decoration: underline;\">TechnicalLabs</a> project created by Xphox of <a href=\"https://www.xphox.net\" target=\"_blank\" style=\"color: var(--accent); text-decoration: underline;\">Xphox Networks</a>.",
     "open_source": "Open Source",
     "license": "MIT License",
     "documentation": "Documentation",

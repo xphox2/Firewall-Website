@@ -14,22 +14,24 @@
   },
   "hero": {
     "title": "<span class=\"accent-text\">방화벽 플릿</span>을 위한 단일 모니터링 뷰.",
-    "subtitle": "FortiGate, Palo Alto, Cisco ASA, SonicWall, pfSense, OPNsense, Firewalla를 비롯한 모든 SNMP 장비에 대해 SNMP, sFlow, NetFlow/IPFIX, syslog, trap 및 구성 드리프트를 모니터링합니다. 역할 기반 다중 사용자와 2FA 지원. 자가 호스팅. 단일 컨테이너. 첫 수집까지 단 30초.",
+    "subtitle": "SNMP, sFlow, NetFlow/IPFIX, syslog, traps, and config-drift monitoring across every major firewall platform — and any SNMP device. Multi-user with roles and 2FA. Self-hosted. One container.",
     "copy_btn": "복사",
     "copied_btn": "복사 완료!",
     "read_docs": "문서 읽기 →",
-    "stat_audit_label": "지속적으로 감사됨",
-    "stat_vendors_label": "지원 벤더 수",
-    "stat_license_label": "오픈 소스 라이선스"
+    "stat_license_label": "오픈 소스 라이선스",
+    "stat_vendor_value": "Multi-Vendor",
+    "stat_vendor_label": "Firewall Support",
+    "stat_host_value": "Self-Hosted",
+    "stat_host_label": "One Container"
   },
   "why": {
     "tag": "현업 지향 모니터링",
     "title": "방화벽 우선 설계.",
     "intro": "범용 네트워크 모니터링 도구는 단순히 일반 OID 그래프만 나열합니다. Firewall-Mon은 방화벽에 특화되도록 설계되었습니다.",
     "card1_title": "심층적인 벤더 인텔리전스",
-    "card1_desc": "8개 방화벽 제품군에 최적화된 네이티브 프로파일을 통해 CPU, 세션, VPN 터널, HA 상태 및 SPU/ASIC 메트릭을 즉시 읽어옵니다. 번거로운 MIB 수동 설정이 필요 없습니다.",
+    "card1_desc": "Native profiles across many firewall platforms read CPU, sessions, VPN tunnels, HA states, and SPU/ASIC metrics out-of-the-box. Zero MIB wrestling.",
     "card2_title": "위험 태그가 지정된 구성 드리프트",
-    "card2_desc": "구성 변경 사항이 벤더 중립적인 객체 모델로 정규화됩니다. 모든 변경 사항은 위험도별로 분류되어 감사 전에 보안 위반을 강조 표시합니다.",
+    "card2_desc": "Every config change is classified by risk—so a rule opened to ANY surfaces before it reaches production, not during your next audit.",
     "card3_title": "NAT/CGNAT 트래버설 프로브",
     "card3_desc": "원격 사이트 프로브가 아웃바운드 HTTPS를 통해 메트릭을 전송합니다. 인바운드 포트를 노출할 필요가 없어 지사를 완벽하게 차단된 상태로 유지합니다."
   },
@@ -89,7 +91,7 @@
   "sflow": {
     "tag": "고성능 트래픽 모니터링",
     "title": "다중 프로토콜 플로우 분석",
-    "intro": "<strong>sFlow v5, NetFlow v5/v9, IPFIX</strong>를 나란히 수집합니다 — 콘텐츠 기반 버전 디스패치, 벤더별 템플릿 디코딩, 그리고 방화벽 이벤트로부터의 <strong>차단 플로우 가시성</strong>을 제공합니다. 일반 ORM 행 삽입보다 10배 빠르게 기록하는 PostgreSQL <code class=\"mono-code\">pgx COPY</code> 파이프라인을 통해 원본 대화 수준의 상세 정보로 트래픽 급증을 진단하세요.",
+    "intro": "Ingest <strong>sFlow v5, NetFlow v5/v9, and IPFIX</strong> side by side — with content-based version dispatch, per-vendor template decoding, and <strong>denied-flow visibility</strong> from firewall events. Triage spikes on raw conversation-level detail.",
     "live_stream": "실시간 플로우 스트림 (sFlow · NetFlow · IPFIX)",
     "run_triage": "트래픽 급증 진단 실행",
     "src_addr": "출발지 주소",
@@ -146,9 +148,9 @@
   "features": {
     "tag": "기능",
     "title": "운영 환경 수준의 모니터링.",
-    "intro": "모든 기능은 속도, 컴플라이언스 태세, 그리고 벤더 중립성을 목표로 구축되었습니다.",
+    "intro": "Built for speed, compliance posture, and any firewall you run. Tap a card for the detail.",
     "card1_title": "다중 벤더 SNMP",
-    "card1_desc": "FortiGate부터 Cisco ASA, 모든 SNMP 장비까지 8개 벤더 지원. 네이티브 OID 프로파일.",
+    "card1_desc": "Any SNMP-capable firewall, with native per-platform OID profiles.",
     "card2_title": "위험 분류 기반 구성 변경 비교",
     "card2_desc": "적용 전에 ANY로 오픈된 규칙을 사전에 드러냅니다.",
     "card3_title": "다중 프로토콜 플로우",
@@ -158,11 +160,20 @@
     "card5_title": "단일 컨테이너 배포",
     "card5_desc": "한 줄의 `docker compose up -d`. PostgreSQL 16 기본 탑재.",
     "card6_title": "감사 수준 보안",
-    "card6_desc": "AES-256-GCM, fail-fast 키, 추가 전용 감사 로그. 지속적으로 감사되며 지적 항목 Zero.",
+    "card6_desc": "AES-256-GCM secrets, fail-fast keys, and an append-only audit log.",
     "card7_title": "역할 및 2FA",
     "card7_desc": "RBAC, 복구 코드를 갖춘 TOTP 2단계 인증, 범위가 지정된 API 토큰.",
     "card8_title": "엔터프라이즈 알림",
-    "card8_desc": "인시던트 그룹화, 에스컬레이션 체인, PagerDuty, Opsgenie & Teams."
+    "card8_desc": "인시던트 그룹화, 에스컬레이션 체인, PagerDuty, Opsgenie & Teams.",
+    "more": "Details →",
+    "card1_detail": "Native OID profiles for every major firewall platform, plus a standards-only generic profile, mean CPU, sessions, VPN tunnels, HA state, and interface health arrive on day one — no MIB hunting, no per-device templates to hand-build.",
+    "card2_detail": "Every configuration snapshot is normalized and compared, and each change is scored by risk. A rule opened to ANY, a disabled log, or a weakened policy is flagged the moment it appears — so you catch it before it ships, not during the next audit.",
+    "card3_detail": "sFlow v5, NetFlow v5/v9, and IPFIX are ingested side by side with content-based version dispatch and per-platform template decoding. Denied-flow visibility comes straight from firewall events, so you can triage a spike down to the conversation without a packet capture.",
+    "card4_detail": "Remote and branch sites run a lightweight probe that pushes metrics out over a single outbound HTTPS connection. Nothing inbound is exposed, so firewalls behind CGNAT or strict egress rules are monitored without opening a port.",
+    "card5_detail": "One docker compose up -d brings up the full stack with PostgreSQL 16 bundled. No external database to provision and no message broker to babysit — it is self-hosted and running in well under a minute.",
+    "card6_detail": "SNMP communities, SSH credentials, TOTP secrets, and notification keys are encrypted at rest with AES-256-GCM. Pollers fail fast if a secret cannot be decrypted, and every administrative action lands in an append-only audit trail.",
+    "card7_detail": "Admin, operator, and viewer roles are enforced server-side, with scoped API tokens for automation. Opt-in TOTP two-factor with recovery codes protects every account without a third-party identity provider.",
+    "card8_detail": "Alerts are grouped into incidents with escalation chains, flap suppression, and z-score baselining to cut noise. Route them to PagerDuty, Opsgenie, or Microsoft Teams, and track MTTA/MTTR to see how fast you actually respond."
   },
   "reports": {
     "tag": "운영 보고서",
@@ -172,7 +183,7 @@
   "security": {
     "tag": "감사 대응 보안",
     "title": "지속적으로 감사됨. 지적 항목 Zero.",
-    "intro": "Firewall-Mon은 170개 발견 항목의 공개 릴리스 리뷰를 시작으로, 지속적인 일관성 및 보안 점검을 거치며 반복적인 독립 엔지니어링 감사를 거쳤습니다. 수백 개의 발견 항목이 발견, 수정, CI에서 검증되었습니다. 모든 항목이 종결되었습니다.",
+    "intro": "Firewall-Mon is independently engineering-audited and re-checked in CI on every build. Encryption, access control, and audit logging are verified continuously — open findings stay at zero.",
     "item1_title": "AES-256-GCM 비밀 정보 암호화",
     "item1_desc": "SNMP 커뮤니티, SSH 자격 증명, TOTP 비밀 정보 및 모든 알림 키 — Slack, PagerDuty, Opsgenie, 웹훅 — 는 AES-256-GCM으로 저장 시 암호화됩니다.",
     "item2_title": "M8 Fail-Fast 복호화 검증",
@@ -194,7 +205,6 @@
   },
   "footer": {
     "brand_desc": "속도, 보안 감사 및 복잡한 토폴로지 트래버설을 위해 구축된 벤더 중립적 방화벽 모니터링 시스템.",
-    "labs_created": "Firewall-Mon은 <a href=\"https://www.xphox.net\" target=\"_blank\" style=\"color: var(--accent); text-decoration: underline;\">Xphox Networks</a>의 Xphox가 개발한 <a href=\"https://www.technicallabs.org\" target=\"_blank\" style=\"color: var(--accent); text-decoration: underline;\">TechnicalLabs</a> 프로젝트입니다.",
     "open_source": "오픈소스",
     "license": "MIT 라이선스",
     "documentation": "제품 설명서",

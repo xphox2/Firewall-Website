@@ -629,3 +629,52 @@ function setupMobileNav() {
         });
     }
 }
+
+// Feature-card click-to-expand modal. Detail text is pulled from i18n keys
+// (features.cardN_detail) via window.t, with English deep-merge fallback.
+document.addEventListener("DOMContentLoaded", () => {
+    const modal = document.getElementById("feature-modal");
+    if (!modal) return;
+    const titleEl = document.getElementById("feature-modal-title");
+    const bodyEl = document.getElementById("feature-modal-body");
+    const closeBtn = document.getElementById("feature-modal-close");
+    let lastFocused = null;
+
+    const tr = (key, fallback) => {
+        const v = (typeof window.t === "function") ? window.t(key) : undefined;
+        return (v === undefined || v === null) ? fallback : v;
+    };
+
+    function openModal(card) {
+        const id = card.getAttribute("data-feature");
+        const title = card.querySelector(".feature-card-title");
+        titleEl.textContent = tr(`features.${id}_title`, title ? title.textContent : "");
+        bodyEl.textContent = tr(`features.${id}_detail`, "");
+        lastFocused = card;
+        modal.hidden = false;
+        document.body.style.overflow = "hidden";
+        closeBtn.focus();
+    }
+
+    function closeModal() {
+        modal.hidden = true;
+        document.body.style.overflow = "";
+        if (lastFocused) lastFocused.focus();
+    }
+
+    document.querySelectorAll(".feature-card[data-feature]").forEach(card => {
+        card.addEventListener("click", () => openModal(card));
+        card.addEventListener("keydown", (e) => {
+            if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                openModal(card);
+            }
+        });
+    });
+
+    modal.querySelectorAll("[data-modal-close]").forEach(el =>
+        el.addEventListener("click", closeModal));
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && !modal.hidden) closeModal();
+    });
+});

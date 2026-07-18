@@ -1327,8 +1327,8 @@ video.hero-image {
 /* Feature Cards Grid (style-guide.md constraints) */
 .features-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
 }
 
 .feature-card {
@@ -1342,6 +1342,16 @@ video.hero-image {
     display: flex;
     align-items: flex-end;
     box-shadow: var(--shadow);
+    cursor: pointer;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+.feature-card:hover,
+.feature-card:focus-visible {
+    transform: translateY(-4px);
+    border-color: var(--accent);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+    outline: none;
 }
 
 .feature-card-overlay {
@@ -1354,37 +1364,119 @@ video.hero-image {
 .feature-card-content {
     position: relative;
     z-index: 2;
-    padding: 30px;
+    padding: 24px;
     width: 100%;
 }
 
 .feature-card-header {
     display: flex;
     align-items: flex-start;
-    justify-content: space-between;
     margin-bottom: 8px;
 }
 
 .feature-card-title {
     font-family: var(--font-heading);
-    font-size: 1.25rem;
+    font-size: 1.15rem;
     font-weight: 700;
     color: var(--text-primary);
-}
-
-.feature-card-pill {
-    font-family: var(--font-mono);
-    background-color: var(--accent);
-    color: var(--bg);
-    font-size: 0.72rem;
-    font-weight: 600;
-    padding: 2px 8px;
-    border-radius: 20px;
+    line-height: 1.25;
 }
 
 .feature-card-tagline {
-    font-size: 0.88rem;
+    font-size: 0.85rem;
     color: var(--text-muted);
+    line-height: 1.45;
+}
+
+.feature-card-more {
+    display: inline-block;
+    margin-top: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--accent);
+    opacity: 0;
+    transform: translateY(4px);
+    transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.feature-card:hover .feature-card-more,
+.feature-card:focus-visible .feature-card-more {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Feature detail modal */
+.feature-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+
+.feature-modal[hidden] {
+    display: none;
+}
+
+.feature-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(1, 4, 9, 0.75);
+    backdrop-filter: blur(2px);
+}
+
+.feature-modal-card {
+    position: relative;
+    z-index: 1;
+    max-width: 520px;
+    width: 100%;
+    background: var(--bg-primary);
+    border: 1px solid var(--bg-tertiary);
+    border-radius: var(--radius);
+    padding: 32px 32px 34px;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
+    animation: modal-in 0.16s ease-out;
+}
+
+@keyframes modal-in {
+    from { opacity: 0; transform: translateY(12px) scale(0.98); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.feature-modal-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 14px;
+    color: var(--text-primary);
+}
+
+.feature-modal-card p {
+    font-size: 0.98rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+}
+
+.feature-modal-close {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1.6rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 8px;
+    transition: color 0.15s ease, background 0.15s ease;
+}
+
+.feature-modal-close:hover,
+.feature-modal-close:focus-visible {
+    color: var(--text-primary);
+    background: var(--bg-tertiary);
+    outline: none;
 }
 
 /* Operations Report Email Preview */
@@ -1854,13 +1946,18 @@ video.hero-image {
     .dashboard-simulator,
     .config-diff-widget,
     .probe-layout-grid,
-    .features-grid,
     .security-grid,
     .footer-container {
         grid-template-columns: 1fr;
         height: auto;
     }
-    
+
+    /* 8 feature cards read cleanly as 2 columns on tablet */
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+        height: auto;
+    }
+
     .hero-section {
         padding: 40px 24px;
     }
@@ -1939,18 +2036,26 @@ video.hero-image {
 }
 
 @media (max-width: 768px) {
-    .why-grid,
+    /* Even vertical rhythm on phones (base sections are 80px; hero is handled above) */
+    section:not(.hero-section) {
+        padding: 56px 20px;
+    }
+
     .features-grid,
     .footer-links-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .sim-metrics-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .report-grid {
         grid-template-columns: 1fr;
+    }
+
+    .feature-modal-card {
+        padding: 26px 22px 28px;
     }
 }
 
