@@ -3,6 +3,15 @@
 All notable changes to the Firewall-Mon marketing website are documented here.
 This file follows [Keep a Changelog](https://keepachangelog.com/) conventions; versions are newest-first.
 
+## [0.2.11] - 2026-07-18
+
+### Fixed
+- **Social share card "No Text" artifact removed.** The generated og-card had the
+  literal words "No Text" (and gibberish labels) rendered in a dashboard panel.
+  Cleaned via an AI image edit that replaced all dashboard text with abstract
+  chart shapes while preserving the composition, then re-cropped to 1200×630.
+  og:image / twitter:image cache-buster bumped to `?v=0.2.11`.
+
 ## [0.2.10] - 2026-07-18
 
 ### Changed
