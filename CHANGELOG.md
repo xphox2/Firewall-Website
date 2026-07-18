@@ -3,6 +3,14 @@
 All notable changes to the Firewall-Mon marketing website are documented here.
 This file follows [Keep a Changelog](https://keepachangelog.com/) conventions; versions are newest-first.
 
+## [0.2.5] - 2026-07-18
+
+### Changed
+- **Hero loop clip updated** to the newer g014 take (15 seconds, 960×960 square,
+  ~5.1 MB), replacing g013. Same `assets/hero/hero-loop.mp4` slot; the existing
+  `video.hero-image { aspect-ratio: 16/9; object-fit: cover; }` crops the square
+  source to the card frame, so no markup or CSS change was needed.
+
 ## [0.2.4] - 2026-07-18
 
 ### Fixed
