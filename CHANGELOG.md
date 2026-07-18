@@ -3,6 +3,22 @@
 All notable changes to the Firewall-Mon marketing website are documented here.
 This file follows [Keep a Changelog](https://keepachangelog.com/) conventions; versions are newest-first.
 
+## [0.2.8] - 2026-07-18
+
+### Changed
+- **Feature-card art refresh complete (batch 2 of 2).** New on-palette images for
+  cards 4–6: `f4-probe-relay.png`, `f5-single-container.png`,
+  `f6-audit-posture.png` (also the favicon). Recompressed to ~160–430 KB.
+
+### Added
+- **Cards 7 & 8 now have real art** instead of CSS gradients: `f7-roles-2fa.png`
+  (Roles & 2FA) and `f8-alerting.png` (Enterprise Alerting). Dropped the
+  `feature-card--noimg / --access / --alerting` classes; both cards now use the
+  same image-backed treatment as cards 1–6, completing the 8-card grid.
+- Social share image generated and cropped to the 1200×630 Open Graph standard:
+  `assets/social/og-card.png` (meta tags wired in a follow-up).
+- Cache-busters (`?v=0.2.8`) on cards 4–8 and the favicon so the new art loads.
+
 ## [0.2.7] - 2026-07-18
 
 ### Fixed
