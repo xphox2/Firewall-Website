@@ -3,6 +3,14 @@
 All notable changes to the Firewall-Mon marketing website are documented here.
 This file follows [Keep a Changelog](https://keepachangelog.com/) conventions; versions are newest-first.
 
+## [0.2.7] - 2026-07-18
+
+### Fixed
+- Cache-bust the refreshed feature images (`f1-multivendor.png`,
+  `f2-config-drift.png`, `f3-sflow.png` → `?v=0.2.6`). Because the new art reused
+  the original filenames, returning visitors' browsers would keep serving the old
+  cached images; the version query forces a fresh fetch.
+
 ## [0.2.6] - 2026-07-18
 
 ### Changed
