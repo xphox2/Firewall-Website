@@ -3,6 +3,14 @@
 All notable changes to the Firewall-Mon marketing website are documented here.
 This file follows [Keep a Changelog](https://keepachangelog.com/) conventions; versions are newest-first.
 
+## [0.2.10] - 2026-07-18
+
+### Changed
+- Swapped three feature-card images for newer takes: card 1 Multi-Vendor SNMP
+  (`f1-multivendor.png`), card 4 Probe-Relay Architecture (`f4-probe-relay.png`),
+  and card 8 Enterprise Alerting (`f8-alerting.png`). Cache-busters bumped to
+  `?v=0.2.10`.
+
 ## [0.2.9] - 2026-07-18
 
 ### Added
