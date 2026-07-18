@@ -3,6 +3,14 @@
 All notable changes to the Firewall-Mon marketing website are documented here.
 This file follows [Keep a Changelog](https://keepachangelog.com/) conventions; versions are newest-first.
 
+## [0.2.14] - 2026-07-18
+
+### Changed
+- Hero loop trimmed to the 8–14s segment of the source clip (6s, `hero-loop.mp4`).
+  The original opened with ~6 flat seconds as the image-to-video model eased out
+  of the still anchor frame; the loop now starts in the animated portion. Video
+  source gains a `?v=0.2.14` cache-buster so returning visitors get the new clip.
+
 ## [0.2.13] - 2026-07-18
 
 ### Changed
