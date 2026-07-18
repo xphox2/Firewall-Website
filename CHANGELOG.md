@@ -3,6 +3,18 @@
 All notable changes to the Firewall-Mon marketing website are documented here.
 This file follows [Keep a Changelog](https://keepachangelog.com/) conventions; versions are newest-first.
 
+## [0.2.3] - 2026-07-18
+
+### Added
+- **Ambient hero video.** The static hero illustration is replaced by a 10-second
+  AI-generated looping clip (`assets/hero/hero-loop.mp4`, 960×540 H.264, ~5.5 MB)
+  playing inline: `autoplay muted loop playsinline preload="metadata"` with the
+  existing `hero.png` as poster and `<img>` fallback, so first paint is instant and
+  browsers without autoplay still show the still. The video element reuses the
+  `.hero-image` class, preserving the lighten blend and card layout with no
+  layout shift.
+- `.playwright-mcp/` added to `.gitignore` (local browser-test artifacts).
+
 ## [0.2.2] - 2026-07-17
 
 ### Fixed

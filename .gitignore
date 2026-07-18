@@ -5,3 +5,4 @@ Thumbs.db
 node_modules/
 test-results/
 tests/package-lock.json
+.playwright-mcp/
