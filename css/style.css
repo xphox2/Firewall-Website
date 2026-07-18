@@ -497,6 +497,12 @@ section {
     opacity: 0.85;
 }
 
+/* The hero loop source is square; crop it to the card's 16:9 frame. */
+video.hero-image {
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
 .hero-overlay-shadow {
     position: absolute;
     inset: 0;

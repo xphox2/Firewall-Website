@@ -3,6 +3,18 @@
 All notable changes to the Firewall-Mon marketing website are documented here.
 This file follows [Keep a Changelog](https://keepachangelog.com/) conventions; versions are newest-first.
 
+## [0.2.4] - 2026-07-18
+
+### Fixed
+- **Correct hero loop clip.** v0.2.3 shipped the wrong video (a same-named clip
+  from a different Scene-Forge scene). `assets/hero/hero-loop.mp4` is now the
+  intended 6-second firewall clip (1424×1424, byte-identical to the user's
+  selected file), CSS-cropped to the card's 16:9 frame via
+  `video.hero-image { aspect-ratio: 16/9; object-fit: cover; }` — no re-encode,
+  no layout shift.
+- Bumped the stylesheet cache-buster (`style.css?v=0.2.4`) in index.html and
+  docs.html — without it, returning visitors would never receive the new CSS.
+
 ## [0.2.3] - 2026-07-18
 
 ### Added
