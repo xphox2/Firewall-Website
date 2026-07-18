@@ -3,6 +3,15 @@
 All notable changes to the Firewall-Mon marketing website are documented here.
 This file follows [Keep a Changelog](https://keepachangelog.com/) conventions; versions are newest-first.
 
+## [0.2.9] - 2026-07-18
+
+### Added
+- **Open Graph & Twitter Card meta tags** in index.html so shared links unfurl
+  with a rich preview (previously there were none). Points at
+  `https://firewall-mon.technicallabs.org/assets/social/og-card.png` (1200×630),
+  with `og:type/site_name/title/description/url/image` and
+  `twitter:card=summary_large_image`.
+
 ## [0.2.8] - 2026-07-18
 
 ### Changed
