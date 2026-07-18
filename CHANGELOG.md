@@ -3,6 +3,16 @@
 All notable changes to the Firewall-Mon marketing website are documented here.
 This file follows [Keep a Changelog](https://keepachangelog.com/) conventions; versions are newest-first.
 
+## [0.2.6] - 2026-07-18
+
+### Changed
+- **Refreshed feature-card art (batch 1 of 2).** New AI-generated images for the
+  first three feature cards, matched to the GitHub-dark / blue (#58a6ff) palette:
+  `f1-multivendor.png` (Multi-Vendor SNMP), `f2-config-drift.png` (Risk-Classified
+  Config Diffs), `f3-sflow.png` (Multi-Protocol Flow). Each recompressed to
+  ~220–275 KB (JPEG q72, 1024×1024) to keep page weight in line with the originals.
+  Cards 4–8 and the social share card to follow.
+
 ## [0.2.5] - 2026-07-18
 
 ### Changed
