@@ -3,6 +3,17 @@
 All notable changes to the Firewall-Mon marketing website are documented here.
 This file follows [Keep a Changelog](https://keepachangelog.com/) conventions; versions are newest-first.
 
+## [0.2.16] - 2026-07-18
+
+### Added
+- **Automatic global cache-busting at image build.** The Dockerfile now stamps a
+  single fresh build id (timestamp, or `--build-arg BUILD_ID=<git sha>`) onto every
+  `?v=…` asset URL in index.html/docs.html during `docker compose up -d --build`.
+  Every deploy invalidates browser caches for CSS, JS, images, and video together —
+  no more per-file version bumps, and no more "the new asset didn't load" caching
+  bugs. The gtag `?id=` and Google Fonts `?family=` params are left untouched.
+- Added a `?v=` marker to the hero poster so it's covered by the stamper too.
+
 ## [0.2.15] - 2026-07-18
 
 ### Fixed
