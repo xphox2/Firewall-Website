@@ -4,12 +4,8 @@ FROM nginx:alpine
 # When omitted, a fresh timestamp is generated at build time.
 ARG BUILD_ID=
 
-# Default asset cache policy for the production image. The website-dev service
-# overrides this to "no-cache" (see docker-compose.yml) so bind-mounted edits
-# show up without a forced refresh.
-ENV ASSET_CACHE_CONTROL="public, max-age=31536000, immutable"
-
-# Cache policy config — Nginx substitutes ${ASSET_CACHE_CONTROL} at startup
+# Cache policy — a self-contained nginx map on the asset ?v= drives caching
+# (immutable for real build ids, no-cache for ?v=dev). No env override needed.
 COPY nginx.conf.template /etc/nginx/templates/default.conf.template
 
 # Copy static website assets to the default Nginx html serving directory

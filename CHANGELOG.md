@@ -3,6 +3,13 @@
 All notable changes to the Firewall-Mon marketing website are documented here.
 This file follows [Keep a Changelog](https://keepachangelog.com/) conventions; versions are newest-first.
 
+## [0.2.18] - 2026-07-19
+
+### Changed
+- **Unified the cache mechanism with the Technical Labs site.** Replaced the `ASSET_CACHE_CONTROL` env-var approach with a self-contained nginx `map $arg_v` (identical to the Technical Labs config): assets carrying a real `?v=<build-id>` cache immutable, while `?v=dev` / unversioned revalidate. Now the entire cache policy lives in one file (`nginx.conf.template`) — nothing to keep in sync across the Dockerfile and docker-compose, and dev bind-mounts fail safe with no extra config.
+  - Normalized all source asset `?v=` placeholders to `?v=dev` (the Docker build still stamps a unique id per deploy).
+  - Removed the `ENV ASSET_CACHE_CONTROL` default from the Dockerfile and the `ASSET_CACHE_CONTROL=no-cache` override from the `website-dev` service.
+
 ## [0.2.17] - 2026-07-18
 
 ### Fixed
