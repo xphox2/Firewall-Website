@@ -4,6 +4,14 @@ FROM nginx:alpine
 # When omitted, a fresh timestamp is generated at build time.
 ARG BUILD_ID=
 
+# Default asset cache policy for the production image. The website-dev service
+# overrides this to "no-cache" (see docker-compose.yml) so bind-mounted edits
+# show up without a forced refresh.
+ENV ASSET_CACHE_CONTROL="public, max-age=31536000, immutable"
+
+# Cache policy config — Nginx substitutes ${ASSET_CACHE_CONTROL} at startup
+COPY nginx.conf.template /etc/nginx/templates/default.conf.template
+
 # Copy static website assets to the default Nginx html serving directory
 COPY . /usr/share/nginx/html
 
@@ -16,6 +24,7 @@ RUN set -e; \
         [ -f "/usr/share/nginx/html/$f" ] && \
         sed -i -E "s/\?v=[0-9A-Za-z._-]+/?v=${BID}/g" "/usr/share/nginx/html/$f"; \
     done; \
+    rm -f /usr/share/nginx/html/nginx.conf.template; \
     echo "cache-bust: stamped all ?v= assets with build id ${BID}"
 
 # Expose port 80 inside the container

@@ -55,6 +55,10 @@ services:
     restart: unless-stopped
     ports:
       - "${DEV_PORT:-3000}:80"
+    environment:
+      # Revalidate assets in dev so bind-mounted edits show up without a
+      # forced refresh (production keeps the immutable default from the image).
+      - ASSET_CACHE_CONTROL=no-cache
     volumes:
       # Bind-mount the source for live edits — nginx serves the in-container
       # `/usr/share/nginx/html` so we replace that path with the host source.

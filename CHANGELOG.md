@@ -3,6 +3,18 @@
 All notable changes to the Firewall-Mon marketing website are documented here.
 This file follows [Keep a Changelog](https://keepachangelog.com/) conventions; versions are newest-first.
 
+## [0.2.17] - 2026-07-18
+
+### Fixed
+- **Stale-cache bug: site updates now take effect without a manual/forced refresh.** The build already stamped `?v=<build-id>` on assets, but the stock nginx image set no cache headers, so `index.html`/`docs.html` themselves could be served stale by the browser/Cloudflare edge — leaving the page pointing at old asset URLs after a deploy.
+
+### Added
+- **Nginx cache policy** (`nginx.conf.template`): HTML and JSON are always revalidated (`no-cache`, cheap 304s), so the entry documents are never stale and always reference the newest `?v=<build-id>` assets. Static CSS/JS/media are cached hard (`max-age=1y, immutable`) in production via `ASSET_CACHE_CONTROL` (default set in the Dockerfile), while the `website-dev` service overrides it to `no-cache` so bind-mounted edits still hot-reload without a forced refresh.
+
+### Changed
+- Dockerfile copies the cache-policy template into nginx and removes it from the served web root after build.
+- Added a `?v=` marker to the hero poster image (`assets/hero/hero.png`) so it participates in cache-busting.
+
 ## [0.2.16] - 2026-07-18
 
 ### Added

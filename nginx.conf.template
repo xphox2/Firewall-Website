@@ -1,0 +1,50 @@
+server {
+    listen 80;
+    server_name localhost;
+
+    root /usr/share/nginx/html;
+
+    # =========================================================================
+    # Cache policy — site updates take effect without a manual/forced refresh.
+    #
+    #  * HTML + JSON  -> always revalidated (no-cache). The browser re-checks
+    #    with the origin every load; unchanged files return a cheap 304 via
+    #    ETag. Because the entry document is never served stale, it always
+    #    references the newest ?v=<build-id> asset URLs.
+    #  * CSS / JS / media -> cache policy comes from ${ASSET_CACHE_CONTROL}:
+    #      - production image  : "public, max-age=31536000, immutable"
+    #        (safe: the Docker build stamps a unique ?v=<build-id> per deploy,
+    #         so a new build = a new URL = an automatic refetch)
+    #      - website-dev       : "no-cache"  (bind-mount edits show up instantly)
+    #    The default lives in the Dockerfile; docker-compose overrides it for dev.
+    # =========================================================================
+
+    # HTML entry documents — never serve stale markup
+    location = / {
+        try_files /index.html =404;
+        add_header Cache-Control "no-cache" always;
+    }
+    location ~* \.html?$ {
+        add_header Cache-Control "no-cache" always;
+        try_files $uri =404;
+    }
+
+    # Dynamic JSON (locales) — revalidate, allow 304s
+    location ~* \.json$ {
+        add_header Cache-Control "no-cache" always;
+        try_files $uri =404;
+    }
+
+    # Versioned static assets — cache policy is environment-driven
+    location ~* \.(?:css|js|mjs|woff2?|ttf|otf|eot|svg|png|jpe?g|gif|webp|avif|ico|mp4|webm|ogg)$ {
+        add_header Cache-Control "${ASSET_CACHE_CONTROL}" always;
+        try_files $uri =404;
+    }
+
+    # Everything else — safe default: revalidate
+    location / {
+        index index.html index.htm;
+        try_files $uri $uri/ =404;
+        add_header Cache-Control "no-cache" always;
+    }
+}
